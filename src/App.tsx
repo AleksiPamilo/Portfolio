@@ -6,7 +6,7 @@ import {
   Route
 } from "react-router-dom";
 
-import { LandingPage, Projects, CV } from "./pages";
+import { LandingPage, Projects, CV, NotFound } from "./pages";
 import { Navigation } from "./components";
 
 const App = () => {
@@ -20,6 +20,7 @@ const App = () => {
         <Route exact path="/" component={ LandingPage } />
         <Route exact path="/projects" component={ Projects } />
         <Route exact path="/cv" component={ CV } />
+        <Route component={ NotFound } />
 
       </Switch>
     </Router>

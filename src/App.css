@@ -21,6 +21,10 @@ body.light {
 
   /* Fetching Repos */
   --f-bg-color: rgb(55 65 81 / 1);
+
+  /* Contact */
+  --contact-bg-color: pink;
+  --contact-txt-color: black;
 }
 
 body.dark {
@@ -46,6 +50,10 @@ body.dark {
   
   /* Fetching Repos */
   --f-bg-color: rgb(255 255 255);
+
+  /* Contact */
+  --contact-bg-color: teal;
+  --contact-txt-color: black;
 }
 
 body {

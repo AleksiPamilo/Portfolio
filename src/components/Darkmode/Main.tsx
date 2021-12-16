@@ -53,7 +53,6 @@ const Darkmode: React.FC<DarkmodeProps> = () => {
         >
             <p id="txt">{ theme === darkTheme ? "Light Mode" : "Dark Mode" }</p>
         </button>
-        
     </div>
   )
 }

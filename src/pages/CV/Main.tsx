@@ -5,6 +5,9 @@ type CVProps = {
 }
 
 const CV: React.FC<CVProps> = () => {
+
+  document.title = "Portfolio | CV";
+  
   return (
     <div className="md:ml-60 ml-5">
         <h1 className="text-5xl font-bold text-cyan-500 mb-10">CV</h1>
