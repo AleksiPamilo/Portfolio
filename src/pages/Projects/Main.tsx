@@ -50,7 +50,7 @@ const Projects: React.FC<ProjectsProps> = () => {
                 <BiGitRepoForked className="inline" /> { props.forks_count }
               </p>
 
-              <p className="mt-4"><a className="github-link" href={ props.html_url } target="_blank">Open in Github</a></p>
+              <p className="mt-4"><a className="github-link" href={ props.html_url } target="_blank" rel="noreferrer">Open in Github</a></p>
             </div>
           ))
           }
