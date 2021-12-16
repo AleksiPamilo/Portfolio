@@ -30,17 +30,17 @@ const Darkmode: React.FC<DarkmodeProps> = () => {
         const themetxt = (document.getElementById("darkMode") as HTMLParagraphElement);
 
         if (theme === darkTheme) {
-        body.classList.replace(darkTheme, lightTheme);
-        e.target.classList.remove(clickedClass);
-        localStorage.setItem("theme", "light");
-        theme = lightTheme;
-        themetxt.innerText = "Dark Mode"
+            body.classList.replace(darkTheme, lightTheme);
+            e.target.classList.remove(clickedClass);
+            localStorage.setItem("theme", "light");
+            theme = lightTheme;
+            themetxt.innerHTML = "Dark Mode"
         } else {
-        body.classList.replace(lightTheme, darkTheme);
-        e.target.classList.add(clickedClass);
-        localStorage.setItem("theme", "dark");
-        theme = darkTheme;
-        themetxt.innerText = "Light Mode"
+            body.classList.replace(lightTheme, darkTheme);
+            e.target.classList.add(clickedClass);
+            localStorage.setItem("theme", "dark");
+            theme = darkTheme;
+            themetxt.innerHTML = "Light Mode"
         }
     };
 
@@ -53,6 +53,7 @@ const Darkmode: React.FC<DarkmodeProps> = () => {
         >
             <p id="txt">{ theme === darkTheme ? "Light Mode" : "Dark Mode" }</p>
         </button>
+        
     </div>
   )
 }

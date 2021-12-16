@@ -6,7 +6,7 @@ type CVProps = {
 
 const CV: React.FC<CVProps> = () => {
   return (
-    <div className="ml-60">
+    <div className="md:ml-60 ml-5">
         <h1 className="text-5xl font-bold text-cyan-500 mb-10">CV</h1>
         <p className="font-bold" style={{ width: "40%", lineHeight: "1.6" }}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget

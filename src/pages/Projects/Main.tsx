@@ -22,16 +22,16 @@ const Projects: React.FC<ProjectsProps> = () => {
   }, []);
 
   if(repos.length <= 0) return (
-    <div className="text-center items-center mt-44">
-      <h1 className="text-5xl font-bold text-cyan-500">Projektit</h1>
+    <div className="text-center items-center mt-12 md:mt-44">
+      <h1 className="text-5xl font-bold text-cyan-500">Projects</h1>
       <FetchingData />
     </div>
   )
    
 
   else return (
-     <div className="text-center items-center mt-44">
-          <h1 className="text-5xl font-bold text-cyan-500 mb-10">Projektit</h1>
+     <div className="text-center items-center mt-12 md:mt-44">
+          <h1 className="text-5xl font-bold text-cyan-500 mb-10">Projects</h1>
           {
           repos.map((props: any) => (
             <div className="github-card">
