@@ -1,0 +1,2 @@
+.txt-color { color: var(--nav-txt-color); }
+.nav-btn:hover { background-color: var(--nav-btn-hover); }
