@@ -2,11 +2,6 @@
     box-shadow: 0 4px 8px 0 var(--card-shadow-color);
     background-color: var(--card-background-color);
     color: var(--card-text-color);
-
-    display: inline-block;
-    border-radius: 20px;
-    padding: 15px;
-    margin: 5px;
 }
 
 .github-card:hover {

@@ -33,7 +33,7 @@ const Projects: React.FC<ProjectsProps> = () => {
           <h1 className="text-5xl font-bold text-cyan-500 mb-10">Projects</h1>
           {
           repos.map((props: any) => (
-            <div className="github-card">
+            <div className="github-card inline-block p-[15px] rounded-[20px] m-2" key={ props.id }>
               <p className="inline-block mb-3"><MdLaptopMac className="inline" /> { props.name }</p>
               <p className="mb-3">{ props.description }</p>
 

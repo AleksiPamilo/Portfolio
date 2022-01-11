@@ -47,7 +47,7 @@ const Darkmode: React.FC<DarkmodeProps> = () => {
   return (
     <div className="text-center">
         <button
-        className={theme === "dark" ? clickedClass : ""}
+        className="py-2 px-3 rounded-xl border-2 border-cyan-500 transition duration-300 hover:bg-cyan-500"
         id="darkMode"
         onClick={ (e) => switchTheme(e) }
         >

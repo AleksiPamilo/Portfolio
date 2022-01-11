@@ -1,9 +1,10 @@
 import React from 'react'
 import Darkmode from "../Darkmode/Main";
+import logo from "../../media/logo.png";
 import "./Main.css";
 
+import { Link } from "react-router-dom"
 import { FaBars, FaTimes  } from "react-icons/fa";
-import { AiOutlineHome } from "react-icons/ai";
 
 type NavigationProps = {
 
@@ -29,17 +30,17 @@ const Navigation: React.FC<NavigationProps> = () => {
 
             { /* Logo */}
             <div className="flex space-x-4">
-                <a href="/" className="flex items-center py-5 px-2 txt-color">
-                  <AiOutlineHome className="w-6 h-6" />
-                </a>
+                <Link to="/" className="flex items-center py-5 px-2 txt-color">
+                  <img src={logo} alt="" className="w-6 h-6" />
+                </Link>
             </div>
 
             { /* Nav */}
             <div className="hidden md:flex items-center space-x-1">
-              <a href="/" className="py-2 px-3 txt-color rounded transition duration-300 hover:text-cyan-500">Home</a>
-              <a href="/projects" className="py-2 px-3 txt-color rounded transition duration-300 hover:text-cyan-500">Projects</a>
-              <a href="/cv" className="py-2 px-3 txt-color rounded transition duration-300 hover:text-cyan-500">CV</a>
-              <button className="py-2 px-3 rounded-xl border-2 border-cyan-500 transition duration-300 hover:bg-cyan-500"><Darkmode /></button>
+              <Link to="/" className="py-2 px-3 txt-color rounded transition duration-300 hover:text-cyan-500">Home</Link>
+              <Link to="/projects" className="py-2 px-3 txt-color rounded transition duration-300 hover:text-cyan-500">Projects</Link>
+              <Link to="/cv" className="py-2 px-3 txt-color rounded transition duration-300 hover:text-cyan-500">CV</Link>
+              <Darkmode />
             </div>
           
             { /* Mobile Button */}
@@ -53,9 +54,9 @@ const Navigation: React.FC<NavigationProps> = () => {
 
         { /* Mobile Nav */}
         <div className="mobile-menu hidden md:hidden">
-          <a href="/" className="block text-center py-2 px-4 text-sm hover:bg-cyan-500">Home</a>
-          <a href="/projects" className="block text-center py-2 px-4 text-sm hover:bg-cyan-500">Projects</a>
-          <a href="/cv" className="block text-center py-2 px-4 text-sm hover:bg-cyan-500">CV</a>
+          <Link to="/" className="block text-center py-2 px-4 text-sm hover:bg-cyan-500">Home</Link>
+          <Link to="/projects" className="block text-center py-2 px-4 text-sm hover:bg-cyan-500">Projects</Link>
+          <Link to="/cv" className="block text-center py-2 px-4 text-sm hover:bg-cyan-500">CV</Link>
           <Darkmode />
         </div>
       </nav>
