@@ -1,11 +1,6 @@
 .github-card {
-    box-shadow: 0 4px 8px 0 var(--card-shadow-color);
     background-color: var(--card-background-color);
     color: var(--card-text-color);
-}
-
-.github-card:hover {
-    box-shadow: 0 8px 16px 0 var(--card-shadow-color-hover);
 }
 
 .github-link {
@@ -16,7 +11,7 @@
     text-decoration: none;
 
     border: solid 2px var(--card-link-color);
-    border-radius: 50px;
+    border-radius: 20px;
 
     padding: 10px 80px;
     margin-top: 20px;
@@ -29,4 +24,8 @@
     background-color: var(--card-link-color);
     color: var(--card-link-txt-hover-color);
     text-decoration: none;
+}
+
+.text {
+    color: var(--txt-color);
 }

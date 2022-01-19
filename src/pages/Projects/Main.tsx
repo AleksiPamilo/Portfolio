@@ -23,17 +23,17 @@ const Projects: React.FC<ProjectsProps> = () => {
 
   if(repos.length <= 0) return (
     <div className="text-center items-center mt-12 md:mt-44">
-      <h1 className="text-5xl font-bold text-cyan-500">Projects</h1>
+      <h1 className="text text-5xl font-bold">Projects</h1>
       <FetchingData />
     </div>
   )
 
   else return (
      <div className="text-center items-center mt-12 md:mt-44">
-          <h1 className="text-5xl font-bold text-cyan-500 mb-10">Projects</h1>
+          <h1 className="text text-5xl font-bold mb-10">Projects</h1>
           {
           repos.map((props: any) => (
-            <div className="github-card inline-block p-[15px] rounded-[20px] m-2" key={ props.id }>
+            <div className="github-card inline-block p-[15px] rounded-[20px] m-2 select-none" key={ props.id }>
               <p className="inline-block mb-3"><MdLaptopMac className="inline" /> { props.name }</p>
               <p className="mb-3">{ props.description }</p>
 

@@ -12,7 +12,7 @@ body.light {
   --secondary-txt-color: #878787;
 
   /* Project Cards */
-  --card-background-color: #fcfcfc;
+  --card-background-color: #fffff9;
   --card-text-color: black;
   --card-shadow-color: #0d1117;
   --card-shadow-color-hover: darkgray;
@@ -21,10 +21,6 @@ body.light {
 
   /* Fetching Repos */
   --f-bg-color: rgb(55 65 81 / 1);
-
-  /* Contact */
-  --contact-bg-color: pink;
-  --contact-txt-color: black;
 }
 
 body.dark {
@@ -47,16 +43,13 @@ body.dark {
   --card-shadow-color-hover: whitesmoke;
   --card-link-color: rgb(6 182 212 / 1);
   --card-link-txt-hover-color: white;
-  
+
   /* Fetching Repos */
   --f-bg-color: rgb(255 255 255);
-
-  /* Contact */
-  --contact-bg-color: teal;
-  --contact-txt-color: black;
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--txt-color);
+  transition: 500ms ease-in-out;
 }

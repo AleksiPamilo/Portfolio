@@ -1,60 +1,26 @@
 import React from 'react'
+import { useDarkmodeContext } from '../context/darkmodeContextProvider';
 
 type DarkmodeProps = {
 
 }
 
 const Darkmode: React.FC<DarkmodeProps> = () => {
+    const { useDarkmode, setUseDarkmode } = useDarkmodeContext();
 
-    React.useEffect(() => {
-        if(localStorage.getItem("theme") === null) localStorage.setItem("theme", "light");
-    })
-
-    let clickedClass = "clicked";
-    const body = document.body;
-    const lightTheme = "light";
-    const darkTheme = "dark";
-    let theme: any;
-
-    if (localStorage) {
-        theme = localStorage.getItem("theme");
-    }
-
-    if (theme === lightTheme || theme === darkTheme) {
-        body.classList.add(theme);
-    } else {
-        body.classList.add(lightTheme);
-    }
-
-    const switchTheme = (e: any) => {
-        const themetxt = (document.getElementById("darkMode") as HTMLParagraphElement);
-
-        if (theme === darkTheme) {
-            body.classList.replace(darkTheme, lightTheme);
-            e.target.classList.remove(clickedClass);
-            localStorage.setItem("theme", "light");
-            theme = lightTheme;
-            themetxt.innerHTML = "Dark Mode"
-        } else {
-            body.classList.replace(lightTheme, darkTheme);
-            e.target.classList.add(clickedClass);
-            localStorage.setItem("theme", "dark");
-            theme = darkTheme;
-            themetxt.innerHTML = "Light Mode"
-        }
-    };
-
-  return (
-    <div className="text-center">
-        <button
-        className="py-2 px-3 rounded-xl border-2 border-cyan-500 transition duration-300 hover:bg-cyan-500"
-        id="darkMode"
-        onClick={ (e) => switchTheme(e) }
-        >
-            <p id="txt">{ theme === darkTheme ? "Light Mode" : "Dark Mode" }</p>
-        </button>
-    </div>
-  )
+    return (
+        <div className="text-center">
+            <button
+                className="py-2 px-3 rounded-xl border-2 border-cyan-500 transition duration-300 hover:bg-cyan-500"
+                onClick={() => {
+                    setUseDarkmode(!useDarkmode);
+                    localStorage.setItem("useDarkmode", `${!useDarkmode}`)
+                }}
+            >
+                { useDarkmode ? "LIGHT MODE" : "DARK MODE"}
+            </button>
+        </div>
+    )
 }
 
 export default Darkmode
