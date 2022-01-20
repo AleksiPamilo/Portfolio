@@ -2,7 +2,7 @@ import React from 'react'
 import "./Main.css";
 
 import Logo from "../../../media/user.webp";
-import { FaPhoneAlt, FaRegEnvelope, FaLinkedinIn, FaMapMarkerAlt, FaGamepad, FaTerminal } from "react-icons/fa";
+import { FaRegEnvelope, FaLinkedinIn, FaMapMarkerAlt, FaGamepad, FaTerminal } from "react-icons/fa";
 
 interface Iskills {
   index: number,
@@ -38,10 +38,6 @@ const CV: React.FC<CVProps> = () => {
           <div className="text-white font-bold pt-10">
             <h3 className="text-xl uppercase mb-5">Contact Info</h3>
             <ul>
-              <li>
-                <FaPhoneAlt className="inline-block w-7 text-blue-600 mr-2" />
-                <span>+358 44 985 9822</span>
-              </li>
               <li>
                 <FaRegEnvelope className="inline-block w-7 text-blue-600 mr-2" />
                 <a href="mailto:aleksi.pamilo@gmail.com" target="_blank" rel="noreferrer">aleksi.pamilo@gmail.com</a>
