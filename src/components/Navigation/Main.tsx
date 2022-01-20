@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Darkmode from "../Darkmode/Main";
-import logo from "../../media/logo.png";
-import logo2 from "../../media/logo2.png";
+import logo from "../../media/logo.webp";
+import logo2 from "../../media/logo2.webp";
 import "./Main.css";
 
 import { Link } from "react-router-dom"

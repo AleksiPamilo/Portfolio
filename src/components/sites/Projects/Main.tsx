@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { fetchRepos } from "../../api/github";
-import { FetchingData } from '../../components';
+import { fetchRepos } from "../../../api/github";
+import { FetchingData } from '../..';
 import { FaFileCode, FaStar } from "react-icons/fa";
 import { BiGitRepoForked } from "react-icons/bi"
 import { MdLaptopMac } from "react-icons/md";

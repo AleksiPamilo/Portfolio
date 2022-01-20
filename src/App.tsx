@@ -6,8 +6,7 @@ import {
   Route
 } from "react-router-dom";
 
-import { LandingPage, Projects, CV, NotFound } from "./pages";
-import { Navigation } from "./components";
+import { LandingPage, Projects, CV, NotFound, Navigation } from "./components";
 import { useDarkmodeContext } from './components/context/darkmodeContextProvider';
 
 const App = () => {
