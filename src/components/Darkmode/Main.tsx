@@ -1,11 +1,7 @@
 import React from 'react'
 import { useDarkmodeContext } from '../context/darkmodeContextProvider';
 
-type DarkmodeProps = {
-
-}
-
-const Darkmode: React.FC<DarkmodeProps> = () => {
+const Darkmode: React.FC = () => {
     const { useDarkmode, setUseDarkmode } = useDarkmodeContext();
 
     return (

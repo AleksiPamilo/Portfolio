@@ -7,7 +7,7 @@ module.exports = {
       screens: {
         "wide": { "raw": "(max-width: 600px)" },
         "wider": { "raw": "(max-width: 1000px)" }
-      }
+      },
     },
   },
   plugins: [],

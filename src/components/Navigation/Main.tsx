@@ -8,11 +8,7 @@ import { Link } from "react-router-dom"
 import { FaBars, FaTimes  } from "react-icons/fa";
 import { useDarkmodeContext } from "../context/darkmodeContextProvider";
 
-type NavigationProps = {
-
-}
-
-const Navigation: React.FC<NavigationProps> = () => {
+const Navigation: React.FC = () => {
 
   const [toggle, setToggle] = useState(false);
   const { useDarkmode } = useDarkmodeContext();
@@ -27,7 +23,7 @@ const Navigation: React.FC<NavigationProps> = () => {
   return (
     <div>
 
-      <nav className="bg-transparent">
+      <nav className="bg-transparent select-none">
         <div className="max-w-[100rem] mt-6 mx-auto px-6">
           <div className="flex justify-between">
 

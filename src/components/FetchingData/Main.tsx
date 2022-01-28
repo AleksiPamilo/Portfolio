@@ -1,11 +1,7 @@
-import React from 'react';
+import React from "react";
 import "./Main.css";
 
-type FetchingDataProps = {
-
-}
-
-const FetchingData: React.FC<FetchingDataProps> = () => {
+const FetchingData: React.FC = () => {
   return (
     <div className="text-center mt-10">
       <div className="flex justify-center items-center">

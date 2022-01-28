@@ -1,0 +1,9 @@
+.colors {
+  background-color: var(--bg-color);
+  color: var(--txt-color);
+  border-color: var(--card-border-color);
+}
+
+.colors::placeholder {
+  color: var(--txt-color)
+}

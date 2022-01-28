@@ -1,11 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 
-type NotFoundProps = {
-
-}
-
-const NotFound: React.FC<NotFoundProps> = () => {
+const NotFound: React.FC = () => {
 
   document.title = "404 | Not Found";
 

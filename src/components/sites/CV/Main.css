@@ -24,3 +24,11 @@
 
     .box { grid-template-columns: repeat(1, 1fr);}
 }
+
+.bg-right {
+    background-color: var(--cv-bg-right-color);
+}
+
+.bg-left {
+    background-color: var(--cv-bg-left-color);
+}
