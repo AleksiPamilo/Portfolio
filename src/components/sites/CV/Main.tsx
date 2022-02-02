@@ -4,7 +4,7 @@ import { Ijobs, Iskills } from "../../../Interfaces/cv";
 import Logo from "../../../media/user.webp";
 import { FaRegEnvelope, FaLinkedinIn, FaMapMarkerAlt, FaGamepad, FaTerminal } from "react-icons/fa";
 import FirebaseServices from "../../../firebase/firebaseServices";
-import { collection, getDocs } from "firebase/firestore"; 
+import { collection, getDocs } from "firebase/firestore";
 
 const db = FirebaseServices.getFirestoreInstance();
 
@@ -27,8 +27,6 @@ const CV: React.FC = () => {
       setSkills(obj.skills.skillsArr);
       setJobs(obj.jobs.jobsArr);
       setProfileText(obj.profile.text);
-
-      //console.log(obj, skills, jobs, profileText)
     })();
   }, []);
 
@@ -39,9 +37,9 @@ const CV: React.FC = () => {
           <div className="profile relative flex flex-col items-center p-5">
 
             <div className="relative w-[200px] h-[200px] rounded-[50%] overflow-hidden">
-              <img src={ Logo } alt="" className="absolute top-0 left-0 w-full h-full object-cover bg-gray-600" />
+              <img src={Logo} alt="" className="absolute top-0 left-0 w-full h-full object-cover bg-gray-600" />
             </div>
-            <h2 className="text-white text-2xl font-bold uppercase text-center mt-4">Aleksi Pamilo<br/><span className="font-light text-[0.8em]">Web Developer</span></h2>
+            <h2 className="text-white text-2xl font-bold uppercase text-center mt-4">Aleksi Pamilo<br /><span className="font-light text-[0.8em]">Web Developer</span></h2>
           </div>
 
           <div className="text-white font-bold pt-10">
@@ -95,24 +93,24 @@ const CV: React.FC = () => {
         <div className="relative bg-right p-[40px] text-black">
           <div className="mb-[70px] last:mb-0">
             <h1 className="font-bold text-2xl text-[#12263F] uppercase tracking-wider mb-[10px]">Profile</h1>
-            <p>{ profileText }</p>
+            <p>{profileText}</p>
           </div>
           <div className="mb-[70px] last:mb-0">
             <h1 className="font-bold text-2xl text-[#12263F] uppercase tracking-wider mb-[2.5rem]">Experience</h1>
-              {
-                jobs.map((x) => (
-                  <div className="flex flex-row mr-0 mb-4 wide:flex-col wide:mt-4" key={ x.key }>
-                    <div className="min-w-[160px] wide:min-w-[150px] wide:mb-1">
-                      <h5 className="text-[#848c90] font-semibold uppercases text-base">{ x.jobTime }</h5>
-                      <h5 className="text-[#848c90] font-semibold uppercase text-sm">{ x.jobName }</h5>
-                    </div>
-                    <div>
-                      <h4 className="uppercase text-[#03a9f4] font-bold">{ x.jobDesc }</h4>
-                      <p className="text-black">{ x.jobText }</p>
-                    </div>
+            {
+              jobs.map((x) => (
+                <div className="flex flex-row mr-0 mb-4 wide:flex-col wide:mt-4" key={x.key}>
+                  <div className="min-w-[160px] wide:min-w-[150px] wide:mb-1">
+                    <h5 className="text-[#848c90] font-semibold uppercases text-base">{x.jobTime}</h5>
+                    <h5 className="text-[#848c90] font-semibold uppercase text-sm">{x.jobName}</h5>
                   </div>
-                ))
-              }
+                  <div>
+                    <h4 className="uppercase text-[#03a9f4] font-bold">{x.jobDesc}</h4>
+                    <p className="text-black">{x.jobText}</p>
+                  </div>
+                </div>
+              ))
+            }
           </div>
 
           <div className="">
@@ -125,16 +123,16 @@ const CV: React.FC = () => {
                   <p>you can try refreshing the page with ctrl/cmd + shift + r</p>
                 </div>
               ) : skills.map((x) => (
-                <div className="box relative w-full grid mb-8 justify-center items-center select-none" key={ x.index }>
-                  <h2 className="uppercase font-medium text-[#848c90]">{ x.language }</h2>
+                <div className="box relative w-full grid mb-8 justify-center items-center select-none" key={x.index}>
+                  <h2 className="uppercase font-medium text-[#848c90]">{x.language}</h2>
                   <div className="relative w-full h-[10px] bg-gray-600 rounded-lg">
                     <div className="absolute top-0 left-0 h-full bg-blue-500 rounded-lg" style={{ width: x.percentage + "%" }} />
                   </div>
                 </div>
               ))
-              }
+            }
           </div>
-          
+
           <div className="mt-10">
             <h1 className="interest font-bold text-2xl text-[#12263F] uppercase tracking-wider mb-[30px]">Interest</h1>
             <ul className="grid grid-cols-4 wider:m-[10px] wider:grid-cols-2">

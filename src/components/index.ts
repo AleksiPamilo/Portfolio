@@ -8,7 +8,6 @@ import NotFound from "./sites/NotFound/Main";
 // Components
 import Darkmode from "./Darkmode/Main";
 import Navigation from "./Navigation/Main";
-import FetchingData from "./FetchingData/Main";
 import Skills from "./Management/Skills";
 import Jobs from "./Management/Jobs";
 import Profile from "./Management/Profile";
@@ -21,7 +20,6 @@ export {
     NotFound,
     Darkmode,
     Navigation,
-    FetchingData,
     Skills,
     Jobs,
     Profile
