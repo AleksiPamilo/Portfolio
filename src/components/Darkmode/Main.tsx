@@ -13,7 +13,7 @@ const Darkmode: React.FC = () => {
                     localStorage.setItem("useDarkmode", `${!useDarkmode}`)
                 }}
             >
-                { useDarkmode ? "LIGHT MODE" : "DARK MODE"}
+                {useDarkmode ? "LIGHT MODE" : "DARK MODE"}
             </button>
         </div>
     )

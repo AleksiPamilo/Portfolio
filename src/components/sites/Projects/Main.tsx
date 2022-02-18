@@ -3,17 +3,30 @@ import { fetchRepos } from "../../../api/github";
 import { FaFileCode, FaStar, FaGithub } from "react-icons/fa";
 import { BiGitRepoForked } from "react-icons/bi"
 import { MdLaptopMac } from "react-icons/md";
+import { Irepo, repoSort } from '../../../Interfaces/githubRepo';
 
 import "./Main.css";
 
 const Projects: React.FC = () => {
+  document.title = "Portfolio – Projects";
 
-  document.title = "Portfolio | Projects";
+  const [repos, setRepos] = useState<Irepo[]>([]);
 
-  const [repos, setRepos] = useState([]);
+  const sortRepos = (sort: repoSort | undefined = undefined) => {
+    const recentSort = repos.sort((a, b) => b.pushed_at - a.pushed_at);
+    const starSort = repos.sort((a, b) => b.stargazers_count - a.stargazers_count);
+    const languageSort = repos.sort((a, b) => b.language - a.language);
+
+    switch (sort) {
+      case repoSort.recent: return setRepos(recentSort);
+      case repoSort.star: return setRepos(starSort);
+      case repoSort.language: return setRepos(languageSort);
+      default: return setRepos(recentSort);
+    }
+  }
 
   useEffect(() => {
-    fetchRepos().then(setRepos)
+    fetchRepos().then(setRepos);
   }, []);
 
   return (
@@ -23,12 +36,38 @@ const Projects: React.FC = () => {
           <FaGithub className="w-12 h-12 mr-6 inline mb-4" />
         </a>
         <h1 className="text text-5xl font-bold inline">Projects</h1>
+
+        <div>
+          <p className="mb-2">Sort repos by</p>
+          <div className="inline mt-4 mx-4">
+            <label className="cursor-pointer">
+              <input className="cursor-pointer" type="radio" id="recent" name="drone" value="recent"
+                onChange={() => sortRepos(repoSort.recent)} />
+              <p className="ml-3 inline">Recent</p>
+            </label>
+          </div>
+          <div className="inline mt-4 mx-4">
+            <label className="cursor-pointer">
+              <input className="cursor-pointer" type="radio" id="star" name="drone" value="star"
+                onChange={() => sortRepos(repoSort.star)} />
+              <p className="ml-3 inline">Star</p>
+            </label>
+          </div>
+          <div className="inline mt-4 mx-4">
+            <label className="cursor-pointer">
+              <input className="cursor-pointer" type="radio" id="language" name="drone" value="language"
+                onChange={() => sortRepos(repoSort.language)} />
+              <p className="ml-3 inline">Language</p>
+            </label>
+          </div>
+        </div>
+
       </div>
       {
         repos.length === 0
           ? <div className="font-medium text-xl">Loading...</div>
-          : repos.map((props: { name: string, description: string, language: string, stargazers_count: number, forks_count: number, html_url: string, id: number }) => (
-            <div className="github-card inline-block p-[15px] rounded-[20px] min-w-[20rem] m-2 select-none border-2" key={props.id}>
+          : repos.map((props) => (
+            <div className="github-card inline-block p-[15px] rounded-[20px] min-w-[20rem] m-4 select-none border-2" key={props.id}>
               <p className="inline-block mb-3"><MdLaptopMac className="inline" /> {props.name}</p>
               <p className="mb-3">{props.description}</p>
 

@@ -5,7 +5,7 @@ import logo2 from "../../media/logo2.webp";
 import "./Main.css";
 
 import { Link } from "react-router-dom"
-import { FaBars, FaTimes  } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { useDarkmodeContext } from "../context/darkmodeContextProvider";
 
 const Navigation: React.FC = () => {
@@ -29,9 +29,9 @@ const Navigation: React.FC = () => {
 
             { /* Logo */}
             <div className="flex space-x-1">
-                <Link to="/" className="flex items-center py-5 px-2 txt-color">
-                  <img src={ useDarkmode ? logo : logo2} alt="" className="w-6 h-6" />
-                </Link>
+              <Link to="/" className="flex items-center py-5 px-2 txt-color">
+                <img src={useDarkmode ? logo : logo2} alt="" className="w-6 h-6" />
+              </Link>
             </div>
 
             { /* Nav */}
@@ -41,10 +41,10 @@ const Navigation: React.FC = () => {
               <Link to="/cv" className="txt-color py-2 px-3 uppercase hover:text-cyan-500">CV</Link>
               <Darkmode />
             </div>
-          
+
             { /* Mobile Button */}
             <div className="md:hidden flex items-center">
-              <button onClick={() => toggleHidden() }>
+              <button onClick={() => toggleHidden()}>
                 {toggle ? <FaTimes className="w-6 h-6" /> : <FaBars className="w-6 h-6" />}
               </button>
             </div>
@@ -53,9 +53,9 @@ const Navigation: React.FC = () => {
 
         { /* Mobile Nav */}
         <div className="mobile-menu hidden md:hidden">
-          <Link to="/" className="block text-center py-2 px-4 text-sm uppercase hover:bg-cyan-500" onClick={() => toggleHidden() }>Home</Link>
-          <Link to="/projects" className="block text-center py-2 px-4 text-sm uppercase hover:bg-cyan-500" onClick={() => toggleHidden() }>Projects</Link>
-          <Link to="/cv" className="block text-center py-2 px-4 mb-[3px] text-sm uppercase hover:bg-cyan-500" onClick={() => toggleHidden() }>CV</Link>
+          <Link to="/" className="block text-center py-2 px-4 text-sm uppercase hover:bg-cyan-500" onClick={() => toggleHidden()}>Home</Link>
+          <Link to="/projects" className="block text-center py-2 px-4 text-sm uppercase hover:bg-cyan-500" onClick={() => toggleHidden()}>Projects</Link>
+          <Link to="/cv" className="block text-center py-2 px-4 mb-[3px] text-sm uppercase hover:bg-cyan-500" onClick={() => toggleHidden()}>CV</Link>
           <Darkmode />
         </div>
       </nav>

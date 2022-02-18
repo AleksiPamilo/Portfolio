@@ -3,8 +3,8 @@ import { Dialog, Transition } from '@headlessui/react'
 import { BsExclamationTriangle } from "react-icons/bs";
 
 type DataSavedProps = {
-    open: boolean,
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>
+  open: boolean,
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const DataSaved: React.FC<DataSavedProps> = ({ open, setOpen }) => {

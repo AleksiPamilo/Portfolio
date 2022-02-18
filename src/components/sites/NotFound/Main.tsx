@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const NotFound: React.FC = () => {
 
-  document.title = "404 | Not Found";
+  document.title = "404 – Not Found";
 
   return (
     <div className="md:ml-60 md:mt-44 ml-5 mt-14">

@@ -14,12 +14,10 @@ const CV = lazy(() => import("./components/sites/CV/Main"));
 const NotFound = lazy(() => import("./components/sites/NotFound/Main"));
 const Navigation = lazy(() => import("./components/Navigation/Main"));
 
-const renderLoader = () => <p className="text-center font-bold text-2xl mt-64">Loading...</p>;
-
 const App: React.FC = () => {
   return (
     <Router>
-      <Suspense fallback={renderLoader()}>
+      <Suspense fallback={<p className="text-center font-bold text-2xl mt-64">Loading...</p>}>
         <Navigation />
         <Switch>
           <Route exact path="/" component={LandingPage} />

@@ -14,6 +14,7 @@ import FirebaseServices from "../../../firebase/firebaseServices";
 const db = FirebaseServices.getFirestoreInstance();
 
 const Main: React.FC = () => {
+    document.title = "Portfolio – Management";
 
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
@@ -40,7 +41,7 @@ const Main: React.FC = () => {
             .catch(() => {
                 setLoading(false);
                 setOpen(true);
-            })
+            });
     };
 
     const handleLogout = () => {
@@ -63,7 +64,7 @@ const Main: React.FC = () => {
                 user.getIdTokenResult()
                     .then((idTokenResult) => {
                         setIsAdmin(!!idTokenResult.claims.admin);
-                        console.log("Email verified", user.emailVerified);
+                        //console.log("Email verified", user.emailVerified);
                     })
             } else {
                 setIsAdmin(false);
