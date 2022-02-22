@@ -1,66 +1,46 @@
-import React, { useState } from 'react'
-import Darkmode from "../Darkmode/Main";
-import logo from "../../media/logo.webp";
-import logo2 from "../../media/logo2.webp";
-import "./Main.css";
-
-import { Link } from "react-router-dom"
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { useDarkmodeContext } from "../context/darkmodeContextProvider";
 
-const Navigation: React.FC = () => {
+import "./Main.css";
+import Darkmode from "../Darkmode/Main";
 
-  const [toggle, setToggle] = useState(false);
-  const { useDarkmode } = useDarkmodeContext();
+const Main: React.FC = () => {
+    const [toggle, setToggle] = useState(false);
 
-  const toggleHidden = () => {
-    const menu = (document.querySelector(".mobile-menu") as HTMLDivElement);
-    menu.classList.toggle("hidden");
+    const toggleHidden = () => {
+        const nav = (document.querySelector(".mobile-nav") as HTMLDivElement);
+        nav.classList.toggle("hidden");
 
-    setToggle(!toggle);
-  };
+        setToggle(!toggle);
+    };
 
-  return (
-    <div>
+    return (
+        <div className="bg-transparent select-none">
+            { /* Navigation */}
+            <nav className="mt-8 mr-24 justify-end items-center hidden md:flex space-x-1">
+                <Link to="/" className="nav-link">Home</Link>
+                <Link to="/projects" className="nav-link">Projects</Link>
+                <Link to="/cv" className="nav-link">CV</Link>
+                <Darkmode />
+            </nav>
 
-      <nav className="bg-transparent select-none">
-        <div className="max-w-[100rem] mt-6 mx-auto px-6">
-          <div className="flex justify-between">
-
-            { /* Logo */}
-            <div className="flex space-x-1">
-              <Link to="/" className="flex items-center py-5 px-2 txt-color">
-                <img src={useDarkmode ? logo : logo2} alt="" className="w-6 h-6" />
-              </Link>
+            {/* Navigation Button */}
+            <div className="m-4 text-right md:hidden block">
+                <button onClick={() => toggleHidden()}>
+                    {toggle ? <FaTimes className="w-6 h-6" /> : <FaBars className="w-6 h-6" />}
+                </button>
             </div>
 
-            { /* Nav */}
-            <div className="hidden md:flex items-center space-x-1">
-              <Link to="/" className="txt-color py-2 px-3 uppercase hover:text-cyan-500">Home</Link>
-              <Link to="/projects" className="txt-color py-2 px-3 uppercase hover:text-cyan-500">Projects</Link>
-              <Link to="/cv" className="txt-color py-2 px-3 uppercase hover:text-cyan-500">CV</Link>
-              <Darkmode />
-            </div>
-
-            { /* Mobile Button */}
-            <div className="md:hidden flex items-center">
-              <button onClick={() => toggleHidden()}>
-                {toggle ? <FaTimes className="w-6 h-6" /> : <FaBars className="w-6 h-6" />}
-              </button>
-            </div>
-          </div>
+            { /* Mobile Navigation */}
+            <nav className="mobile-nav hidden md:hidden">
+                <Link to="/" className="nav-link block text-center m-4" onClick={() => toggleHidden()}>Home</Link>
+                <Link to="/projects" className="nav-link block text-center m-4" onClick={() => toggleHidden()}>Projects</Link>
+                <Link to="/cv" className="nav-link block text-center m-4" onClick={() => toggleHidden()}>CV</Link>
+                <Darkmode />
+            </nav>
         </div>
-
-        { /* Mobile Nav */}
-        <div className="mobile-menu hidden md:hidden">
-          <Link to="/" className="block text-center py-2 px-4 text-sm uppercase hover:bg-cyan-500" onClick={() => toggleHidden()}>Home</Link>
-          <Link to="/projects" className="block text-center py-2 px-4 text-sm uppercase hover:bg-cyan-500" onClick={() => toggleHidden()}>Projects</Link>
-          <Link to="/cv" className="block text-center py-2 px-4 mb-[3px] text-sm uppercase hover:bg-cyan-500" onClick={() => toggleHidden()}>CV</Link>
-          <Darkmode />
-        </div>
-      </nav>
-    </div>
-  )
+    )
 }
 
-export default Navigation
+export default Main;

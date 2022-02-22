@@ -1,2 +1,23 @@
-.txt-color { color: var(--nav-txt-color); }
-.nav-btn:hover { background-color: var(--nav-btn-hover); }
+.nav-link {
+    position: relative;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    color: #a0a0a0;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    padding: 0 10px;
+}
+
+.nav-link:after {
+    content: "";
+    position: absolute;
+    background-color: rgb(8 145 178);
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -10px;
+    transition: 0.3s;
+}
+
+.nav-link:hover { color: #ffffff; }
+.nav-link:hover:after { width: 100%; }

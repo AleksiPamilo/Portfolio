@@ -1,22 +1,25 @@
 import React from 'react'
 import { useDarkmodeContext } from '../context/darkmodeContextProvider';
 
+import darkmode from "../../media/darkmode.png";
+import lightmode from "../../media/lightmode.png";
+
 const Darkmode: React.FC = () => {
     const { useDarkmode, setUseDarkmode } = useDarkmodeContext();
 
     return (
         <div className="text-center">
             <button
-                className="py-2 px-3 rounded-xl border-2 border-cyan-500 transition duration-300 hover:bg-cyan-500"
+                className="py-2 px-3"
                 onClick={() => {
                     setUseDarkmode(!useDarkmode);
                     localStorage.setItem("useDarkmode", `${!useDarkmode}`)
                 }}
             >
-                {useDarkmode ? "LIGHT MODE" : "DARK MODE"}
+                <img className="w-6 h-6" alt="" src={useDarkmode ? darkmode : lightmode} />
             </button>
         </div>
     )
 }
 
-export default Darkmode
+export default Darkmode;

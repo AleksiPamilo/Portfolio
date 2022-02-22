@@ -17,7 +17,7 @@ const Navigation = lazy(() => import("./components/Navigation/Main"));
 const App: React.FC = () => {
   return (
     <Router>
-      <Suspense fallback={<p className="text-center font-bold text-2xl mt-64">Loading...</p>}>
+      <Suspense fallback={<div />}>
         <Navigation />
         <Switch>
           <Route exact path="/" component={LandingPage} />

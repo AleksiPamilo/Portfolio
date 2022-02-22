@@ -37,7 +37,7 @@ const Main: React.FC = () => {
 
     return (
         <div className="relative text-left flex items-center justify-center h-full align-middle mt-12">
-            <div className="ag-theme-material w-[912px] pt-[8px] px-[32px] pb-[32px]  overflow-x-hidden">
+            <div className="w-[912px] pt-[8px] px-[32px] pb-[32px]">
                 <h1 className="text-center text-4xl font-bold">CV</h1>
                 <div className="mt-4 text-center">
                     <p className="text-xl">{profileText}</p>
