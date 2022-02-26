@@ -14,7 +14,6 @@ const authInstance = FirebaseServices.getAuthInstance();
 const Email: React.FC = () => {
     const [isAdmin, setIsAdmin] = useState<boolean>(false);
     const [emails, setEmails] = useState<Iemail[]>([]);
-    const emailsRef = doc(db, "portfolio", "contact");
 
     useEffect(() => {
         if (!authInstance || authInstance.currentUser === null) return setIsAdmin(false);
@@ -36,7 +35,7 @@ const Email: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        getDoc(emailsRef).then((res) => { if (res.exists()) setEmails(res.data().emails) })
+        getDoc(doc(db, "portfolio", "contact")).then((res) => { if (res.exists()) setEmails(res.data().emails) })
     }, []);
 
     const deleteMail = (email: Iemail) => {
@@ -47,7 +46,7 @@ const Email: React.FC = () => {
             }
         };
 
-        updateDoc(emailsRef, { emails });
+        updateDoc(doc(db, "portfolio", "contact"), { emails });
     }
 
     return !isAdmin

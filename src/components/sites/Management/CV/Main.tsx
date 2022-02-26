@@ -37,7 +37,7 @@ const CV: React.FC = () => {
 
             return () => unsubscribe();
         }
-    });
+    }, []);
 
     useEffect(() => {
         (async () => {
