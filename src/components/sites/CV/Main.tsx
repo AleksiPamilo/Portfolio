@@ -11,7 +11,7 @@ import "./Main.css"
 import FirebaseServices from "../../../firebase/firebaseServices";
 const db = FirebaseServices.getFirestoreInstance();
 
-const Main: React.FC = () => {
+const CV: React.FC = () => {
     document.title = "Portfolio – CV";
 
     const [skills, setSkills] = useState<Iskills[]>([]);
@@ -76,4 +76,4 @@ const Main: React.FC = () => {
     )
 }
 
-export default Main;
+export default CV;

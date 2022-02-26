@@ -5,7 +5,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import "./Main.css";
 import Darkmode from "../Darkmode/Main";
 
-const Main: React.FC = () => {
+const Navigation: React.FC = () => {
     const [toggle, setToggle] = useState(false);
 
     const toggleHidden = () => {
@@ -22,6 +22,7 @@ const Main: React.FC = () => {
                 <Link to="/" className="nav-link">Home</Link>
                 <Link to="/projects" className="nav-link">Projects</Link>
                 <Link to="/cv" className="nav-link">CV</Link>
+                <Link to="/contact" className="nav-link" onClick={() => toggleHidden()}>Contact</Link>
                 <Darkmode />
             </nav>
 
@@ -37,10 +38,11 @@ const Main: React.FC = () => {
                 <Link to="/" className="nav-link block text-center m-4" onClick={() => toggleHidden()}>Home</Link>
                 <Link to="/projects" className="nav-link block text-center m-4" onClick={() => toggleHidden()}>Projects</Link>
                 <Link to="/cv" className="nav-link block text-center m-4" onClick={() => toggleHidden()}>CV</Link>
+                <Link to="/contact" className="nav-link block text-center m-4" onClick={() => toggleHidden()}>Contact</Link>
                 <Darkmode />
             </nav>
         </div>
     )
 }
 
-export default Main;
+export default Navigation;

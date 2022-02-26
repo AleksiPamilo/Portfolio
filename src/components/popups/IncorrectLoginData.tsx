@@ -2,12 +2,12 @@ import { Fragment, useRef } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { BsExclamationTriangle } from "react-icons/bs";
 
-type DataSavedProps = {
+type IncorrectLoginDataProps = {
   open: boolean,
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const DataSaved: React.FC<DataSavedProps> = ({ open, setOpen }) => {
+const IncorrectLoginData: React.FC<IncorrectLoginDataProps> = ({ open, setOpen }) => {
   const cancelButtonRef = useRef(null)
 
   return (
@@ -73,4 +73,4 @@ const DataSaved: React.FC<DataSavedProps> = ({ open, setOpen }) => {
   )
 }
 
-export default DataSaved;
+export default IncorrectLoginData;

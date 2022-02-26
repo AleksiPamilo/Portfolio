@@ -1,6 +1,6 @@
 import React from "react";
 
-type JobCardProps = {
+type CardProps = {
     index?: string;
     title?: string;
     desc?: string;
@@ -8,7 +8,7 @@ type JobCardProps = {
     time?: string;
 }
 
-const JobCard: React.FC<JobCardProps> = ({ index, title, desc, text, time }) => {
+const Card: React.FC<CardProps> = ({ index, title, desc, text, time }) => {
     return (
         <div className="w-full mt-6" key={index}>
             <div className="w-1/2 h-[40px] float-left font-bold pt-2">
@@ -26,4 +26,4 @@ const JobCard: React.FC<JobCardProps> = ({ index, title, desc, text, time }) => 
     );
 };
 
-export default JobCard;
+export default Card;

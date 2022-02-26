@@ -8,7 +8,7 @@ const db = FirebaseServices.getFirestoreInstance();
 
 type SkillsProps = { skills: Iskills[] }
 
-const Main: React.FC<SkillsProps> = ({ skills }) => {
+const Skills: React.FC<SkillsProps> = ({ skills }) => {
     const [index, setIndex] = useState<number>();
     const [language, setLanguage] = useState<string>();
     const [percentage, setPercentage] = useState<number>();
@@ -128,4 +128,4 @@ const Main: React.FC<SkillsProps> = ({ skills }) => {
     )
 }
 
-export default Main;
+export default Skills;

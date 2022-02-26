@@ -1,8 +1,8 @@
-import React from 'react'
-import { useDarkmodeContext } from '../context/darkmodeContextProvider';
+import React from "react"
+import { useDarkmodeContext } from "../context/darkmodeContextProvider";
 
-import darkmode from "../../media/darkmode.png";
 import lightmode from "../../media/lightmode.png";
+import darkmode from "../../media/darkmode.png";
 
 const Darkmode: React.FC = () => {
     const { useDarkmode, setUseDarkmode } = useDarkmodeContext();
@@ -16,7 +16,7 @@ const Darkmode: React.FC = () => {
                     localStorage.setItem("useDarkmode", `${!useDarkmode}`)
                 }}
             >
-                <img className="w-6 h-6" alt="" src={useDarkmode ? darkmode : lightmode} />
+                <img className="w-6 h-6" alt="" src={useDarkmode ? lightmode : darkmode} />
             </button>
         </div>
     )

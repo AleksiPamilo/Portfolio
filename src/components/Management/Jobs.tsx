@@ -6,9 +6,9 @@ import FirebaseServices from "../../firebase/firebaseServices";
 
 const db = FirebaseServices.getFirestoreInstance();
 
-type SkillsProps = { jobs: Ijobs[] }
+type JobsProps = { jobs: Ijobs[] }
 
-const Main: React.FC<SkillsProps> = ({ jobs }) => {
+const Jobs: React.FC<JobsProps> = ({ jobs }) => {
     const [key, setKey] = useState<string>();
     const [jobName, setJobName] = useState<string>();
     const [jobDesc, setJobDesc] = useState<string>();
@@ -138,4 +138,4 @@ const Main: React.FC<SkillsProps> = ({ jobs }) => {
     )
 }
 
-export default Main;
+export default Jobs;

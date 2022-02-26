@@ -1,32 +1,25 @@
 import React, { useEffect, useState } from "react";
-import LoadingIcons from "react-loading-icons";
-import "./Main.css";
-
-import IncorrectLoginData from "../../popups/IncorrectLoginData";
-
-import { Jobs, Profile, Skills } from "../..";
-import { Ijobs, Iskills } from "../../../Interfaces/cv";
+import { Link } from "react-router-dom";
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut, getAuth } from "firebase/auth";
 
-import { collection, getDocs } from "firebase/firestore";
+import "./Main.css";
+import LoadingIcons from "react-loading-icons";
+
+import IncorrectLoginData from "../../popups/IncorrectLoginData";
 import FirebaseServices from "../../../firebase/firebaseServices";
 
-const db = FirebaseServices.getFirestoreInstance();
+const authInstance = FirebaseServices.getAuthInstance();
 
-const Main: React.FC = () => {
+const Management: React.FC = () => {
     document.title = "Portfolio – Management";
 
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [isAdmin, setIsAdmin] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
-    const [skills, setSkills] = useState<Iskills[]>([]);
-    const [jobs, setJobs] = useState<Ijobs[]>([]);
-    const [profileText, setProfileText] = useState<string>("");
 
     const [open, setOpen] = useState<boolean>(false);
 
-    const authInstance = FirebaseServices.getAuthInstance();
 
     const handleLogin = () => {
         if (!email || !password) return setOpen(true);
@@ -74,21 +67,6 @@ const Main: React.FC = () => {
         return () => unsubscribe();
     });
 
-    useEffect(() => {
-        (async () => {
-            const querySnapshot = await getDocs(collection(db, "portfolio"));
-            const obj: any = {};
-
-            querySnapshot.forEach((doc) => {
-                obj[doc.id] = doc.data();
-            });
-
-            setSkills(obj.skills.skillsArr);
-            setJobs(obj.jobs.jobsArr);
-            setProfileText(obj.profile.text);
-        })();
-    }, []);
-
     return !isAdmin ? (
         <div className="text-center mt-44 md:mt-64">
             <IncorrectLoginData open={open} setOpen={setOpen} />
@@ -115,12 +93,13 @@ const Main: React.FC = () => {
                 </button>
             </div>
 
-            <Profile profileText={profileText} />
-            <Skills skills={skills} />
-            <Jobs jobs={jobs} />
+            <div className="text-center pt-64">
+                <Link to="/management/cv" className="block text-blue-600 text-2xl font-bold hover:text-blue-500">Edit CV</Link>
+                <Link to="/management/email" className="block text-blue-600 text-2xl font-bold hover:text-blue-500 mt-4">Emails</Link>
+            </div>
 
         </div>
     )
 }
 
-export default Main;
+export default Management;
