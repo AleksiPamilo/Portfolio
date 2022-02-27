@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { doc, setDoc } from "firebase/firestore";
+// import { doc, getDoc, updateDoc } from "firebase/firestore";
 
 import EmailSent from "../../popups/emailSent";
 import EmailNotSent from "../../popups/emailNotSent";
 
-import FirebaseServices from "../../../firebase/firebaseServices";
+// import FirebaseServices from "../../../firebase/firebaseServices";
+// import { Iemail } from "../../../Interfaces/contact";
 
-const db = FirebaseServices.getFirestoreInstance();
+// const db = FirebaseServices.getFirestoreInstance();
 
 const Contact: React.FC = () => {
     const [open, setOpen] = useState<boolean>(false);
@@ -16,13 +17,30 @@ const Contact: React.FC = () => {
     const [title, setTitle] = useState<string>("");
     const [content, setContent] = useState<string>("");
 
+    // const [emails, setEmails] = useState<Iemail[]>([]);
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const emailsRef = doc(db, "portfolio", "contact");
-        setDoc(emailsRef, { name, email, title, content, index: createID() })
-            .then(() => setOpen(true))
-            .catch(() => setErrOpen(true));
+        setErrOpen(true); setName(""); setEmail(""); setTitle(""); setContent("");
+
+        /*
+                const emailsRef = doc(db, "portfolio", "contact");
+        
+                getDoc(emailsRef).then((res) => { if (res.exists()) setEmails(res.data().emails) });
+        
+                emails.push({ name, email, title, content, index: createID() });
+        
+                updateDoc(emailsRef, { emails })
+                    .then(() => {
+                        setOpen(true);
+                        setName("");
+                        setEmail("");
+                        setTitle("");
+                        setContent("");
+                    })
+                    .catch(() => setErrOpen(true));
+        */
     };
 
     return (
@@ -49,14 +67,14 @@ const Contact: React.FC = () => {
     )
 }
 
-function createID() {
-    var RFC4122_TEMPLATE = 'xxxxxxxx-xxxx-5xxx-yxxx-xxxxxxxxxxxx';
-    var replacePlaceholders = function (placeholder: string) {
-        var random = Math.floor(Math.random() * 15 + 1)
-        var value = placeholder === 'x' ? random : ((random && 0x3) || (random && 0x8));
-        return value.toString(16);
-    };
-    return RFC4122_TEMPLATE.replace(/[xy]/g, replacePlaceholders);
-}
+// function createID() {
+//     var RFC4122_TEMPLATE = 'xxxxxxxx-xxxx-5xxx-yxxx-xxxxxxxxxxxx';
+//     var replacePlaceholders = function (placeholder: string) {
+//         var random = Math.floor(Math.random() * 15 + 1)
+//         var value = placeholder === 'x' ? random : ((random && 0x3) || (random && 0x8));
+//         return value.toString(16);
+//     };
+//     return RFC4122_TEMPLATE.replace(/[xy]/g, replacePlaceholders);
+// }
 
 export default Contact;

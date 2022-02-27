@@ -57,7 +57,7 @@ const Email: React.FC = () => {
             </div>
         )
         : (
-            <div className="text-center">
+            <div>
                 <Emails emails={emails} deleteMail={deleteMail} />
                 <Footer />
             </div>

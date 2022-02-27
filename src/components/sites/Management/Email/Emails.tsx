@@ -18,9 +18,9 @@ const Emails: React.FC<EmailsProps> = ({ emails, deleteMail }) => {
     }
 
     return (
-        <div className="">
+        <div className="mt-24">
             <Email open={open} setOpen={setOpen} email={email} />
-            <table className="w-[912px] bg-gray-400">
+            <table className="mx-auto w-[912px] bg-gray-400 text-center">
                 <thead>
                     <tr className="text-black h-12">
                         <th>Title</th>
@@ -30,14 +30,13 @@ const Emails: React.FC<EmailsProps> = ({ emails, deleteMail }) => {
                 </thead>
                 <tbody>
                     {
-                        emails.map((email: Iemail) => (
+                        emails.map((email) => (
                             <tr key={email.index} className="text-gray-600 text-base font-normal h-[72px] border-y cursor-pointer">
                                 <td onClick={() => openEmail(email)}>{email.title}</td>
-                                <td onClick={() => openEmail(email)} className="pl-[24px]">{email.name}</td>
+                                <td onClick={() => openEmail(email)}>{email.name}</td>
                                 <td onClick={() => openEmail(email)}>{email.email}</td>
                                 <td>
-                                    <FaTrash className="text-[#909090] w-6 h-6 hover:text-black"
-                                        onClick={() => deleteMail(email)} />
+                                    <FaTrash className="text-white w-6 h-6 hover:text-black" onClick={() => deleteMail(email)} />
                                 </td>
                             </tr>
                         ))

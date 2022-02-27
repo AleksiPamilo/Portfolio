@@ -51,11 +51,11 @@ const Email: React.FC<EmailProps> = ({ open, setOpen, email }) => {
                                             {
                                                 !email
                                                     ? "An error occurred"
-                                                    : email.title
+                                                    : "Title: " + email.title
                                             }
                                         </Dialog.Title>
                                         <div className="mt-4">
-                                            <p className="text-sm text-gray-500">
+                                            <p className={`${!email ? "text-red-500" : "text-gray-500"} text-sm`}>
                                                 {
                                                     !email
                                                         ? "Email was not found."
@@ -63,7 +63,7 @@ const Email: React.FC<EmailProps> = ({ open, setOpen, email }) => {
                                                 }
                                             </p>
                                         </div>
-                                        <div className="mt-8">
+                                        <div className={`${!email ? "mt-0" : "mt-8"}`}>
                                             <p className="text-black">{!email ? "" : "Lähettäjä: " + email.name + " | " + email.email}</p>
                                         </div>
                                     </div>
@@ -72,10 +72,10 @@ const Email: React.FC<EmailProps> = ({ open, setOpen, email }) => {
                             <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                                 <button
                                     type="button"
-                                    className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-gray-400 text-base font-medium text-white hover:bg-gray-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm"
+                                    className={`${!email ? "bg-red-400 hover:bg-red-500" : "bg-gray-400 hover:bg-gray-700"} "w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 text-base font-medium text-white focus:outline-none sm:ml-3 sm:w-auto sm:text-sm"`}
                                     onClick={() => setOpen(false)}
                                 >
-                                    Sulje
+                                    Close
                                 </button>
                             </div>
                         </div>
