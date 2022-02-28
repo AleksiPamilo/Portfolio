@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import { doc, getDoc, updateDoc, addDoc, collection } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 
 import EmailSent from "../../popups/emailSent";
 import EmailNotSent from "../../popups/emailNotSent";
 
 import FirebaseServices from "../../../firebase/firebaseServices";
-import { Iemail } from "../../../Interfaces/contact";
-
-const db = FirebaseServices.getFirestoreInstance();
 
 const Contact: React.FC = () => {
     const [open, setOpen] = useState<boolean>(false);
@@ -78,16 +75,6 @@ const Contact: React.FC = () => {
             </form>
         </div>
     )
-}
-
-function createID() {
-    var RFC4122_TEMPLATE = 'xxxxxxxx-xxxx-5xxx-yxxx-xxxxxxxxxxxx';
-    var replacePlaceholders = function (placeholder: string) {
-        var random = Math.floor(Math.random() * 15 + 1)
-        var value = placeholder === 'x' ? random : ((random && 0x3) || (random && 0x8));
-        return value.toString(16);
-    };
-    return RFC4122_TEMPLATE.replace(/[xy]/g, replacePlaceholders);
 }
 
 export default Contact;
