@@ -4,15 +4,17 @@ import { AiOutlineMail } from "react-icons/ai";
 
 type EmailNotSentProps = {
     open: boolean;
+    message?: string;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    setMessage: React.Dispatch<React.SetStateAction<string | undefined>>
 }
 
-const EmailNotSent: React.FC<EmailNotSentProps> = ({ open, setOpen }) => {
+const EmailNotSent: React.FC<EmailNotSentProps> = ({ open, setOpen, message, setMessage }) => {
     const cancelButtonRef = useRef(null)
 
     return (
         <Transition.Root show={open} as={Fragment}>
-            <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto" initialFocus={cancelButtonRef} onClose={setOpen}>
+            <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto" initialFocus={cancelButtonRef} onClose={() => { setOpen(false); setMessage(undefined) }}>
                 <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                     <Transition.Child
                         as={Fragment}
@@ -50,7 +52,7 @@ const EmailNotSent: React.FC<EmailNotSentProps> = ({ open, setOpen }) => {
                                         </Dialog.Title>
                                         <div className="mt-4">
                                             <p className="text-sm text-red-500">
-                                                Your email was not sent due to an error.
+                                                {!message ? "Your email was not sent due to an error." : message}
                                             </p>
                                         </div>
                                     </div>
@@ -59,7 +61,7 @@ const EmailNotSent: React.FC<EmailNotSentProps> = ({ open, setOpen }) => {
                             <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                                 <button
                                     type="button"
-                                    className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-400 text-base font-medium text-white hover:bg-gray-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm"
+                                    className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-400 text-base font-medium text-white hover:bg-red-500 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm"
                                     onClick={() => setOpen(false)}
                                 >
                                     Close

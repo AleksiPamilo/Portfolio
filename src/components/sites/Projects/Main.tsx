@@ -11,6 +11,7 @@ const Projects: React.FC = () => {
   document.title = "Portfolio – Projects";
 
   const [repos, setRepos] = useState<Irepo[]>([]);
+  const [currentSort, setCurrentSort] = useState<Irepo[]>(repos);
 
   const sortRepos = (sort: repoSort | undefined = undefined) => {
     const recentSort = repos.sort((a, b) => b.pushed_at - a.pushed_at);
@@ -18,16 +19,21 @@ const Projects: React.FC = () => {
     const languageSort = repos.sort((a, b) => b.language - a.language);
 
     switch (sort) {
-      case repoSort.recent: return setRepos(recentSort);
-      case repoSort.star: return setRepos(starSort);
-      case repoSort.language: return setRepos(languageSort);
-      default: return setRepos(recentSort);
+      case repoSort.recent: return setCurrentSort(recentSort);
+      case repoSort.star: return setCurrentSort(starSort);
+      case repoSort.language: return setCurrentSort(languageSort);
+      default: return setCurrentSort(recentSort);
     }
   }
 
   useEffect(() => {
     fetchRepos().then(setRepos);
   }, []);
+
+  useEffect(() => {
+    //console.log('fetch ready!');
+    setCurrentSort(repos);
+  }, [repos]);
 
   return (
     <div className="text-center items-center">
@@ -66,7 +72,7 @@ const Projects: React.FC = () => {
       {
         repos.length === 0
           ? <div className="font-medium text-xl">Loading...</div>
-          : repos.map((props) => (
+          : currentSort.map((props) => (
             <div className="github-card inline-block p-[15px] rounded-[20px] min-w-[20rem] m-4 select-none border-2" key={props.id}>
               <p className="inline-block mb-3"><MdLaptopMac className="inline" /> {props.name}</p>
               <p className="mb-3">{props.description}</p>

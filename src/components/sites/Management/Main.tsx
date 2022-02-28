@@ -20,7 +20,6 @@ const Management: React.FC = () => {
 
     const [open, setOpen] = useState<boolean>(false);
 
-
     const handleLogin = () => {
         if (!email || !password) return setOpen(true);
         setLoading(true);
@@ -81,7 +80,6 @@ const Management: React.FC = () => {
                     {loading ? <LoadingIcons.TailSpin className="w-6 h-6 inline" /> : null}
                     {loading ? <p className="inline">Kirjaudutaan...</p> : <p className="inline">Kirjaudu</p>}
                 </button>
-
             </div>
         </div>
     ) : (

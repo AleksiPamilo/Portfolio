@@ -1,5 +1,5 @@
 export declare interface Iemail {
-    index: string;
+    id: string;
     title: string;
     name: string;
     email: string;

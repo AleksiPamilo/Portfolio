@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-// import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc, addDoc, collection } from "firebase/firestore";
 
 import EmailSent from "../../popups/emailSent";
 import EmailNotSent from "../../popups/emailNotSent";
 
-// import FirebaseServices from "../../../firebase/firebaseServices";
-// import { Iemail } from "../../../Interfaces/contact";
+import FirebaseServices from "../../../firebase/firebaseServices";
+import { Iemail } from "../../../Interfaces/contact";
 
-// const db = FirebaseServices.getFirestoreInstance();
+const db = FirebaseServices.getFirestoreInstance();
 
 const Contact: React.FC = () => {
     const [open, setOpen] = useState<boolean>(false);
@@ -16,38 +16,51 @@ const Contact: React.FC = () => {
     const [email, setEmail] = useState<string>("");
     const [title, setTitle] = useState<string>("");
     const [content, setContent] = useState<string>("");
+    const [errMsg, setErrMsg] = useState<string | undefined>(undefined);
 
-    // const [emails, setEmails] = useState<Iemail[]>([]);
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        setErrOpen(true); setName(""); setEmail(""); setTitle(""); setContent("");
+        const firestore = FirebaseServices.getFirestoreInstance();
 
-        /*
-                const emailsRef = doc(db, "portfolio", "contact");
-        
-                getDoc(emailsRef).then((res) => { if (res.exists()) setEmails(res.data().emails) });
-        
-                emails.push({ name, email, title, content, index: createID() });
-        
-                updateDoc(emailsRef, { emails })
-                    .then(() => {
-                        setOpen(true);
-                        setName("");
-                        setEmail("");
-                        setTitle("");
-                        setContent("");
-                    })
-                    .catch(() => setErrOpen(true));
-        */
+        if (name === "" || email === "" || title === "" || content === "") {
+            setErrMsg("Fill up all the fields!");
+            setErrOpen(true);
+            return;
+        }
+
+        const validateEmail = () => {
+            let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regex.test(email);
+        }
+
+        if (validateEmail() === false) {
+            setErrMsg("Make sure your email is valid!");
+            setErrOpen(true);
+            return;
+        }
+
+        return await addDoc(collection(firestore, "contact"), {
+            id: new Date().getTime(),
+            name: name,
+            email: email,
+            title: title,
+            content: content
+        })
+            .then(() => {
+                setOpen(true);
+                setName("");
+                setEmail("");
+                setTitle("");
+                setContent("");
+            })
+            .catch(() => setErrOpen(true));
     };
 
     return (
         <div className="max-w-[50rem] m-auto mt-24 border-4 bg-gray-500 p-5">
             <EmailSent open={open} setOpen={setOpen} />
-            <EmailNotSent open={errOpen} setOpen={setErrOpen} />
-            <h1 className="font-bold text-2xl">Contact is disabled at the moment!</h1>
+            <EmailNotSent open={errOpen} setOpen={setErrOpen} message={errMsg} setMessage={setErrMsg} />
             <form onSubmit={(e) => handleSubmit(e)}>
                 <label htmlFor="name">Name</label>
                 <input className="w-full text-black p-3 border-2 border-gray-200 box-border mt-2 mb-4 rounded-lg focus:outline-none" type="text" placeholder="Your name.." value={name} onChange={(e) => setName(e.target.value)} />
@@ -67,14 +80,14 @@ const Contact: React.FC = () => {
     )
 }
 
-// function createID() {
-//     var RFC4122_TEMPLATE = 'xxxxxxxx-xxxx-5xxx-yxxx-xxxxxxxxxxxx';
-//     var replacePlaceholders = function (placeholder: string) {
-//         var random = Math.floor(Math.random() * 15 + 1)
-//         var value = placeholder === 'x' ? random : ((random && 0x3) || (random && 0x8));
-//         return value.toString(16);
-//     };
-//     return RFC4122_TEMPLATE.replace(/[xy]/g, replacePlaceholders);
-// }
+function createID() {
+    var RFC4122_TEMPLATE = 'xxxxxxxx-xxxx-5xxx-yxxx-xxxxxxxxxxxx';
+    var replacePlaceholders = function (placeholder: string) {
+        var random = Math.floor(Math.random() * 15 + 1)
+        var value = placeholder === 'x' ? random : ((random && 0x3) || (random && 0x8));
+        return value.toString(16);
+    };
+    return RFC4122_TEMPLATE.replace(/[xy]/g, replacePlaceholders);
+}
 
 export default Contact;

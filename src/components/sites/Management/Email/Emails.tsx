@@ -31,7 +31,7 @@ const Emails: React.FC<EmailsProps> = ({ emails, deleteMail }) => {
                 <tbody>
                     {
                         emails.map((email) => (
-                            <tr key={email.index} className="text-gray-600 text-base font-normal h-[72px] border-y cursor-pointer">
+                            <tr key={email.id} className="text-gray-600 text-base font-normal h-[72px] border-y cursor-pointer">
                                 <td onClick={() => openEmail(email)}>{email.title}</td>
                                 <td onClick={() => openEmail(email)}>{email.name}</td>
                                 <td onClick={() => openEmail(email)}>{email.email}</td>

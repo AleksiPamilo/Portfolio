@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDocs, collection, query, where, deleteDoc } from "firebase/firestore";
 import { Iemail } from "../../../../Interfaces/contact";
 
 import Footer from "../../../Footer/ManagementFooter";
@@ -16,37 +16,43 @@ const Email: React.FC = () => {
     const [emails, setEmails] = useState<Iemail[]>([]);
 
     useEffect(() => {
-        if (!authInstance || authInstance.currentUser === null) return setIsAdmin(false);
-        else {
-            const unsubscribe = onAuthStateChanged(authInstance, (user) => {
-                if (user) {
-                    user.getIdTokenResult()
-                        .then((idTokenResult) => {
-                            setIsAdmin(!!idTokenResult.claims.admin);
-                            //console.log("Email verified", user.emailVerified);
-                        })
-                } else {
-                    setIsAdmin(false);
-                }
-            });
+        const unsubscribe = onAuthStateChanged(authInstance, (user) => {
+            if (user) {
+                user.getIdTokenResult()
+                    .then((idTokenResult) => {
+                        setIsAdmin(!!idTokenResult.claims.admin);
+                        //console.log("Email verified", user.emailVerified);
+                    })
+            } else {
+                setIsAdmin(false);
+            }
+        });
 
-            return () => unsubscribe();
-        }
+        return () => unsubscribe();
     }, []);
 
     useEffect(() => {
-        getDoc(doc(db, "portfolio", "contact")).then((res) => { if (res.exists()) setEmails(res.data().emails) })
+        getDocs(collection(db, "contact"))
+            .then((x) => {
+                const arr: any = [];
+
+                x.forEach((doc) => {
+                    arr.push(doc.data());
+                });
+
+                setEmails(arr);
+            });
     }, []);
 
     const deleteMail = (email: Iemail) => {
-        for (let i = 0; i < emails.length; i++) {
-            if (emails[i].index === email.index) {
-                emails.splice(i, 1);
-                break;
-            }
-        };
+        const q = query(collection(db, "contact"), where("id", "==", email.id));
 
-        updateDoc(doc(db, "portfolio", "contact"), { emails });
+        getDocs(q)
+            .then((querySnapshot) => {
+                querySnapshot.forEach(async (document) => {
+                    await deleteDoc(doc(db, "contact", document.id))
+                })
+            });
     }
 
     return !isAdmin

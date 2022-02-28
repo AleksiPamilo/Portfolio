@@ -21,22 +21,19 @@ const CV: React.FC = () => {
     const [profileText, setProfileText] = useState<string>("");
 
     useEffect(() => {
-        if (!authInstance || authInstance.currentUser === null) return setIsAdmin(false);
-        else {
-            const unsubscribe = onAuthStateChanged(authInstance, (user) => {
-                if (user) {
-                    user.getIdTokenResult()
-                        .then((idTokenResult) => {
-                            setIsAdmin(!!idTokenResult.claims.admin);
-                            //console.log("Email verified", user.emailVerified);
-                        })
-                } else {
-                    setIsAdmin(false);
-                }
-            });
+        const unsubscribe = onAuthStateChanged(authInstance, (user) => {
+            if (user) {
+                user.getIdTokenResult()
+                    .then((idTokenResult) => {
+                        setIsAdmin(!!idTokenResult.claims.admin);
+                        //console.log("Email verified", user.emailVerified);
+                    })
+            } else {
+                setIsAdmin(false);
+            }
+        });
 
-            return () => unsubscribe();
-        }
+        return () => unsubscribe();
     }, []);
 
     useEffect(() => {
