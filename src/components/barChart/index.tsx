@@ -10,7 +10,7 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { useDarkmodeContext } from "../context/darkmodeContextProvider";
-import { doc, getDoc } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import FirebaseServices from "../../firebase/firebaseServices";
 
 const db = FirebaseServices.getFirestoreInstance();
@@ -26,17 +26,32 @@ Chart.register(
 
 const BarChart: React.FC = () => {
   const { useDarkmode } = useDarkmodeContext();
-  const [analytics, setAnalytics] = useState<any>([{}]);
+  const [emails, setEmails] = useState<any>([{}]);
 
-  const labels = [...Array(5)].map((_, i) => {
+  const labels = [...Array(7)].map((_, i) => {
     const d = new Date();
     d.setDate(d.getDate() - i)
-    return d.getDate() + "." + (d.getMonth() + 1);
+
+    return d.getDate().toString().padStart(2, "0")
+      + "."
+      + (d.getMonth() + 1).toString().padStart(2, "0")
+      + "."
+      + d.getFullYear().toString().slice(-2);
   });
 
   useEffect(() => {
-    const analyticsRef = doc(db, "analytics", "emails");
-    getDoc(analyticsRef).then((res) => { if (res.exists()) setAnalytics(res.data().emailArray) });
+    const emailsRef = collection(db, "contact");
+
+    getDocs(emailsRef)
+      .then((snapshot) => {
+        const arr: any = [];
+
+        snapshot.forEach((doc) => {
+          arr.push(doc.data());
+        });
+
+        setEmails(arr);
+      });
   }, []);
 
   const options = {
@@ -73,8 +88,8 @@ const BarChart: React.FC = () => {
     datasets: [
       {
         data: labels.map((x) => {
-          const obj = analytics.find((e: any) => e.date === x);
-          return obj?.emails;
+          const amount = emails.filter((i: any) => i.date === x).length;
+          return amount ?? 0;
         }),
         backgroundColor: "rgba(19, 87, 176, 1)",
       },
@@ -96,4 +111,4 @@ const BarChart: React.FC = () => {
   );
 };
 
-export default BarChart
+export default BarChart;

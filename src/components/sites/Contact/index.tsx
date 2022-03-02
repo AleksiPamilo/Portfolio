@@ -37,21 +37,27 @@ const Contact: React.FC = () => {
             return;
         }
 
+        const d = new Date();
+        const date = d.getDate().toString().padStart(2, "0")
+            + "."
+            + (d.getMonth() + 1).toString().padStart(2, "0")
+            + "."
+            + d.getFullYear().toString().slice(-2);
+
         return await addDoc(collection(firestore, "contact"), {
             id: new Date().getTime(),
             name: name,
             email: email,
             title: title,
-            content: content
-        })
-            .then(() => {
-                setOpen(true);
-                setName("");
-                setEmail("");
-                setTitle("");
-                setContent("");
-            })
-            .catch(() => setErrOpen(true));
+            content: content,
+            date: date
+        }).then(() => {
+            setOpen(true);
+            setName("");
+            setEmail("");
+            setTitle("");
+            setContent("");
+        }).catch(() => setErrOpen(true));
     };
 
     return (

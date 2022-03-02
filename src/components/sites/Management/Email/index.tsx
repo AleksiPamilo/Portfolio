@@ -42,6 +42,7 @@ const Email: React.FC = () => {
                     arr.push(doc.data());
                 });
 
+                console.log(arr)
                 setEmails(arr);
             });
     }, []);

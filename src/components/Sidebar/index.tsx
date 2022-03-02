@@ -64,7 +64,7 @@ const Sidebar: React.FC = () => {
                 <Darkmode />
             </div>
 
-            { /* minimizedd Sidebar */}
+            { /* Minimized Sidebar */}
             <div className={`${minimized ? "block" : "hidden"} ${useDarkmode ? "bg-[#0d1117] border-white" : "bg-[#dbf3f5] border-gray-900"} w-[3.6rem] min-h-screen absolute border-r select-none`}>
 
                 <div className="text-center mt-10">
