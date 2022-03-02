@@ -1,40 +1,58 @@
 import React, { lazy, Suspense } from "react";
 
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Switch,
   Route
 } from "react-router-dom";
 
-import './App.css';
+import "./App.css";
 
-const LandingPage = lazy(() => import("./components/sites/LandingPage/Main"));
-const Projects = lazy(() => import("./components/sites/Projects/Main"));
-const CV = lazy(() => import("./components/sites/CV/Main"));
-const Contact = lazy(() => import("./components/sites/Contact/Main"));
-const NotFound = lazy(() => import("./components/sites/NotFound/Main"));
-const Navigation = lazy(() => import("./components/Navigation/Main"));
-const Management = lazy(() => import("./components/sites/Management/Main"));
-const ManagementEmail = lazy(() => import("./components/sites/Management/Email/Main"));
-const ManagementCV = lazy(() => import("./components/sites/Management/CV/Main"));
+const LandingPage = lazy(() => import("./components/sites/LandingPage"));
+const Projects = lazy(() => import("./components/sites/Projects"));
+const CV = lazy(() => import("./components/sites/CV"));
+const Contact = lazy(() => import("./components/sites/Contact"));
+const NotFound = lazy(() => import("./components/sites/NotFound"));
+const Navigation = lazy(() => import("./components/Navigation"));
+
+const Login = lazy(() => import("./components/sites/Management/Login"));
+const Management = lazy(() => import("./components/sites/Management"));
+const ManagementEmail = lazy(() => import("./components/sites/Management/Email"));
+const ManagementCV = lazy(() => import("./components/sites/Management/CV"));
+const Sidebar = lazy(() => import("./components/Sidebar"));
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <Suspense fallback={<div />}>
-        <Navigation />
+
+        <Route render={({ location }) => ["/", "/projects", "/cv", "/contact"].includes(location.pathname)
+          ? <Navigation />
+          : null
+        } />
+
+        <Route render={({ location }) => ["/management", "/management/email", "/management/cv"].includes(location.pathname)
+          ? <Sidebar />
+          : null
+        } />
+
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/projects" component={Projects} />
           <Route exact path="/cv" component={CV} />
           <Route exact path="/contact" component={Contact} />
-          <Route exact path="/login" component={Management} />
+
+          { /* Management */}
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/management" component={Management} />
           <Route exact path="/management/email" component={ManagementEmail} />
           <Route exact path="/management/cv" component={ManagementCV} />
+
+          { /* Not Found */}
           <Route component={NotFound} />
         </Switch>
       </Suspense>
-    </Router>
+    </BrowserRouter>
   );
 }
 

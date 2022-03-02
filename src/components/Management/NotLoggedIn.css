@@ -1,0 +1,5 @@
+.bg-color { background-color: var(--bg-color) }
+.form {
+    background-color: var(--bg2-color);
+    color: var(--text-color);
+}

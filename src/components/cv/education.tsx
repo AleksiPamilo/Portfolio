@@ -12,7 +12,7 @@ const Education: React.FC<EducationProps> = ({ schools }) => {
             <h1 className="text-4xl font-bold text-[#1f487a]">Education</h1>
             {
                 !schools
-                    ? <p className="text-center font-bold text-2xl mt-64">Loading...</p>
+                    ? <div />
                     : schools.map(x => <Card index={x.key} title={x.fullName} text={x.desc} time={x.time} />)
             }
         </div>

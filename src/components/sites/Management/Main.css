@@ -1,3 +1,13 @@
+body.dark .bg-colors {
+  background-color: #0d1117;
+  border-color: #ffffff;
+}
+
+body.light .bg-colors {
+  background-color: #dbf3f5;
+  border-color: #0f0f0f;
+}
+
 .colors {
   background-color: var(--bg-color);
   color: var(--txt-color);

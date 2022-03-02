@@ -8,10 +8,10 @@ type SkillsProps = {
 const Skills: React.FC<SkillsProps> = ({ skills }) => {
     return (
         <div>
-            <h1 className="font-bold text-center text-2xl text-[#1f487a] uppercase tracking-wider mb-[50px]">Professional Skills</h1>
+            <h1 className="font-bold text-center text-2xl text-[#1f487a] uppercase tracking-wider mb-[30px]">Professional Skills</h1>
             {
                 !skills
-                    ? <p>Loading...</p>
+                    ? <div />
                     : skills.map((x) => (
                         <div className="box relative grid mb-8 justify-center items-center select-none" key={x.index}>
                             <h2 className="uppercase font-medium text-[#848c90]">{x.language}</h2>

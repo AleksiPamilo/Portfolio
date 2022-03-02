@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 import "./Main.css";
-import Darkmode from "../Darkmode/Main";
+import Darkmode from "../Darkmode";
 
 const Navigation: React.FC = () => {
     const [toggle, setToggle] = useState(false);

@@ -3,6 +3,7 @@ import { Menu, Transition } from "@headlessui/react";
 import { Iskills } from "../../Interfaces/cv";
 import { doc, updateDoc } from "firebase/firestore";
 import FirebaseServices from "../../firebase/firebaseServices";
+import { AiOutlineDown } from "react-icons/ai";
 
 const db = FirebaseServices.getFirestoreInstance();
 
@@ -64,8 +65,8 @@ const Skills: React.FC<SkillsProps> = ({ skills }) => {
                                     <>
                                         <span className="rounded-md shadow-sm">
                                             <Menu.Button className="text-center colors inline-flex min-w-[10rem] mr-4 rounded-md border-2 shadow-sm px-4 py-2 text-sm font-medium focus:outline-none">
+                                                <AiOutlineDown className="h-5 w-5 mr-5" />
                                                 <span>{x.language.toUpperCase()}</span>
-                                                { /* <AiOutlineDown className="h-5 w-5" /> */}
                                             </Menu.Button>
                                         </span>
 
@@ -86,15 +87,15 @@ const Skills: React.FC<SkillsProps> = ({ skills }) => {
                                                     <tbody>
                                                         <tr>
                                                             <td className="text-black pt-4 pl-4 pr-12">Index</td>
-                                                            <td><input type="number" className="inline-block w-[10rem] colors rounded-lg border-2 text-center" placeholder={x.index.toString()} value={index} onChange={(e) => setIndex(parseInt(e.target.value))} /></td>
+                                                            <td><input type="number" className="text-black inline-block w-[10rem] colors rounded-lg border-2 text-center" placeholder={x.index.toString()} value={index} onChange={(e) => setIndex(parseInt(e.target.value))} /></td>
                                                         </tr>
                                                         <tr>
                                                             <td className="text-black pl-4 pr-12">Language</td>
-                                                            <td><input type="text" className="inline-block w-[10rem] colors rounded-lg border-2 text-center" placeholder={x.language} value={language} onChange={(e) => setLanguage(e.target.value.toLowerCase())} /></td>
+                                                            <td><input type="text" className="text-black inline-block w-[10rem] colors rounded-lg border-2 text-center" placeholder={x.language} value={language} onChange={(e) => setLanguage(e.target.value.toLowerCase())} /></td>
                                                         </tr>
                                                         <tr>
                                                             <td className="text-black pl-4 pr-12">Percentage</td>
-                                                            <td><input type="number" className="inline-block w-[10rem] colors rounded-lg border-2 text-center" placeholder={x.percentage.toString()} value={percentage} onChange={(e) => setPercentage(parseInt(e.target.value))} /></td>
+                                                            <td><input type="number" className="text-black inline-block w-[10rem] colors rounded-lg border-2 text-center" placeholder={x.percentage.toString()} value={percentage} onChange={(e) => setPercentage(parseInt(e.target.value))} /></td>
                                                         </tr>
                                                         <tr>
                                                             <td>

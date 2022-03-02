@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import { useDarkmodeContext } from "../context/darkmodeContextProvider";
 
 import lightmode from "../../media/lightmode.png";
@@ -13,7 +13,7 @@ const Darkmode: React.FC = () => {
                 className="py-2 px-3"
                 onClick={() => {
                     setUseDarkmode(!useDarkmode);
-                    localStorage.setItem("useDarkmode", `${!useDarkmode}`)
+                    localStorage.setItem("useDarkmode", `${!useDarkmode}`);
                 }}
             >
                 <img className="w-6 h-6" alt="" src={useDarkmode ? lightmode : darkmode} />

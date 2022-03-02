@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDocs, collection, query, where, deleteDoc } from "firebase/firestore";
 import { Iemail } from "../../../../Interfaces/contact";
 
-import Footer from "../../../Footer/ManagementFooter";
 import FirebaseServices from "../../../../firebase/firebaseServices";
 import Emails from "./Emails";
+import EmailNotSent from "../../../popups/emailNotSent";
+import NotLoggedIn from "../../../Management/NotLoggedIn";
 
 const db = FirebaseServices.getFirestoreInstance();
 const authInstance = FirebaseServices.getAuthInstance();
@@ -14,6 +14,8 @@ const authInstance = FirebaseServices.getAuthInstance();
 const Email: React.FC = () => {
     const [isAdmin, setIsAdmin] = useState<boolean>(false);
     const [emails, setEmails] = useState<Iemail[]>([]);
+    const [open, setOpen] = useState<boolean>(false);
+    const [message, setMessage] = useState<string>("");
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(authInstance, (user) => {
@@ -33,10 +35,10 @@ const Email: React.FC = () => {
 
     useEffect(() => {
         getDocs(collection(db, "contact"))
-            .then((x) => {
+            .then((snapshot) => {
                 const arr: any = [];
 
-                x.forEach((doc) => {
+                snapshot.forEach((doc) => {
                     arr.push(doc.data());
                 });
 
@@ -49,23 +51,21 @@ const Email: React.FC = () => {
 
         getDocs(q)
             .then((querySnapshot) => {
-                querySnapshot.forEach(async (document) => {
-                    await deleteDoc(doc(db, "contact", document.id))
-                })
+                querySnapshot.forEach((document) => {
+                    deleteDoc(doc(db, "contact", document.id))
+                        .catch(() => { setMessage("Email was not deleted due to an error."); setOpen(true); });
+                });
             });
     }
 
     return !isAdmin
         ? (
-            <div className="text-center text-2xl font-bold mt-64">
-                <p>Not logged in</p>
-                <Link to="/login" className="text-blue-600">Log In</Link>
-            </div>
+            <NotLoggedIn />
         )
         : (
             <div>
                 <Emails emails={emails} deleteMail={deleteMail} />
-                <Footer />
+                <EmailNotSent open={open} setOpen={setOpen} message={message} setMessage={setMessage} />
             </div>
         );
 }

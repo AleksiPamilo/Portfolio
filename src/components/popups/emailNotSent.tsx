@@ -6,7 +6,7 @@ type EmailNotSentProps = {
     open: boolean;
     message?: string;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-    setMessage: React.Dispatch<React.SetStateAction<string | undefined>>
+    setMessage: React.Dispatch<React.SetStateAction<any>>
 }
 
 const EmailNotSent: React.FC<EmailNotSentProps> = ({ open, setOpen, message, setMessage }) => {

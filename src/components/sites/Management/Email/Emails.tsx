@@ -18,7 +18,7 @@ const Emails: React.FC<EmailsProps> = ({ emails, deleteMail }) => {
     }
 
     return (
-        <div className="mt-24">
+        <div className="pt-24 ml-16">
             <Email open={open} setOpen={setOpen} email={email} />
             <table className="mx-auto w-[912px] bg-gray-400 text-center">
                 <thead>

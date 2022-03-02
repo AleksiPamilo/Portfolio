@@ -1,6 +1,7 @@
 body.light {
   /* Main */
   --bg-color: #c3e2e9;
+  --bg2-color: #dbf3f5;
   --txt-color: black;
 
   /* Navigation */
@@ -31,6 +32,7 @@ body.light {
 body.dark {
   /* Main */
   --bg-color: #151922;
+  --bg2-color: #0d1117;
   --txt-color: white;
 
   /* Navigation */
