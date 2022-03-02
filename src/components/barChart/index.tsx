@@ -10,12 +10,10 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { useDarkmodeContext } from "../context/darkmodeContextProvider";
-import { collection, doc, getDoc, getDocs, query, where } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 import FirebaseServices from "../../firebase/firebaseServices";
 
 const db = FirebaseServices.getFirestoreInstance();
-const authInstance = FirebaseServices.getAuthInstance();
 
 Chart.register(
   CategoryScale,
