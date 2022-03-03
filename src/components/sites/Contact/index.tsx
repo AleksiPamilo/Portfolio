@@ -66,16 +66,16 @@ const Contact: React.FC = () => {
             <EmailNotSent open={errOpen} setOpen={setErrOpen} message={errMsg} setMessage={setErrMsg} />
             <form onSubmit={(e) => handleSubmit(e)}>
                 <label htmlFor="name">Name</label>
-                <input className="w-full text-black p-3 border-2 border-gray-200 box-border mt-2 mb-4 rounded-lg focus:outline-none" type="text" placeholder="Your name.." value={name} onChange={(e) => setName(e.target.value)} />
+                <input className="w-full text-black p-3 border-2 border-gray-200 box-border mt-2 mb-4 rounded-lg focus:outline-none" type="text" placeholder="Your name.." value={name} onChange={(e) => setName(String(e.target.value))} />
 
                 <label htmlFor="email">Email</label>
-                <input className="w-full text-black p-3 border-2 border-gray-200 box-border mt-2 mb-4 rounded-lg focus:outline-none" type="text" placeholder="Your email address.." value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input className="w-full text-black p-3 border-2 border-gray-200 box-border mt-2 mb-4 rounded-lg focus:outline-none" type="text" placeholder="Your email address.." value={email} onChange={(e) => setEmail(String(e.target.value))} />
 
                 <label htmlFor="title">Title</label>
-                <input className="w-full text-black p-3 border-2 border-gray-200 box-border mt-2 mb-4 rounded-lg focus:outline-none" type="text" placeholder="Title for this message.." value={title} onChange={(e) => setTitle(e.target.value)} />
+                <input className="w-full text-black p-3 border-2 border-gray-200 box-border mt-2 mb-4 rounded-lg focus:outline-none" type="text" placeholder="Title for this message.." value={title} onChange={(e) => setTitle(String(e.target.value))} />
 
                 <label htmlFor="content">Content</label>
-                <textarea className="w-full h-24 text-black p-3 border-2 border-gray-200 box-border mt-2 mb-4 rounded-lg resize-y focus:outline-none" placeholder="Write something.." style={{ resize: "vertical" }} value={content} onChange={(e) => setContent(e.target.value)}></textarea>
+                <textarea className="w-full h-24 text-black p-3 border-2 border-gray-200 box-border mt-2 mb-4 rounded-lg resize-y focus:outline-none" placeholder="Write something.." style={{ resize: "vertical" }} value={content} onChange={(e) => setContent(String(e.target.value))}></textarea>
 
                 <input className="py-2 px-3 rounded-lg bg-cyan-500 cursor-pointer hover:bg-cyan-600" type="submit" value="Submit" />
             </form>

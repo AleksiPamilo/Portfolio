@@ -10,7 +10,11 @@ type EmailProps = {
 }
 
 const Email: React.FC<EmailProps> = ({ open, setOpen, email }) => {
-    const cancelButtonRef = useRef(null)
+    const cancelButtonRef = useRef(null);
+
+    const d = new Date(email?.id ?? 0);
+    const dateString = d.toLocaleString("fi-FI", {timeZone: "Europe/Helsinki"}).toString();
+    const date = dateString.substring(0, dateString.length - 3);
 
     return (
         <Transition.Root show={open} as={Fragment}>
@@ -51,7 +55,7 @@ const Email: React.FC<EmailProps> = ({ open, setOpen, email }) => {
                                             {
                                                 !email
                                                     ? "An error occurred"
-                                                    : "Title: " + email.title
+                                                    : "Otsikko: " + email.title
                                             }
                                         </Dialog.Title>
                                         <div className="mt-4">
@@ -63,8 +67,14 @@ const Email: React.FC<EmailProps> = ({ open, setOpen, email }) => {
                                                 }
                                             </p>
                                         </div>
-                                        <div className={`${!email ? "mt-0" : "mt-8"}`}>
-                                            <p className="text-black">{!email ? "" : "Lähettäjä: " + email.name + " | " + email.email}</p>
+                                        <div className={`${!email?.id ? "mt-0" : "mt-8"}`}>
+                                            <p className="text-black">{!email ? "" : "Lähetetty: " + date}</p>
+                                        </div>
+                                        <div className={`${!email ? "mt-0" : "mt-2"}`}>
+                                            <p className="text-black">{!email ? "" : "Lähettäjä: " + email.name}</p>
+                                        </div>
+                                        <div className={`${!email ? "mt-0" : "mt-2"}`}>
+                                            <p className="text-black">{!email ? "" : "Lähettäjän sähköposti: " + email.email}</p>
                                         </div>
                                     </div>
                                 </div>

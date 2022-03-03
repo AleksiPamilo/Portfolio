@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { doc, getDocs, collection, query, where, deleteDoc } from "firebase/firestore";
+import { getDocs, collection } from "firebase/firestore";
 import { Iemail } from "../../../../Interfaces/contact";
 
 import FirebaseServices from "../../../../firebase/firebaseServices";
@@ -47,25 +47,13 @@ const Email: React.FC = () => {
             });
     }, []);
 
-    const deleteMail = (email: Iemail) => {
-        const q = query(collection(db, "contact"), where("id", "==", email.id));
-
-        getDocs(q)
-            .then((querySnapshot) => {
-                querySnapshot.forEach((document) => {
-                    deleteDoc(doc(db, "contact", document.id))
-                        .catch(() => { setMessage("Email was not deleted due to an error."); setOpen(true); });
-                });
-            });
-    }
-
     return !isAdmin
         ? (
             <NotLoggedIn />
         )
         : (
             <div>
-                <Emails emails={emails} deleteMail={deleteMail} />
+                <Emails emails={emails} />
                 <EmailNotSent open={open} setOpen={setOpen} message={message} setMessage={setMessage} />
             </div>
         );

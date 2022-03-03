@@ -1,49 +1,36 @@
-import React, { useState } from "react";
-import { FaTrash } from "react-icons/fa"
+import React from "react";
+import { AgGridReact } from "@ag-grid-community/react";
+import { AllCommunityModules } from "@ag-grid-community/all-modules";
 import { Iemail } from "../../../../Interfaces/contact";
-import Email from "../../../popups/email";
+import CellRenderer from "./CellRenderer";
 
 type EmailsProps = {
     emails: Iemail[];
-    deleteMail: (email: Iemail) => void
 }
 
-const Emails: React.FC<EmailsProps> = ({ emails, deleteMail }) => {
-    const [open, setOpen] = useState<boolean>(false);
-    const [email, setEmail] = useState<Iemail>();
-
-    const openEmail = (email: Iemail) => {
-        setEmail(email);
-        setOpen(true);
-    }
-
+const Emails: React.FC<EmailsProps> = ({ emails }) => {
     return (
-        <div className="pt-24 ml-16">
-            <Email open={open} setOpen={setOpen} email={email} />
-            <table className="mx-auto w-[912px] bg-gray-400 text-center">
-                <thead>
-                    <tr className="text-black h-12">
-                        <th>Title</th>
-                        <th>Name</th>
-                        <th>E-mail address</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        emails.map((email) => (
-                            <tr key={email.id} className="text-gray-600 text-base font-normal h-[72px] border-y cursor-pointer">
-                                <td onClick={() => openEmail(email)}>{email.title}</td>
-                                <td onClick={() => openEmail(email)}>{email.name}</td>
-                                <td onClick={() => openEmail(email)}>{email.email}</td>
-                                <td>
-                                    <FaTrash className="text-white w-6 h-6 hover:text-black" onClick={() => deleteMail(email)} />
-                                </td>
-                            </tr>
-                        ))
-                    }
-                </tbody>
-            </table>
-        </div>
+        <div className="relative ag-theme-alpine w-[50rem] h-[50rem] pt-24 ml-[30rem]">
+            <AgGridReact
+                    rowData={emails}
+                    modules={AllCommunityModules}
+                    defaultColDef={{
+                        flex: 1,
+                        editable: false,
+                        sortable: true,
+                        filter: true,
+                    }}
+                    columnDefs={[
+                        { field: "title" },
+                        { field: "name" },
+                        { field: "email", headerName: "Email Address" },
+                        { headerName: "", filter: false, sortable: false, editable: false, cellRenderer: CellRenderer }
+                    ]}
+                    rowHeight={72}
+                    headerHeight={42}
+                >
+            </AgGridReact>
+    </div>
     )
 }
 
