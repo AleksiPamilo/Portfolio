@@ -27,12 +27,11 @@ const Projects: React.FC = () => {
   }
 
   useEffect(() => {
-    fetchRepos().then(setRepos);
+    fetchRepos().then((data: Irepo[]) => {
+      setRepos(data);
+      setCurrentSort(data.slice().sort((a, b) => new Date(b.pushed_at).valueOf() - new Date(a.pushed_at).valueOf()));
+    });
   }, []);
-
-  useEffect(() => {
-    sortRepos();
-  }, [repos]);
 
   return (
     <div className="text-center items-center">
