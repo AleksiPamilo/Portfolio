@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Ijobs, Ischools, Iskills } from "../../../Interfaces/cv";
-import { FaRegEnvelope, FaLinkedinIn } from "react-icons/fa";
+import { FaEnvelope, FaLinkedinIn } from "react-icons/fa";
 import { collection, getDocs } from "firebase/firestore";
+
 import Experience from '../../cv/experience';
 import Education from '../../cv/education';
 import Skills from '../../cv/skills';
@@ -20,19 +21,19 @@ const CV: React.FC = () => {
     const [profileText, setProfileText] = useState<string>("");
 
     useEffect(() => {
-        (async () => {
-            const querySnapshot = await getDocs(collection(db, "portfolio"));
-            const obj: any = {};
+        getDocs(collection(db, "portfolio"))
+            .then((querySnapshot) => {
+                const obj: any = {};
 
-            querySnapshot.forEach((doc) => {
-                obj[doc.id] = doc.data();
-            });
+                querySnapshot.forEach((doc) => {
+                    obj[doc.id] = doc.data();
+                });
 
-            setSkills(obj.skills.skillsArr);
-            setJobs(obj.jobs.jobsArr);
-            setSchools(obj.education.schools);
-            setProfileText(obj.profile.text);
-        })();
+                setSkills(obj.skills.skillsArr);
+                setJobs(obj.jobs.jobsArr);
+                setSchools(obj.education.schools);
+                setProfileText(obj.profile.text);
+            })
     }, []);
 
     return (
@@ -42,14 +43,14 @@ const CV: React.FC = () => {
                 <div className="mt-4 text-center">
                     <p className="text-xl">{profileText}</p>
                     <div className="text-white font-bold pt-10">
-                        <ul>
-                            <li>
-                                <FaRegEnvelope className="inline-block w-7 text-blue-600 mr-2" />
-                                <a href="mailto:aleksi.pamilo@gmail.com" target="_blank" rel="noreferrer">aleksi.pamilo@gmail.com</a>
-                            </li>
-                            <li>
-                                <FaLinkedinIn className="inline-block w-7 text-blue-600 mr-2" />
+                        <ul className="w-[14rem] mx-auto">
+                            <li className="text-left">
+                                <FaLinkedinIn className="inline-block text-blue-600 mr-2" />
                                 <a href="https://www.linkedin.com/in/aleksi-pamilo-62aaa5229/" target="_blank" rel="noreferrer">www.linkedin.com/</a>
+                            </li>
+                            <li className="text-left">
+                                <FaEnvelope className="inline-block text-blue-600 mr-2" />
+                                <a href="mailto:aleksi.pamilo@gmail.com" target="_blank" rel="noreferrer">aleksi.pamilo@gmail.com</a>
                             </li>
                         </ul>
                     </div>

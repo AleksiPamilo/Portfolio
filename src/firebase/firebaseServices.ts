@@ -1,6 +1,7 @@
 import { FirebaseApp, initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCzeXeyQhsTaJ-r1IIAJ22AREujnfng_1o",
@@ -11,11 +12,11 @@ const firebaseConfig = {
     appId: "1:575122960867:web:c533a9f7eb15c41480f0d6",
     measurementId: "G-XZREKM2146"
 };
-  
+
 let FirebaseInstance: FirebaseApp;
 
 const InitializeApp = () => {
-    if(!FirebaseInstance) {
+    if (!FirebaseInstance) {
         FirebaseInstance = initializeApp(firebaseConfig);
     }
 
@@ -34,9 +35,16 @@ const GetFirestoreInstance = () => {
     return getFirestore(firestoreInstance);
 };
 
+const GetAnalytics = () => {
+    const firestoreInstance = InitializeApp();
+
+    return getAnalytics(firestoreInstance);
+};
+
 const FirebaseServices = {
     getAuthInstance: GetAuthInstance,
-    getFirestoreInstance: GetFirestoreInstance
+    getFirestoreInstance: GetFirestoreInstance,
+    getAnalytics: GetAnalytics,
 };
 
 export default FirebaseServices;

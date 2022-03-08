@@ -14,6 +14,8 @@ const db = FirebaseServices.getFirestoreInstance();
 const authInstance = FirebaseServices.getAuthInstance();
 
 const CV: React.FC = () => {
+    document.title = "Portfolio – Management/CV";
+
     const [isAdmin, setIsAdmin] = useState<boolean>(false);
     const [skills, setSkills] = useState<Iskills[]>([]);
     const [jobs, setJobs] = useState<Ijobs[]>([]);
@@ -38,6 +40,7 @@ const CV: React.FC = () => {
         getDocs(collection(db, "portfolio"))
             .then((snapshot) => {
                 const obj: any = {};
+
                 snapshot.forEach((doc) => {
                     obj[doc.id] = doc.data();
                 });
@@ -53,7 +56,7 @@ const CV: React.FC = () => {
             <NotLoggedIn />
         )
         : (
-            <div className="ml-64">
+            <div className="ml-12 md:ml-64">
 
                 <Profile profileText={profileText} />
                 <Skills skills={skills} />

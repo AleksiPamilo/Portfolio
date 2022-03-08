@@ -13,6 +13,8 @@ import FirebaseServices from "../../../firebase/firebaseServices";
 const authInstance = FirebaseServices.getAuthInstance();
 
 const Login: React.FC = () => {
+    document.title = "Portfolio – Login"
+
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [isAdmin, setIsAdmin] = useState<boolean>(false);
@@ -68,7 +70,7 @@ const Login: React.FC = () => {
                                 <div className="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10">
                                     <FaUserAlt className="text-cyan-500" />
                                 </div>
-                                <input type="email" className="text-black text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-cyan-400" placeholder="Enter your email..." value={email} onChange={(e) => setEmail(e.target.value)} />
+                                <input type="email" className="text-black text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-cyan-400" placeholder="Enter your email..." value={email} onChange={(e) => setEmail(String(e.target.value))} />
                             </div>
                         </div>
 
@@ -78,7 +80,7 @@ const Login: React.FC = () => {
                                     <FaLock className="text-cyan-500"></FaLock>
                                 </div>
 
-                                <input type="password" className="text-black text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-cyan-400" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                                <input type="password" className="text-black text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-cyan-400" placeholder="Enter your password" value={password} onChange={(e) => setPassword(String(e.target.value))} />
                             </div>
                         </div>
 

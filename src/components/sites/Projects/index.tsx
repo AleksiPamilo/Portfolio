@@ -14,9 +14,9 @@ const Projects: React.FC = () => {
   const [currentSort, setCurrentSort] = useState<Irepo[]>(repos);
 
   const sortRepos = (sort: repoSort | undefined = undefined) => {
-    const recentSort = repos.sort((a, b) => b.pushed_at - a.pushed_at);
-    const starSort = repos.sort((a, b) => b.stargazers_count - a.stargazers_count);
-    const languageSort = repos.sort((a, b) => b.language - a.language);
+    const recentSort = repos.slice().sort((a, b) => new Date(b.pushed_at).valueOf() - new Date(a.pushed_at).valueOf());
+    const starSort = repos.slice().sort((a, b) => b.stargazers_count - a.stargazers_count);
+    const languageSort = repos.slice().sort((a, b) => b.language - a.language);
 
     switch (sort) {
       case repoSort.recent: return setCurrentSort(recentSort);
@@ -31,8 +31,7 @@ const Projects: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    //console.log('fetch ready!');
-    setCurrentSort(repos);
+    sortRepos();
   }, [repos]);
 
   return (
@@ -48,7 +47,9 @@ const Projects: React.FC = () => {
           <div className="inline mt-4 mx-4">
             <label className="cursor-pointer">
               <input className="cursor-pointer" type="radio" id="recent" name="drone" value="recent"
-                onChange={() => sortRepos(repoSort.recent)} />
+                onChange={() => sortRepos(repoSort.recent)}
+                defaultChecked
+              />
               <p className="ml-3 inline">Recent</p>
             </label>
           </div>
@@ -70,7 +71,7 @@ const Projects: React.FC = () => {
 
       </div>
       {
-        repos.length === 0
+        currentSort.length === 0
           ? <div className="font-medium text-xl">Loading...</div>
           : currentSort.map((props) => (
             <div className="github-card inline-block p-[15px] rounded-[20px] min-w-[20rem] m-4 select-none border-2" key={props.id}>

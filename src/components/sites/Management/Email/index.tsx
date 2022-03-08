@@ -12,6 +12,8 @@ const db = FirebaseServices.getFirestoreInstance();
 const authInstance = FirebaseServices.getAuthInstance();
 
 const Email: React.FC = () => {
+    document.title = "Portfolio – Management/Email";
+
     const [isAdmin, setIsAdmin] = useState<boolean>(false);
     const [emails, setEmails] = useState<Iemail[]>([]);
     const [open, setOpen] = useState<boolean>(false);
@@ -23,7 +25,6 @@ const Email: React.FC = () => {
                 user.getIdTokenResult()
                     .then((idTokenResult) => {
                         setIsAdmin(!!idTokenResult.claims.admin);
-                        //console.log("Email verified", user.emailVerified);
                     })
             } else {
                 setIsAdmin(false);
@@ -42,7 +43,6 @@ const Email: React.FC = () => {
                     arr.push(doc.data());
                 });
 
-                console.log(arr)
                 setEmails(arr);
             });
     }, []);

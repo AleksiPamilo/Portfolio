@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
+import { isMobile } from "react-device-detect";
 
 import "./Main.css";
 
@@ -32,9 +33,13 @@ const Management: React.FC = () => {
     return !isAdmin ? (
         <NotLoggedIn />
     ) : (
-        <div className="pl-32 md:pl-80">
-            <BarChart />
-        </div>
+        <>
+            {
+                isMobile
+                    ? <div className="pt-44 pl-20 text-cyan-500">Email chart is disabled for mobile at the moment.</div>
+                    : <div className="pl-32 md:pl-80"><BarChart /></div>
+            }
+        </>
     )
 }
 

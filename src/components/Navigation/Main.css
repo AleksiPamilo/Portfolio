@@ -2,7 +2,6 @@
     position: relative;
     text-decoration: none;
     font-family: "Poppins", sans-serif;
-    color: #a0a0a0;
     font-size: 18px;
     letter-spacing: 0.5px;
     padding: 0 10px;
@@ -19,5 +18,4 @@
     transition: 0.3s;
 }
 
-.nav-link:hover { color: #ffffff; }
 .nav-link:hover:after { width: 100%; }

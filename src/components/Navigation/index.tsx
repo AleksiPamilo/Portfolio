@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { NavLinks } from "./NavLinks";
 
 import "./Main.css";
 import Darkmode from "../Darkmode";
@@ -19,10 +20,9 @@ const Navigation: React.FC = () => {
         <div className="bg-transparent select-none">
             { /* Navigation */}
             <nav className="mt-8 mr-24 justify-end items-center hidden md:flex space-x-1">
-                <Link to="/" className="nav-link">Home</Link>
-                <Link to="/projects" className="nav-link">Projects</Link>
-                <Link to="/cv" className="nav-link">CV</Link>
-                <Link to="/contact" className="nav-link" onClick={() => toggleHidden()}>Contact</Link>
+                {
+                    NavLinks.map((x, i) => <Link key={i} to={x.path} className={`nav-link ${window.location.pathname === x.path ? "text-white" : "text-[#a0a0a0] hover:text-white"} `}>{x.title}</Link>)
+                }
                 <Darkmode />
             </nav>
 
@@ -35,10 +35,16 @@ const Navigation: React.FC = () => {
 
             { /* Mobile Navigation */}
             <nav className="mobile-nav hidden md:hidden">
-                <Link to="/" className="nav-link block text-center m-4" onClick={() => toggleHidden()}>Home</Link>
-                <Link to="/projects" className="nav-link block text-center m-4" onClick={() => toggleHidden()}>Projects</Link>
-                <Link to="/cv" className="nav-link block text-center m-4" onClick={() => toggleHidden()}>CV</Link>
-                <Link to="/contact" className="nav-link block text-center m-4" onClick={() => toggleHidden()}>Contact</Link>
+                {
+                    NavLinks.map((x, i) => <Link
+                        key={i}
+                        to={x.path}
+                        className={`nav-link block text-center m-4 ${window.location.pathname === x.path ? "text-white" : "text-[#a0a0a0] hover:text-white"} `}
+                        onClick={toggleHidden}
+                    >
+                        {x.title}
+                    </Link>)
+                }
                 <Darkmode />
             </nav>
         </div>

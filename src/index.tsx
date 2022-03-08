@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -12,7 +13,9 @@ import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 ReactDOM.render(
   <React.StrictMode>
     <DarkmodeContextProvider>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </DarkmodeContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
