@@ -7,6 +7,7 @@ import "./Main.css";
 import FirebaseServices from "../../../firebase/firebaseServices";
 import NotLoggedIn from "../../Management/NotLoggedIn";
 import BarChart from "../../barChart";
+import DashboardCards from "../../Management/DashboardCards";
 
 const authInstance = FirebaseServices.getAuthInstance();
 
@@ -37,7 +38,10 @@ const Management: React.FC = () => {
             {
                 isMobile
                     ? <div className="pt-44 pl-20 text-cyan-500">Email chart is disabled for mobile at the moment.</div>
-                    : <div className="pl-32 md:pl-80"><BarChart /></div>
+                    : <div className="ml-[20rem] pt-12 flex flex-wrap">
+                        <DashboardCards />
+                        <BarChart />
+                    </div>
             }
         </>
     )

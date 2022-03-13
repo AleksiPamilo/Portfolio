@@ -12,6 +12,7 @@ import { Bar } from "react-chartjs-2";
 import { useDarkmodeContext } from "../context/darkmodeContextProvider";
 import { collection, getDocs } from "firebase/firestore";
 import FirebaseServices from "../../firebase/firebaseServices";
+import { Iemail } from "../../Interfaces/contact";
 
 const db = FirebaseServices.getFirestoreInstance();
 
@@ -26,9 +27,9 @@ Chart.register(
 
 const BarChart: React.FC = () => {
   const { useDarkmode } = useDarkmodeContext();
-  const [emails, setEmails] = useState<any>([{}]);
+  const [emails, setEmails] = useState<Iemail[]>([]);
 
-  const labels = [...Array(7)].map((_, i) => {
+  const labels = [...Array(14)].map((_, i) => {
     const d = new Date();
     d.setDate(d.getDate() - i)
 
@@ -88,7 +89,7 @@ const BarChart: React.FC = () => {
     datasets: [
       {
         data: labels.map((x) => {
-          const amount = emails.filter((i: any) => i.date === x).length;
+          const amount = emails.filter((i) => i.date === x).length;
           return amount ?? 0;
         }),
         backgroundColor: "rgba(19, 87, 176, 1)",
@@ -97,17 +98,18 @@ const BarChart: React.FC = () => {
   };
 
   return (
-    <div className="pt-44">
-      <div className={`w-[20rem] h-[14rem] md:w-[60rem] md:h-[33rem] md:mx-auto rounded-lg ${useDarkmode ? "bg-cyan-900" : "bg-gray-200"}`}>
+    <>
+      <div className={`w-[20rem] h-[14rem] md:w-[92rem] md:h-[44rem] rounded-lg mt-8 ${useDarkmode ? "bg-cyan-900" : "bg-gray-200"}`}>
         <div>
-          <p className={`${useDarkmode ? "text-[#69768d]" : "text-[#5C687C]"} text-lg font-bold pt-5 pl-5 normal-case`}>Sent emails</p>
+          <h1 className={`${useDarkmode ? "text-gray-500" : "text-gray-400"} text-lg font-bold pt-5 pl-5 normal-case`}>Sent emails</h1>
+          <h3 className={`${useDarkmode ? "text-gray-500" : "text-gray-400"} text-sm font-bold pl-5 normal-case`}>Last 14 days</h3>
           <hr className="border-gray-500 border-1 my-6" />
         </div>
-        <div className="w-[20rem] h-[20rem] md:w-[60rem]">
+        <div className="w-[20rem] h-[20rem] md:w-[92rem] md:h-[23rem]">
           <Bar options={options} data={data} width={50} height={20} />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
