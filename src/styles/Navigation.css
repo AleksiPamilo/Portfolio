@@ -1,0 +1,19 @@
+.linkColor {
+    color: var(--nav-link-color);
+}
+
+.linkColor:hover {
+    color: var(--nav-link-color-hover);
+}
+
+.nav-button {
+    color: var(--txt-color);
+}
+
+.nav-bg {
+    background-color: var(--nav-bg-color);
+}
+
+.mobile-nav {
+    background-color: var(--nav-bg-color);
+}

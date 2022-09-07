@@ -1,3 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  padding-bottom:60px;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +13,40 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-color);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+body.light {
+  --bg-color: #fff;
+  --txt-color: #000;
+
+  --nav-bg-color: #f1f1f1;
+  --nav-link-color: #000;
+  --nav-link-color-hover: #d3d3d3;
+
+  --darkmode-btn-color: #000;
+
+  --card-text-color: #000;
+  --card-bg-color: #f3f3f3;
+  --radio-btn-border-color: #000;
+}
+
+body.dark {
+  --bg-color: #000;
+  --txt-color: #fff;
+
+  --nav-bg-color: #9f9f9f;
+  --nav-link-color: #fff;
+  --nav-link-color-hover: #5f615f;
+
+  --darkmode-btn-color: #fff;
+
+  --card-text-color: #fff;
+  --card-bg-color: #11161f;
+  --radio-btn-border-color: rgb(229 231 235 / 1);
 }

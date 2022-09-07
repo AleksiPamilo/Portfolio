@@ -1,0 +1,11 @@
+.colors {
+    color: var(--txt-color)
+}
+
+.box {
+    grid-template-columns: 160px 1fr;
+}
+
+@media (max-width: 1000px) {
+    .box { grid-template-columns: repeat(1, 1fr);}
+}
