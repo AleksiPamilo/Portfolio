@@ -14,7 +14,7 @@
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
     "@types/react-router-dom": "^5.3.3",
-    "ag-grid-community": "^27.0.1",
+    "ag-grid-community": "^28.1.1",
     "chart.js": "^3.7.1",
     "firebase": "^9.9.4",
     "react": "^17.0.2",
