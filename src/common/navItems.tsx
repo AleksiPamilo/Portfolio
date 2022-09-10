@@ -1,9 +1,9 @@
-interface InavItems {
+interface INavItems {
     title: string;
     path: string;
 }
 
-export const navItems: InavItems[] = [
+export const navItems: INavItems[] = [
     {
         title: "Home",
         path: "/"
@@ -15,5 +15,24 @@ export const navItems: InavItems[] = [
     {
         title: "CV",
         path: "/cv"
+    }
+]
+
+export const managementNavItems: INavItems[] = [
+    {
+        title: "Portfolio",
+        path: "/"
+    },
+    {
+        title: "Management",
+        path: "/management"
+    },
+    {
+        title: "Messages",
+        path: "/management/messages"
+    },
+    {
+        title: "Resume",
+        path: "/management/cv"
     }
 ]

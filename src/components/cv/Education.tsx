@@ -1,10 +1,10 @@
 import React from "react";
-import { Ischools } from "../../interfaces/cv";
+import { ISchools } from "../../interfaces/cv";
 
 import "../../styles/Resume.css";
 
 type EducationProps = {
-    schools: Ischools[];
+    schools: ISchools[];
 };
 
 const Education: React.FC<EducationProps> = ({ schools }) => {

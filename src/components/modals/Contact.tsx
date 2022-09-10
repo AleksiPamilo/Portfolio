@@ -44,7 +44,7 @@ const Contact: React.FC<ContactProps> = ({ visible, handleModal }) => {
             setError(null);
             clearFields();
             setSuccess("Message sent successfully");
-        }).catch((e) => {
+        }).catch(() => {
             setSuccess(null);
             setError("Something went wrong");
         });

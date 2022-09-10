@@ -1,10 +1,10 @@
 import React from "react";
-import { Iskills } from "../../interfaces/cv";
+import { ISkills } from "../../interfaces/cv";
 
 import "../../styles/Resume.css";
 
 type SkillsProps = {
-    skills: Iskills[];
+    skills: ISkills[];
 };
 
 const Skills: React.FC<SkillsProps> = ({ skills }) => {

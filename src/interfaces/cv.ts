@@ -1,4 +1,4 @@
-export declare interface Ijobs {
+export declare interface IJobs {
     key: string;
     company: string;
     desc: string;
@@ -6,7 +6,7 @@ export declare interface Ijobs {
     time: string;
 }
 
-export declare interface Ischools {
+export declare interface ISchools {
     key: string;
     name: string;
     fullName: string;
@@ -14,7 +14,7 @@ export declare interface Ischools {
     time: string;
 }
 
-export declare interface Iskills {
+export declare interface ISkills {
     index: number;
     language: string;
     percentage: number;

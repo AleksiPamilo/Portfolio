@@ -1,12 +1,12 @@
 import React from "react";
-import { Irepo } from "../interfaces/githubRepo";
+import { IRepo } from "../interfaces/githubRepo";
 import { FaLaptopCode, FaFileCode, FaStar } from "react-icons/fa";
 import { BiGitRepoForked } from "react-icons/bi"
 
 import "../styles/Projects.css";
 
 type GithubCardProps = {
-    repo: Irepo,
+    repo: IRepo,
     index: number,
 };
 const GithubCard: React.FC<GithubCardProps> = ({ repo, index }) => {

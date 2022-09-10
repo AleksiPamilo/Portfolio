@@ -1,10 +1,10 @@
 import React from "react";
-import { Ijobs } from "../../interfaces/cv";
+import { IJobs } from "../../interfaces/cv";
 
 import "../../styles/Resume.css";
 
 type JobsProps = {
-    jobs: Ijobs[];
+    jobs: IJobs[];
 };
 
 const Jobs: React.FC<JobsProps> = ({ jobs }) => {

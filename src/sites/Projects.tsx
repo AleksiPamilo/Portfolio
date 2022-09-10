@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { fetchRepos } from "../api/github";
 import GithubCard from "../components/GithubCard";
-import { Irepo, repoSort } from "../interfaces/githubRepo";
+import { IRepo, repoSort } from "../interfaces/githubRepo";
 
 import "../styles/Projects.css";
 
 const Projects: React.FC = () => {
-    const [repos, setRepos] = useState<Irepo[]>([]);
+    const [repos, setRepos] = useState<IRepo[]>([]);
 
     const sortRepos = (sort?: repoSort) => {
         const recentSort = repos.slice().sort((a, b) => new Date(b.pushed_at).valueOf() - new Date(a.pushed_at).valueOf());
@@ -59,7 +59,7 @@ const Projects: React.FC = () => {
                 {
                     repos.length === 0
                         ? <h1 className="text-2xl font-bold">Loading...</h1>
-                        : repos.map((repo: Irepo, index: number) => (
+                        : repos.map((repo, index: number) => (
                             <GithubCard repo={repo} index={index} />
                         ))
                 }

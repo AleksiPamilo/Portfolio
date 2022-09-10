@@ -50,3 +50,6 @@ body.dark {
   --card-bg-color: #11161f;
   --radio-btn-border-color: rgb(229 231 235 / 1);
 }
+
+body::-webkit-scrollbar { width: 8px; }
+body::-webkit-scrollbar-thumb { background: #0891b2; border-radius: 5px; }

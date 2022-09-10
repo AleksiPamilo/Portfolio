@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Ijobs, Ischools, Iskills } from "../interfaces/cv";
+import { IJobs, ISchools, ISkills } from "../interfaces/cv";
 import { collection, getDocs } from "firebase/firestore";
 
 import Education from '../components/cv/Education';
@@ -14,9 +14,9 @@ const db = FirebaseServices.getFirestoreInstance();
 const Resume: React.FC = () => {
     document.title = "Portfolio – Resume";
 
-    const [skills, setSkills] = useState<Iskills[]>([]);
-    const [jobs, setJobs] = useState<Ijobs[]>([]);
-    const [schools, setSchools] = useState<Ischools[]>([]);
+    const [skills, setSkills] = useState<ISkills[]>([]);
+    const [jobs, setJobs] = useState<IJobs[]>([]);
+    const [schools, setSchools] = useState<ISchools[]>([]);
     const [profileText, setProfileText] = useState<string | null>(null);
 
     useEffect(() => {
@@ -36,8 +36,8 @@ const Resume: React.FC = () => {
     }, []);
 
     return (
-        <div className="w-full h-full flex items-center justify-center align-middle md:pt-[5rem]">
-            <div className="w-[57rem] text-center">
+        <div className="w-full h-full flex items-center justify-center md:pt-[5rem]">
+            <div className="w-[23rem] md:w-[35rem] lg:w-[57rem] text-center">
                 <h1 className="text-4xl font-bold text-cyan-600">Resume</h1>
                 <p className="text-xl mt-6 colors">{profileText ?? "Loading..."}</p>
                 <hr className="mt-8 m-auto w-full border-2 border-gray-400" />
