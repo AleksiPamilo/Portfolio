@@ -2,23 +2,21 @@ import React from "react";
 import { BsSun, BsMoon } from "react-icons/bs";
 import { useDarkmodeContext } from "./context/darkmodeContextProvider";
 
-import "../styles/Darkmode.css";
-
 const Darkmode: React.FC = () => {
-    const { useDarkmode, setUseDarkmode } = useDarkmodeContext();
+    const { useDarkmode: isDarkmode, setUseDarkmode } = useDarkmodeContext();
 
     return (
         <button
             className="text-center"
             onClick={() => {
-                setUseDarkmode(!useDarkmode);
-                localStorage.setItem("useDarkmode", `${!useDarkmode}`);
+                setUseDarkmode(!isDarkmode);
+                localStorage.setItem("useDarkmode", `${!isDarkmode}`);
             }}
         >
             {
-                useDarkmode
-                    ? <BsSun className="w-6 h-6 hover:text-cyan-600 darkmodeBtn" />
-                    : <BsMoon className="w-6 h-6 hover:text-cyan-600 darkmodeBtn" />
+                isDarkmode
+                    ? <BsSun className={`w-6 h-6 hover:text-cyan-600 ${isDarkmode ? "text-white" : "text-black"}`} />
+                    : <BsMoon className={`w-6 h-6 hover:text-cyan-600 ${isDarkmode ? "text-white" : "text-black"}`} />
             }
         </button>
     )

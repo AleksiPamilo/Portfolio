@@ -7,11 +7,10 @@ import "../styles/Projects.css";
 
 type GithubCardProps = {
     repo: IRepo,
-    index: number,
 };
-const GithubCard: React.FC<GithubCardProps> = ({ repo, index }) => {
+const GithubCard: React.FC<GithubCardProps> = ({ repo }) => {
     return (
-        <div key={String(index)} className="flex flex-wrap rounded-lg githubCard w-[20rem] min-h-[12rem] p-4 border-2 border-cyan-400">
+        <div key={repo.name} className="flex flex-wrap rounded-lg githubCard w-[20rem] min-h-[12rem] p-4 border-2 border-cyan-400">
             <div className="flex flex-col w-full">
                 <h1 className="text-xl font-bold">{repo.name}</h1>
                 <p className="text-sm">{repo.description}</p>

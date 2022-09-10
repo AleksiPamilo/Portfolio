@@ -29,8 +29,6 @@ body.light {
   --nav-link-color: #000;
   --nav-link-color-hover: #d3d3d3;
 
-  --darkmode-btn-color: #000;
-
   --card-text-color: #000;
   --card-bg-color: #f3f3f3;
   --radio-btn-border-color: #000;
@@ -42,9 +40,7 @@ body.dark {
 
   --nav-bg-color: #9f9f9f;
   --nav-link-color: #fff;
-  --nav-link-color-hover: #5f615f;
-
-  --darkmode-btn-color: #fff;
+  --nav-link-color-hover: #c9ccc9;
 
   --card-text-color: #fff;
   --card-bg-color: #11161f;

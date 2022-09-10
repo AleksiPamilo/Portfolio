@@ -59,8 +59,8 @@ const Projects: React.FC = () => {
                 {
                     repos.length === 0
                         ? <h1 className="text-2xl font-bold">Loading...</h1>
-                        : repos.map((repo, index: number) => (
-                            <GithubCard repo={repo} index={index} />
+                        : repos.map((repo) => (
+                            <GithubCard repo={repo} />
                         ))
                 }
             </div>

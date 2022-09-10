@@ -1,5 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import Navigation from "../Navigation";
 import Footer from "../Footer";
 
 type LayoutProps = {
@@ -9,7 +10,12 @@ type LayoutProps = {
 const Layout: React.FC<LayoutProps> = ({ handleContactModal }) => {
     return (
         <>
-            <Footer handleContactModal={handleContactModal} />
+            <Navigation />
+            {
+                window.location.pathname.includes("management")
+                    ? null
+                    : <Footer handleContactModal={handleContactModal} />
+            }
             <Outlet />
         </>
     )

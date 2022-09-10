@@ -8,7 +8,6 @@ const Management = React.lazy(() => import('./sites/Management'));
 const ManagementResume = React.lazy(() => import('./sites/Management/Resume'));
 const ManagementMessages = React.lazy(() => import('./sites/Management/Messages'));
 const NotFound = React.lazy(() => import('./sites/NotFound'));
-const Navbar = React.lazy(() => import('./components/Navbar'));
 const Contact = React.lazy(() => import('./components/modals/Contact'));
 const Layout = React.lazy(() => import('./components/Layouts/Layout'));
 const AuthContextLayout = React.lazy(() => import('./components/Layouts/AuthContextLayout'));
@@ -23,24 +22,20 @@ const App: React.FC = () => {
   return (
     <Suspense fallback={<div />}>
       <Router>
-
-        <Navbar />
         <Contact visible={contactModalOpen} handleModal={handleContactModal} />
-
         <Routes>
           <Route element={<Layout handleContactModal={handleContactModal} />}>
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/cv" element={<Resume />} />
-          </Route>
-          <Route element={<AuthContextLayout />}>
-            <Route path="/management" element={<Management />} />
-            <Route path="/management/cv" element={<ManagementResume />} />
-            <Route path="/management/messages" element={<ManagementMessages />} />
+            <Route element={<AuthContextLayout />}>
+              <Route path="/management" element={<Management />} />
+              <Route path="/management/cv" element={<ManagementResume />} />
+              <Route path="/management/messages" element={<ManagementMessages />} />
+            </Route>
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
-
       </Router>
     </Suspense>
   );
