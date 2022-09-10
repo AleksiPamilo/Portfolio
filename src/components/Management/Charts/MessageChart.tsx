@@ -12,7 +12,7 @@ import { Bar } from "react-chartjs-2";
 import { useDarkmodeContext } from "../../context/darkmodeContextProvider";
 import { collection, getDocs } from "firebase/firestore";
 import FirebaseServices from "../../../firebase/firebaseServices";
-import { IEmail } from "../../../interfaces/contact";
+import { IMessage } from "../../../interfaces/contact";
 
 const db = FirebaseServices.getFirestoreInstance();
 
@@ -25,9 +25,9 @@ Chart.register(
   Legend
 );
 
-const BarChart: React.FC = () => {
+const MessageChart: React.FC = () => {
   const { useDarkmode } = useDarkmodeContext();
-  const [emails, setEmails] = useState<IEmail[]>([]);
+  const [messages, setMessages] = useState<IMessage[]>([]);
 
   const labels = [...Array(14)].map((_, i) => {
     const d = new Date();
@@ -41,9 +41,9 @@ const BarChart: React.FC = () => {
   });
 
   useEffect(() => {
-    const emailsRef = collection(db, "contact");
+    const messagesRef = collection(db, "contact");
 
-    getDocs(emailsRef)
+    getDocs(messagesRef)
       .then((snapshot) => {
         const arr: any = [];
 
@@ -51,7 +51,7 @@ const BarChart: React.FC = () => {
           arr.push(doc.data());
         });
 
-        setEmails(arr);
+        setMessages(arr);
       });
   }, []);
 
@@ -78,7 +78,7 @@ const BarChart: React.FC = () => {
         displayColors: false,
         callbacks: {
           title: () => { return "" },
-          label: (tooltipItem: any) => { return "Emails: " + tooltipItem.formattedValue },
+          label: (tooltipItem: any) => { return "Messages: " + tooltipItem.formattedValue },
         }
       }
     },
@@ -89,7 +89,7 @@ const BarChart: React.FC = () => {
     datasets: [
       {
         data: labels.map((x) => {
-          const amount = emails.filter((i) => i.date === x).length;
+          const amount = messages.filter((i) => i.date === x).length;
           return amount ?? 0;
         }),
         backgroundColor: "rgba(19, 87, 176, 1)",
@@ -113,4 +113,4 @@ const BarChart: React.FC = () => {
   );
 };
 
-export default BarChart;
+export default MessageChart;

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from "react";
 import { HiLogout } from "react-icons/hi";
 import FirebaseServices from "../../firebase/firebaseServices";
 import Login from "../../sites/Management/Login";
-import NotFound from "../../sites/NotFound";
 
 const authInstance = FirebaseServices.getAuthInstance();
 
@@ -69,13 +68,13 @@ const AuthContextProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
             setAuthIsLoading: setAuthIsLoading,
             handleLogout: handleLogout
         }}>
-            <button onClick={handleLogout} className="absolute top-0 right-0 mt-3 mr-[15%] md:mr-[10%] bg-cyan-600 py-2 px-3 rounded-lg"><HiLogout className="w-5 h-5 text-white" /></button>
             {
                 isLoggedIn
-                    ? children
-                    : window.location.pathname.includes("/management")
-                        ? <Login />
-                        : <NotFound />
+                    ? <>
+                        <button onClick={handleLogout} className="absolute top-0 right-0 mt-3 mr-[15%] md:mr-[10%] bg-cyan-600 py-2 px-3 rounded-lg"><HiLogout className="w-5 h-5 text-white" /></button>
+                        {children}
+                    </>
+                    : <Login />
             }
         </AuthContext.Provider>
     )

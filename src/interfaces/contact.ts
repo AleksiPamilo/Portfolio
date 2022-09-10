@@ -1,4 +1,4 @@
-export declare interface IEmail {
+export declare interface IMessage {
     id: string;
     title: string;
     name: string;
