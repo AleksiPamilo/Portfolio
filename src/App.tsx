@@ -21,7 +21,7 @@ const App: React.FC = () => {
   }
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div />}>
       <Router>
 
         <Navbar />

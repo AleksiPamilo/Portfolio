@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import { HiLogout } from "react-icons/hi";
 import FirebaseServices from "../../firebase/firebaseServices";
 import Login from "../../sites/Management/Login";
 import NotFound from "../../sites/NotFound";
@@ -31,19 +32,26 @@ const AuthContextProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [authIsLoading, setAuthIsLoading] = useState<boolean>(true);
 
-    useEffect(() => checkLogin(), []);
-
-    const checkLogin = () => {
+    const checkLogin = useCallback(() => {
         setAuthIsLoading(true);
         authInstance.onAuthStateChanged((user) => {
             if (user) {
-                setIsLoggedIn(true);
+                user.getIdTokenResult().then((idTokenResult) => {
+                    if (idTokenResult.claims.admin) {
+                        setIsLoggedIn(true);
+                    } else {
+                        setIsLoggedIn(false);
+                    }
+                });
             } else {
                 setIsLoggedIn(false);
+                setAuthIsLoading(false);
             }
             setAuthIsLoading(false);
         });
-    }
+    }, []);
+
+    useEffect(() => checkLogin(), [checkLogin]);
 
     const handleLogout = () => {
         authInstance.signOut();
@@ -51,28 +59,26 @@ const AuthContextProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
         window.location.reload();
     }
 
-    if (authIsLoading) {
-        return <div className="pt-[20rem] w-full flex justify-center items-center">Loading...</div>
-    } else {
-        return (
-            <AuthContext.Provider value={{
-                isLoggedIn: isLoggedIn,
-                authIsLoading: authIsLoading,
-                setIsLoggedIn: setIsLoggedIn,
-                checkLogin: checkLogin,
-                setAuthIsLoading: setAuthIsLoading,
-                handleLogout: handleLogout
-            }}>
-                {
-                    isLoggedIn
-                        ? children
-                        : window.location.pathname.includes("/management")
-                            ? <Login />
-                            : <NotFound />
-                }
-            </AuthContext.Provider>
-        )
-    }
+    if (authIsLoading) return <div>Loading...</div>
+    else return (
+        <AuthContext.Provider value={{
+            isLoggedIn: isLoggedIn,
+            authIsLoading: authIsLoading,
+            setIsLoggedIn: setIsLoggedIn,
+            checkLogin: checkLogin,
+            setAuthIsLoading: setAuthIsLoading,
+            handleLogout: handleLogout
+        }}>
+            <button onClick={handleLogout} className="absolute top-0 right-0 mt-3 mr-[15%] md:mr-[10%] bg-cyan-600 py-2 px-3 rounded-lg"><HiLogout className="w-5 h-5 text-white" /></button>
+            {
+                isLoggedIn
+                    ? children
+                    : window.location.pathname.includes("/management")
+                        ? <Login />
+                        : <NotFound />
+            }
+        </AuthContext.Provider>
+    )
 }
 
 export {
