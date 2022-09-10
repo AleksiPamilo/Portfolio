@@ -7,7 +7,7 @@ const Messages: React.FC = () => {
 
     useEffect(() => {
         checkLogin();
-    }, []);
+    }, [checkLogin]);
 
     return (
         <div className="flex w-full h-full pt-[10rem]">

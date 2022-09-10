@@ -8,7 +8,7 @@ const Resume: React.FC = () => {
 
     useEffect(() => {
         checkLogin();
-    }, []);
+    }, [checkLogin]);
 
     return (
         <div className="flex w-full h-full justify-center items-center pt-[10rem]">

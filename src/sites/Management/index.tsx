@@ -5,7 +5,9 @@ import BarChart from "../../components/Management/Charts/BarChart";
 
 const Management: React.FC = () => {
     const { checkLogin, handleLogout } = useAuthContext();
-    useEffect(() => checkLogin(), []);
+    useEffect(() => {
+        checkLogin()
+    }, [checkLogin]);
 
     return (
         <div className="pt-24 flex justify-center items-center">
