@@ -1,7 +1,7 @@
 import React from "react";
 import { ISkills } from "../../interfaces/cv";
 
-import "../../styles/Resume.css";
+import "../../styles/resume.css";
 
 type SkillsProps = {
     skills: ISkills[];

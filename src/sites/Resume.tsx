@@ -4,7 +4,7 @@ import { collection, getDocs } from "firebase/firestore";
 
 import Education from '../components/cv/Education';
 
-import "../styles/Resume.css";
+import "../styles/resume.css";
 
 import FirebaseServices from "../firebase/firebaseServices";
 import Jobs from '../components/cv/Jobs';

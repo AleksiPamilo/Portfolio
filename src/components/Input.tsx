@@ -4,14 +4,16 @@ type InputProps = {
     type: string;
     placeholder: string;
     required?: boolean;
+    maxLength?: number;
     value: string;
     onChange: React.Dispatch<React.SetStateAction<any>>;
 };
 
-const Input: React.FC<InputProps> = ({ type, placeholder, value, onChange, required }) => {
+const Input: React.FC<InputProps> = ({ type, placeholder, maxLength, value, onChange, required }) => {
     return (
         <input
             className={`w-full h-12 px-4 rounded-lg border-2 border-gray-300 focus:outline-none ${required ? "border-red-500" : "focus:border-cyan-600"}`}
+            maxLength={maxLength}
             type={type}
             placeholder={placeholder}
             value={value}

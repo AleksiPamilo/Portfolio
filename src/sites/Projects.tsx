@@ -3,7 +3,7 @@ import { fetchRepos } from "../api/github";
 import GithubCard from "../components/GithubCard";
 import { IRepo, repoSort } from "../interfaces/githubRepo";
 
-import "../styles/Projects.css";
+import "../styles/projects.css";
 
 const Projects: React.FC = () => {
     const [repos, setRepos] = useState<IRepo[]>([]);

@@ -3,7 +3,7 @@ import { IRepo } from "../interfaces/githubRepo";
 import { FaLaptopCode, FaFileCode, FaStar } from "react-icons/fa";
 import { BiGitRepoForked } from "react-icons/bi"
 
-import "../styles/Projects.css";
+import "../styles/projects.css";
 
 type GithubCardProps = {
     repo: IRepo,

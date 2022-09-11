@@ -3,7 +3,7 @@ import Darkmode from "./Darkmode";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { navItems, managementNavItems } from "../common/navItems";
 
-import "../styles/Navigation.css";
+import "../styles/navigation.css";
 
 const Navigation: React.FC = () => {
     const [mobileNavVisible, setMobileNavVisible] = useState<boolean>(false);

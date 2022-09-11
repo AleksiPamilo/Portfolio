@@ -1,7 +1,7 @@
 import React from "react";
 import { ISchools } from "../../interfaces/cv";
 
-import "../../styles/Resume.css";
+import "../../styles/resume.css";
 
 type EducationProps = {
     schools: ISchools[];

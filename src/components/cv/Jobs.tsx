@@ -1,7 +1,7 @@
 import React from "react";
 import { IJobs } from "../../interfaces/cv";
 
-import "../../styles/Resume.css";
+import "../../styles/resume.css";
 
 type JobsProps = {
     jobs: IJobs[];

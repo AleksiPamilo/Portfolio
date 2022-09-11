@@ -32,14 +32,12 @@ const Contact: React.FC<ContactProps> = ({ visible, handleModal }) => {
             return;
         };
 
-        const date = formatDate();
-
         return addDoc(collection(firestore, "contact"), {
             name,
             email,
             title,
             content,
-            date
+            date: new Date().toISOString()
         }).then(() => {
             setError(null);
             clearFields();
@@ -133,17 +131,6 @@ const Contact: React.FC<ContactProps> = ({ visible, handleModal }) => {
 function validateEmail(email: string) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
-}
-
-function formatDate() {
-    const d = new Date();
-    const date = d.getDate().toString().padStart(2, "0")
-        + "."
-        + (d.getMonth() + 1).toString().padStart(2, "0")
-        + "."
-        + d.getFullYear().toString().slice(-2);
-
-    return date;
 }
 
 export default Contact;
