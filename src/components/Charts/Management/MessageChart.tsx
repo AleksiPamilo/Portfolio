@@ -26,7 +26,7 @@ Chart.register(
 );
 
 const MessageChart: React.FC = () => {
-  const { isDarkmode: isDarkmode } = useDarkmode();
+  const { isDarkmode } = useDarkmode();
   const [messages, setMessages] = useState<IMessage[]>([]);
 
   const labels = [...Array(14)].map((_, i) => {
