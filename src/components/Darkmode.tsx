@@ -1,15 +1,15 @@
 import React from "react";
 import { BsSun, BsMoon } from "react-icons/bs";
-import { useDarkmodeContext } from "./context/darkmodeContextProvider";
+import { useDarkmode } from "../hooks";
 
 const Darkmode: React.FC = () => {
-    const { useDarkmode: isDarkmode, setUseDarkmode } = useDarkmodeContext();
+    const { isDarkmode, setIsDarkmode } = useDarkmode();
 
     return (
         <button
             className="text-center"
             onClick={() => {
-                setUseDarkmode(!isDarkmode);
+                setIsDarkmode(!isDarkmode);
                 localStorage.setItem("useDarkmode", `${!isDarkmode}`);
             }}
         >

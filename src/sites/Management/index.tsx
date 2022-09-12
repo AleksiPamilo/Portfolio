@@ -1,5 +1,5 @@
 import React from "react";
-import MessageChart from "../../components/Management/Charts/MessageChart";
+import MessageChart from "../../components/Charts/Management/MessageChart";
 
 const Management: React.FC = () => {
     return (

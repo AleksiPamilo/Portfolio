@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 interface IDarkmodeContext {
-    useDarkmode: boolean;
-    setUseDarkmode: React.Dispatch<React.SetStateAction<boolean>>
+    isDarkmode: boolean;
+    setIsDarkmode: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 interface Props {
@@ -23,18 +23,18 @@ const useDarkmodeContext = () => {
 
 const DarkmodeContextProvider: React.FC<Props> = ({ children }) => {
 
-    const [useDarkmode, setUseDarkmode] = useState<boolean>(JSON.parse(localStorage.getItem('useDarkmode') ?? "false"));
+    const [isDarkmode, setIsDarkmode] = useState<boolean>(JSON.parse(localStorage.getItem('useDarkmode') ?? "false"));
 
     useEffect(() => {
-        document.body.classList.toggle("dark", useDarkmode);
-        document.body.classList.toggle("light", !useDarkmode);
-    }, [useDarkmode]);
+        document.body.classList.toggle("dark", isDarkmode);
+        document.body.classList.toggle("light", !isDarkmode);
+    }, [isDarkmode]);
 
     return (
-        <DarkmodeContext.Provider value={{ useDarkmode: useDarkmode, setUseDarkmode: setUseDarkmode }}>
+        <DarkmodeContext.Provider value={{ isDarkmode, setIsDarkmode }}>
             {children}
         </DarkmodeContext.Provider>
     )
 }
 
-export { DarkmodeContextProvider, useDarkmodeContext };
+export { DarkmodeContextProvider, useDarkmodeContext as useDarkmode };

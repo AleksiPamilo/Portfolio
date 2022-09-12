@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import { addDoc, collection } from "firebase/firestore";
+import { useModal } from "../context/modalContextProvider";
 import Input from "../Input";
 
 import FirebaseServices from "../../firebase/firebaseServices";
 const firestore = FirebaseServices.getFirestoreInstance();
 
-type ContactProps = {
-    visible: boolean,
-    handleModal: () => void
-};
+const Contact: React.FC = () => {
+    const { closeModal } = useModal();
 
-const Contact: React.FC<ContactProps> = ({ visible, handleModal }) => {
     const [name, setName] = useState<string>("");
     const [email, setEmail] = useState<string | null>(null);
     const [title, setTitle] = useState<string>("");
@@ -58,33 +56,22 @@ const Contact: React.FC<ContactProps> = ({ visible, handleModal }) => {
     }
 
     return (
-        <div className={`${visible ? "flex" : "hidden"} w-screen h-screen fixed z-[1] justify-center items-center backdrop-blur-[2px]`} onClick={() => {
-            if (name !== "" || email !== "" || title !== "" || content !== "") {
-                if (window.confirm("Are you sure you want to close this modal? This will clear all the fields.")) {
-                    clearFields();
-                    handleModal();
-                }
-            } else {
-                clearFields();
-                handleModal();
-            }
-
-        }}>
-            <div className="w-[25rem] md:w-[40rem] rounded-lg bg-gray-300 p-4 border-2 border-cyan-600" onClick={e => e.stopPropagation()}>
+        <div className="flex justify-center items-center">
+            <div className="w-[25rem] md:w-[40rem] rounded-lg bg-gray-300 p-4 border-2 border-cyan-600">
                 <div className="align-middle">
                     <div className="float-left">
                         <h1 className="text-black font-bold text-xl pl-1 select-none">Contact Me</h1>
                     </div>
                     <div className="float-right">
                         <button className="py-2 px-3 rounded-md bg-cyan-600 hover:bg-cyan-700 select-none" onClick={() => {
-                            if (name !== "" || email !== "" || title !== "" || content !== "") {
+                            if (name === "" || title === "" || content === "") {
                                 if (window.confirm("Are you sure you want to close this modal? This will clear all the fields.")) {
                                     clearFields();
-                                    handleModal();
+                                    closeModal();
                                 }
                             } else {
                                 clearFields();
-                                handleModal();
+                                closeModal();
                             }
                         }}>
                             <FaTimes className="w-5 h-5 text-white" />

@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import FirebaseServices from "../../firebase/firebaseServices";
-import { useAuthContext } from "../../components/context/authContextProvider";
+import { useAuth } from "../../hooks";
 import Input from "../../components/Input";
 
 const authInstance = FirebaseServices.getAuthInstance();
 
 const Login: React.FC = () => {
-    const { setIsLoggedIn } = useAuthContext();
+    const { setIsLoggedIn } = useAuth();
     const navigate = useNavigate();
 
     const [email, setEmail] = useState<string>("");

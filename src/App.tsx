@@ -1,42 +1,37 @@
-import React, { Suspense, useState } from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ModalContextProvider } from './components/context/modalContextProvider';
 
-const Home = React.lazy(() => import('./sites/Home'));
-const Projects = React.lazy(() => import('./sites/Projects'));
-const Resume = React.lazy(() => import('./sites/Resume'));
-const Management = React.lazy(() => import('./sites/Management'));
-const ManagementResume = React.lazy(() => import('./sites/Management/Resume'));
-const ManagementMessages = React.lazy(() => import('./sites/Management/Messages'));
-const NotFound = React.lazy(() => import('./sites/NotFound'));
-const Contact = React.lazy(() => import('./components/modals/Contact'));
-const Layout = React.lazy(() => import('./components/Layouts/Layout'));
-const AuthContextLayout = React.lazy(() => import('./components/Layouts/AuthContextLayout'));
+const Home = lazy(() => import('./sites/Home'));
+const Projects = lazy(() => import('./sites/Projects'));
+const Resume = lazy(() => import('./sites/Resume'));
+const Management = lazy(() => import('./sites/Management'));
+const ManagementResume = lazy(() => import('./sites/Management/Resume'));
+const ManagementMessages = lazy(() => import('./sites/Management/Messages'));
+const NotFound = lazy(() => import('./sites/NotFound'));
+const Layout = lazy(() => import('./components/Layouts/Layout'));
+const AuthContextLayout = lazy(() => import('./components/Layouts/AuthContextLayout'));
 
 const App: React.FC = () => {
-  const [contactModalOpen, setContactModalOpen] = useState<boolean>(false);
-
-  const handleContactModal = () => {
-    setContactModalOpen(!contactModalOpen);
-  }
-
   return (
     <Suspense fallback={<div />}>
-      <Router>
-        <Contact visible={contactModalOpen} handleModal={handleContactModal} />
-        <Routes>
-          <Route element={<Layout handleContactModal={handleContactModal} />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/cv" element={<Resume />} />
-            <Route element={<AuthContextLayout />}>
-              <Route path="/management" element={<Management />} />
-              <Route path="/management/cv" element={<ManagementResume />} />
-              <Route path="/management/messages" element={<ManagementMessages />} />
+      <ModalContextProvider>
+        <Router>
+          <Routes>
+            <Route element={<Layout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/cv" element={<Resume />} />
+              <Route element={<AuthContextLayout />}>
+                <Route path="/management" element={<Management />} />
+                <Route path="/management/cv" element={<ManagementResume />} />
+                <Route path="/management/messages" element={<ManagementMessages />} />
+              </Route>
             </Route>
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Router>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Router>
+      </ModalContextProvider>
     </Suspense>
   );
 }

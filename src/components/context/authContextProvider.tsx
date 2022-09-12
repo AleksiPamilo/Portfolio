@@ -82,5 +82,5 @@ const AuthContextProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
 
 export {
     AuthContextProvider,
-    useAuthContext
+    useAuthContext as useAuth
 };
