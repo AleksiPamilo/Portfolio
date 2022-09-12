@@ -23,7 +23,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"npm:watch-*\"",
+    "watch-app": "react-scripts start",
+    "watch-tailwind": "tailwind-config-viewer -p 3001",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -45,5 +47,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^7.4.0",
+    "tailwind-config-viewer": "^1.7.2"
   }
 }

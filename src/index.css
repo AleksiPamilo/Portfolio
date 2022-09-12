@@ -22,7 +22,7 @@ code {
 }
 
 body.light {
-  --bg-color: #fff;
+  --bg-color: #e2e8f0;
   --txt-color: #000;
 
   --nav-bg-color: #f1f1f1;
@@ -30,12 +30,12 @@ body.light {
   --nav-link-color-hover: #d3d3d3;
 
   --card-text-color: #000;
-  --card-bg-color: #f3f3f3;
+  --card-bg-color: #cbd5e1;
   --radio-btn-border-color: #000;
 }
 
 body.dark {
-  --bg-color: #000;
+  --bg-color: #0f172a;
   --txt-color: #fff;
 
   --nav-bg-color: #9f9f9f;
@@ -44,7 +44,7 @@ body.dark {
 
   --card-text-color: #fff;
   --card-bg-color: #11161f;
-  --radio-btn-border-color: rgb(229 231 235 / 1);
+  --radio-btn-border-color:#4b5563;
 }
 
 body::-webkit-scrollbar { width: 8px; }
