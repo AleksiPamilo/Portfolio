@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useDarkmode } from "../hooks";
 
 const NotFound: React.FC = () => {
-    const { isDarkmode: isDarkmode } = useDarkmode();
+    const { isDarkmode } = useDarkmode();
     const arr = ["Are you lost? How'd you even get here?", "Oops, You weren't supposed to see this!", "You shouldn't be here."];
 
     document.title = "Portfolio – 404";
