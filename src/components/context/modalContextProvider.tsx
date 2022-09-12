@@ -25,7 +25,7 @@ const ModalContextProvider: React.FC<React.PropsWithChildren> = ({ children }) =
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [modalContent, setModalContent] = useState<JSX.Element | null>(null);
 
-    const defaultStyle = "flex w-screen h-screen fixed justify-center items-center z-[1] backdrop-blur-[2px]"
+    const defaultStyle = "flex w-screen h-screen fixed justify-center items-center backdrop-blur-[2px]"
     const [modalStyle, _setModalStyle] = useState<string>(defaultStyle);
 
     const onClose = () => {
@@ -43,7 +43,7 @@ const ModalContextProvider: React.FC<React.PropsWithChildren> = ({ children }) =
             modalStyle,
             setModalStyle: _setModalStyle,
         }}>
-            <div className={modalStyle} onClick={onClose}
+            <div className={modalStyle + " z-50"} onClick={onClose}
                 style={{
                     display:
                         isModalOpen ? "flex" : "none"

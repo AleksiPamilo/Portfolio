@@ -4,6 +4,7 @@ import { IMessage } from "../../interfaces/contact";
 import FirebaseServices from "../../firebase/firebaseServices";
 import Message from "../../components/modals/Management/Message";
 import { FaTrash } from "react-icons/fa";
+import { useDarkmode } from "../../hooks";
 
 const db = FirebaseServices.getFirestoreInstance();
 
@@ -11,6 +12,7 @@ const thStyles = "px-6 py-3 text-left text-xs font-medium text-gray-500  upperca
 const tdStyles = "px-6 py-4 whitespace-normal border-t border-gray-500 max-w-[15rem] overflow-ellipsis overflow-hidden";
 
 const Messages: React.FC = () => {
+    const { isDarkmode } = useDarkmode();
     const [messages, setMessages] = useState<IMessage[]>([]);
     const [message, setMessage] = useState<IMessage | null>(null);
     const [messageModalVisible, setMessageModalVisible] = useState<boolean>(false);
@@ -47,12 +49,12 @@ const Messages: React.FC = () => {
     return (
         <>
             <Message message={message!} visible={messageModalVisible} handleModal={handleMessageModal} />
-            <div className="flex w-full h-full justify-center pt-[6rem]">
+            <div className="flex w-full h-full justify-center pt-[2rem] md:pt-[6rem]">
                 <div className="w-[80%] max-w-full rounded-l-lg">
-                    <h1 className="text-4xl font-bold">Messages</h1>
-                    <div className="max-h-[45rem] overflow-y-scroll rounded-l-lg mt-2 border border-gray-500">
+                    <h1 className={`${isDarkmode ? "text-white" : "text-black"} text-4xl font-bold`}>Messages</h1>
+                    <div className="max-h-[45rem] overflow-y-scroll rounded-l-lg mt-2 border-2 border-cyan-600">
                         <table className="bg-gray-300 rounded-l-lg w-full">
-                            <thead className="w-full">
+                            <thead className="w-full sticky top-0 bg-gray-300 z-10">
                                 <tr>
                                     <th className={thStyles}>Title</th>
                                     <th className={thStyles}>Name</th>

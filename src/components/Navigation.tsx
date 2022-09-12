@@ -46,7 +46,7 @@ const Navigation: React.FC = () => {
             </div>
 
             {/* Mobile */}
-            <div className="w-full text-center pb-6 select-none mobile-nav absolute rounded-b-lg hidden md:hidden transition-transform ease-linear">
+            <div className="w-full text-center pb-6 select-none mobile-nav absolute rounded-b-lg z-20 hidden md:hidden transition-transform ease-linear">
                 <hr className="w-[90%] m-auto mb-3 border-gray-600" />
                 <div className="flex flex-col gap-3 items-center">
                     {
