@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { collection, deleteDoc, doc, getDocs, query, where } from "firebase/firestore";
+import { collection, deleteDoc, doc, documentId, getDocs, query, where } from "firebase/firestore";
 import { IMessage } from "../../interfaces/contact";
 import FirebaseServices from "../../firebase/firebaseServices";
 import Message from "../../components/modals/Management/Message";
@@ -30,12 +30,14 @@ const Messages: React.FC = () => {
     }, []);
 
     const handleDelete = (id: string) => {
-        const q = query(collection(db, "contact"), where("id", "==", id));
+        const contactRef = collection(db, "contact");
+        const q = query(contactRef, where(documentId(), "==", id));
 
         getDocs(q)
             .then((querySnapshot) => {
                 querySnapshot.forEach((document) => {
-                    deleteDoc(doc(db, "contact", document.id));
+                    deleteDoc(doc(contactRef, document.id))
+                        .catch(() => alert("Error deleting document"));
                 });
             });
 
@@ -81,7 +83,9 @@ const Messages: React.FC = () => {
                                             e.stopPropagation();
                                             handleDelete(message.id);
                                         }}>
-                                            <div className="text-sm text-gray-900 flex justify-end "><FaTrash className="w-5 h-5 hover:text-gray-300" /></div>
+                                            <div className="text-sm text-gray-900 flex justify-end ">
+                                                <FaTrash className="w-5 h-5 hover:text-gray-300" />
+                                            </div>
                                         </td>
                                     </tr>
                                 ))}
