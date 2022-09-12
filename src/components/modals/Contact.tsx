@@ -64,7 +64,7 @@ const Contact: React.FC = () => {
                     </div>
                     <div className="float-right">
                         <button className="py-2 px-3 rounded-md bg-cyan-600 hover:bg-cyan-700 select-none" onClick={() => {
-                            if (name === "" || title === "" || content === "") {
+                            if (name !== "" || title !== "" || content !== "") {
                                 if (window.confirm("Are you sure you want to close this modal? This will clear all the fields.")) {
                                     clearFields();
                                     closeModal();
