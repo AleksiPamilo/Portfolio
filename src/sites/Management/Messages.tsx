@@ -4,7 +4,7 @@ import { IMessage } from "../../interfaces/contact";
 import FirebaseServices from "../../firebase/firebaseServices";
 import Message from "../../components/modals/Management/Message";
 import { FaTrash } from "react-icons/fa";
-import { useDarkmode } from "../../hooks";
+import { useDarkmode, useModal } from "../../hooks";
 
 const db = FirebaseServices.getFirestoreInstance();
 
@@ -13,10 +13,13 @@ const tdStyles = "px-6 py-4 whitespace-normal border-t border-gray-500 max-w-[15
 
 const Messages: React.FC = () => {
     const { isDarkmode } = useDarkmode();
+    const { setModalContent, setIsModalOpen } = useModal();
     const [messages, setMessages] = useState<IMessage[]>([]);
-    const [message, setMessage] = useState<IMessage | null>(null);
-    const [messageModalVisible, setMessageModalVisible] = useState<boolean>(false);
-    const handleMessageModal = () => setMessageModalVisible(!messageModalVisible);
+
+    const handleMessageModal = (message: IMessage) => {
+        setModalContent(<Message message={message} />)
+        setIsModalOpen(true);
+    }
 
     useEffect(() => {
         getDocs(collection(db, "contact"))
@@ -47,56 +50,50 @@ const Messages: React.FC = () => {
     };
 
     return (
-        <>
-            <Message message={message!} visible={messageModalVisible} handleModal={handleMessageModal} />
-            <div className="flex w-full h-full justify-center pt-[2rem] md:pt-[6rem]">
-                <div className="w-[80%] max-w-full rounded-l-lg">
-                    <h1 className={`${isDarkmode ? "text-white" : "text-black"} text-4xl font-bold`}>Messages</h1>
-                    <div className="max-h-[45rem] overflow-y-scroll rounded-l-lg mt-2 border-2 border-cyan-600">
-                        <table className="bg-gray-300 rounded-l-lg w-full">
-                            <thead className="w-full sticky top-0 bg-gray-300 z-10">
-                                <tr>
-                                    <th className={thStyles}>Title</th>
-                                    <th className={thStyles}>Name</th>
-                                    <th className={thStyles}>Email Address</th>
-                                    <th className={thStyles}>Date</th>
-                                    <th className={thStyles}>Options</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {messages.map((message, index) => (
-                                    <tr key={index} className="cursor-pointer hover:bg-gray-400" onClick={() => {
-                                        setMessage(message);
-                                        handleMessageModal();
+        <div className="flex w-full h-full justify-center pt-[2rem] md:pt-[6rem]">
+            <div className="w-[80%] max-w-full rounded-l-lg">
+                <h1 className={`${isDarkmode ? "text-white" : "text-black"} text-4xl font-bold`}>Messages</h1>
+                <div className="max-h-[45rem] overflow-y-scroll rounded-l-lg mt-2 border-2 border-cyan-600">
+                    <table className="bg-gray-300 rounded-l-lg w-full">
+                        <thead className="w-full sticky top-0 bg-gray-300 z-10">
+                            <tr>
+                                <th className={thStyles}>Title</th>
+                                <th className={thStyles}>Name</th>
+                                <th className={thStyles}>Email Address</th>
+                                <th className={thStyles}>Date</th>
+                                <th className={thStyles}>Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {messages.map((message, index) => (
+                                <tr key={index} className="cursor-pointer hover:bg-gray-400" onClick={() => handleMessageModal(message)}>
+                                    <td className={tdStyles}>
+                                        <div className="text-sm text-gray-900">{message.title}</div>
+                                    </td>
+                                    <td className={tdStyles}>
+                                        <div className="text-sm text-gray-900">{message.name}</div>
+                                    </td>
+                                    <td className={tdStyles}>
+                                        <div className="text-sm text-gray-900">{message.email ?? "Unknown"}</div>
+                                    </td>
+                                    <td className={tdStyles}>
+                                        <div className="text-sm text-gray-900">{new Date(message.date).toLocaleString()}</div>
+                                    </td>
+                                    <td className={tdStyles + " w-[2rem]"} onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleDelete(message.id);
                                     }}>
-                                        <td className={tdStyles}>
-                                            <div className="text-sm text-gray-900">{message.title}</div>
-                                        </td>
-                                        <td className={tdStyles}>
-                                            <div className="text-sm text-gray-900">{message.name}</div>
-                                        </td>
-                                        <td className={tdStyles}>
-                                            <div className="text-sm text-gray-900">{message.email ?? "Unknown"}</div>
-                                        </td>
-                                        <td className={tdStyles}>
-                                            <div className="text-sm text-gray-900">{new Date(message.date).toLocaleString()}</div>
-                                        </td>
-                                        <td className={tdStyles + " w-[2rem]"} onClick={(e) => {
-                                            e.stopPropagation();
-                                            handleDelete(message.id);
-                                        }}>
-                                            <div className="text-sm text-gray-900 flex justify-end ">
-                                                <FaTrash className="w-5 h-5 hover:text-gray-300" />
-                                            </div>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
+                                        <div className="text-sm text-gray-900 flex justify-end ">
+                                            <FaTrash className="w-5 h-5 hover:text-gray-300" />
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
