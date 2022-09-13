@@ -16,11 +16,11 @@ type ResumeProps = {
 const ResumeJobs: React.FC<ResumeProps> = ({ job, jobs, setJobs }) => {
     const { closeModal } = useModal();
 
-    const [key, setKey] = React.useState<string>();
-    const [company, setCompany] = React.useState<string>();
-    const [desc, setDesc] = React.useState<string>();
-    const [title, setTitle] = React.useState<string>();
-    const [time, setTime] = React.useState<string>();
+    const [key, setKey] = React.useState<string | undefined>(job?.key);
+    const [company, setCompany] = React.useState<string | undefined>(job?.company);
+    const [desc, setDesc] = React.useState<string | undefined>(job?.desc);
+    const [title, setTitle] = React.useState<string | undefined>(job?.title);
+    const [time, setTime] = React.useState<string | undefined>(job?.time);
     const [error, setError] = React.useState<string | null>(null);
     const [success, setSuccess] = React.useState<string | null>(null);
 
