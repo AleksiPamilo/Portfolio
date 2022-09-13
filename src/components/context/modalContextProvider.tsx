@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
 interface IModalContext {
-    isModalOpen: boolean,
+    modalIsOpen: boolean,
     modalContent: JSX.Element | null,
     modalStyle?: string,
     closeModal: () => void,
-    setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>,
+    setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>,
     setModalContent: React.Dispatch<React.SetStateAction<JSX.Element | null>>,
     setModalStyle?: React.Dispatch<React.SetStateAction<string>>
 }
@@ -22,21 +22,21 @@ const useModalContext = () => {
 }
 
 const ModalContextProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
-    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    const [ModalIsOpen, setModalIsOpen] = useState<boolean>(false);
     const [modalContent, setModalContent] = useState<JSX.Element | null>(null);
 
     const defaultStyle = "flex w-screen h-screen fixed justify-center items-center backdrop-blur-[2px]"
     const [modalStyle, _setModalStyle] = useState<string>(defaultStyle);
 
     const onClose = () => {
-        setIsModalOpen(false);
+        setModalIsOpen(false);
         setModalContent(null);
     }
 
     return (
         <ModalContext.Provider value={{
-            isModalOpen,
-            setIsModalOpen,
+            modalIsOpen: ModalIsOpen,
+            setModalIsOpen: setModalIsOpen,
             modalContent,
             setModalContent,
             closeModal: onClose,
@@ -46,7 +46,7 @@ const ModalContextProvider: React.FC<React.PropsWithChildren> = ({ children }) =
             <div className={modalStyle + " z-50"} onClick={onClose}
                 style={{
                     display:
-                        isModalOpen ? "flex" : "none"
+                        ModalIsOpen ? "flex" : "none"
                 }}>
                 <div onClick={e => e.stopPropagation()}>
                     {modalContent}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { IJobs, ISchools, ISkills } from "../interfaces/cv";
+import { IJob, ISchool, ISkill } from "../interfaces/cv";
 import { collection, getDocs } from "firebase/firestore";
 
 import Education from '../components/cv/Education';
@@ -14,9 +14,9 @@ const db = FirebaseServices.getFirestoreInstance();
 const Resume: React.FC = () => {
     document.title = "Portfolio – Resume";
 
-    const [skills, setSkills] = useState<ISkills[]>([]);
-    const [jobs, setJobs] = useState<IJobs[]>([]);
-    const [schools, setSchools] = useState<ISchools[]>([]);
+    const [skills, setSkills] = useState<ISkill[]>([]);
+    const [jobs, setJobs] = useState<IJob[]>([]);
+    const [schools, setSchools] = useState<ISchool[]>([]);
     const [profileText, setProfileText] = useState<string | null>(null);
 
     useEffect(() => {

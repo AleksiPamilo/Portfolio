@@ -4,7 +4,7 @@ import { useModal } from "../hooks";
 import Contact from "./modals/Contact";
 
 const Footer: React.FC = () => {
-    const { setIsModalOpen, setModalContent } = useModal();
+    const { setModalIsOpen: setIsModalOpen, setModalContent } = useModal();
 
     const openModal = () => {
         setModalContent(<Contact />);

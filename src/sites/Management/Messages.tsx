@@ -13,7 +13,7 @@ const tdStyles = "px-6 py-4 whitespace-normal border-t border-gray-500 max-w-[15
 
 const Messages: React.FC = () => {
     const { isDarkmode } = useDarkmode();
-    const { setModalContent, setIsModalOpen } = useModal();
+    const { setModalContent, setModalIsOpen: setIsModalOpen } = useModal();
     const [messages, setMessages] = useState<IMessage[]>([]);
 
     const handleMessageModal = (message: IMessage) => {
