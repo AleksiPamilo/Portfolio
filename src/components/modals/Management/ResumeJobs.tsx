@@ -132,7 +132,9 @@ const ResumeJobs: React.FC<ResumeProps> = ({ job, jobs, setJobs }) => {
                         <button className="w-[8rem] h-10 rounded-md text-white font-bold bg-cyan-600 hover:bg-cyan-700 ml-2 mr-1"
                             onClick={handleUpdate}
                         >
-                            Send
+                            {
+                                job ? "Update" : "Add"
+                            }
                         </button>
                     </div>
                 </div>
