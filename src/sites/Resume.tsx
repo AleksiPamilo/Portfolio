@@ -38,21 +38,16 @@ const Resume: React.FC = () => {
     }, []);
 
     return (
-        <div className="w-full h-full flex items-center justify-center md:pt-[5rem]">
-            <div className="w-[23rem] md:w-[35rem] lg:w-[57rem] text-center">
-                <h1 className="text-4xl font-bold text-cyan-600">Resume</h1>
-                <p className="text-xl mt-6 colors">{profileText ?? "Loading..."}</p>
-                <hr className="mt-8 m-auto w-full border-2 border-gray-400" />
-
-                <Education schools={schools} />
-                <hr className="mt-8 m-auto w-full border-2 border-gray-400" />
-
-                <Jobs jobs={jobs} />
-                <hr className="mt-8 m-auto w-full border-2 border-gray-400" />
-
-                <Skills skills={skills} />
-                <hr className="mt-8 m-auto w-full border-2 border-gray-400" />
-
+        <div className="flex w-full h-full justify-center pt-[2rem] md:pt-[6rem] select-none">
+            <div className="max-w-[80%] rounded-l-lg">
+                <div className="font-bold text-xl text-center colors mb-5">
+                    {profileText}
+                </div>
+                <div className="flex flex-col gap-5">
+                    <Education schools={schools} />
+                    <Jobs jobs={jobs} />
+                    <Skills skills={skills} />
+                </div>
             </div>
         </div>
     )

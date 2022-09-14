@@ -20,6 +20,7 @@ const ResumeJobs: React.FC<ResumeProps> = ({ job, jobs, setJobs }) => {
     const [startDate, setStartDate] = React.useState<string | undefined>(job?.startDate);
     const [endDate, setEndDate] = React.useState<string | undefined>(job?.endDate);
     const [company, setCompany] = React.useState<string | undefined>(job?.company);
+    const [companyWebsite, setCompanyWebsite] = React.useState<string | null>(job?.companyWebsite ?? null);
     const [desc, setDesc] = React.useState<string | undefined>(job?.desc);
     const [title, setTitle] = React.useState<string | undefined>(job?.title);
     const [error, setError] = React.useState<string | null>(null);
@@ -53,6 +54,7 @@ const ResumeJobs: React.FC<ResumeProps> = ({ job, jobs, setJobs }) => {
             title: title,
             startDate: startDate,
             endDate: endDate,
+            companyWebsite: companyWebsite,
         });
 
         updateDoc(jobsRef, { jobsArr: jobs })
@@ -88,7 +90,7 @@ const ResumeJobs: React.FC<ResumeProps> = ({ job, jobs, setJobs }) => {
         <div className="flex justify-center items-center">
             <div className="w-[25rem] md:w-[40rem] rounded-lg bg-gray-300 p-4 border-2 border-cyan-600" onClick={e => e.stopPropagation()}>
                 <div className="float-left">
-                    <h1 className="text-black font-bold text-xl pl-1 select-none">{job?.title ?? "Add New Job"}</h1>
+                    <h1 className="text-black font-bold text-xl pl-1 select-none">{job ? "Update Job" : "Add New Job"}</h1>
                 </div>
                 <div className="float-right">
                     <button className="py-2 px-3 rounded-md bg-cyan-600 hover:bg-cyan-700 select-none" onClick={closeModal}>
@@ -98,8 +100,11 @@ const ResumeJobs: React.FC<ResumeProps> = ({ job, jobs, setJobs }) => {
 
                 <div>
                     <div className="grid grid-cols-2 mt-12 gap-1">
+                        <div className="col-span-2">
+                            <Input type="text" placeholder={job?.title ?? "Title"} value={title ?? ""} onChange={e => setTitle(String(e.target.value))} />
+                        </div>
                         <Input type="text" placeholder={job?.company ?? "Company"} value={company ?? ""} onChange={e => setCompany(String(e.target.value))} />
-                        <Input type="text" placeholder={job?.title ?? "Title"} value={title ?? ""} onChange={e => setTitle(String(e.target.value))} />
+                        <Input type="text" placeholder={job?.companyWebsite ?? "Company Website (Optional)"} value={companyWebsite ?? ""} onChange={e => setCompanyWebsite(String(e.target.value))} />
                         <Input type="text" placeholder={String(job?.startDate ?? "Start Date (mm/dd/yyyy)")} value={startDate ?? ""} onChange={e => setStartDate(String(e.target.value))} />
                         <Input type="text" placeholder={String(job?.endDate ?? "End Date (mm/dd/yyyy)")} value={endDate ?? ""} onChange={e => setEndDate(String(e.target.value))} />
                     </div>

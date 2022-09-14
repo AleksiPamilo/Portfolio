@@ -22,7 +22,7 @@ const Jobs: React.FC<JobsProps> = ({ jobs, setJobs }) => {
     return (
         <div className={`${isDarkmode ? "text-white" : "text-black"} mt-12`}>
             <div className="flex justify-between">
-                <h1 className={`${isDarkmode ? "text-white" : "text-black"} text-4xl font-bold`}>Resume Jobs</h1>
+                <h1 className={`${isDarkmode ? "text-white" : "text-black"} text-4xl font-bold`}>Manage Jobs</h1>
                 <button className="bg-cyan-400 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-lg" onClick={() => openJobModal()}>
                     <FaPlus />
                 </button>
@@ -30,7 +30,7 @@ const Jobs: React.FC<JobsProps> = ({ jobs, setJobs }) => {
             <div className="mt-5 justify-center flex flex-wrap gap-5">
                 {
                     jobs.map((job) => (
-                        <div key={job.key} className="flex flex-wrap rounded-lg githubCard w-[25rem] min-h-[8rem] p-4 border-2 cursor-pointer select-none border-cyan-400 hover:border-cyan-600"
+                        <div key={job.key} className="flex flex-wrap rounded-lg w-[25rem] min-h-[8rem] p-4 border-2 cursor-pointer select-none border-cyan-400 hover:border-cyan-600"
                             onClick={() => openJobModal(job)}
                         >
                             <div className="w-full">

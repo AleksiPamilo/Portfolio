@@ -1,6 +1,7 @@
 export declare interface IJob {
     key: string,
     company: string,
+    companyWebsite?: string | null,
     desc: string,
     title: string,
     startDate: string,
@@ -10,9 +11,9 @@ export declare interface IJob {
 export declare interface ISchool {
     key: string,
     name: string,
-    fullName: string,
     desc: string,
-    time: string,
+    startDate: string,
+    endDate: string,
 };
 
 export declare interface ISkill {

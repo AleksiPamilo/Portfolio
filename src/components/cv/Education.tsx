@@ -7,30 +7,35 @@ type EducationProps = {
     schools: ISchool[];
 };
 
-const Education: React.FC<EducationProps> = ({ schools }) => {
+const Jobs: React.FC<EducationProps> = ({ schools }) => {
     return (
         <div className="mt-6 colors">
-            <h1 className="text-4xl font-bold text-cyan-600">Education</h1>
-            {
-                !schools
-                    ? <div className="colors text-lg mt-2">Loading...</div>
-                    : schools.map(x => (
-                        <div className="w-full flex flex-col justify-center items-center mt-4" key={x.key}>
-                            <div className="w-[85%]">
-                                <div className="flex flex-col float-left">
-                                    <h1 className="text-left text-base font-bold text-blue-600">{x.fullName}</h1>
-                                    <h2 className="text-lg">{x.desc}</h2>
+            <h1 className="text-4xl font-bold text-cyan-600 text-center">Education</h1>
+            <div className="border rounded-lg border-cyan-600 mt-5">
+                <div className="flex flex-wrap justify-center gap-5 p-4">
+                    {
+                        !schools
+                            ? <div />
+                            : schools.map(school => (
+                                <div key={school.key} className="flex flex-wrap rounded-lg w-[25rem] min-h-[8rem] p-4 border-2 select-none border-cyan-400 hover:border-cyan-600"
+                                >
+                                    <h1 className="text-xl font-bold">{school.name}</h1>
+                                    <div className="flex flex-row w-full justify-between">
+                                        <p className="text-sm mt-2">{school.desc}</p>
+                                    </div>
+                                    <h1 className="text-sm font-bold pt-5">{formatDate(school.startDate)} – {formatDate(school.endDate)}</h1>
                                 </div>
-                                <div className="flex float-right">
-                                    {x.time}
-                                </div>
-                            </div>
-                            <hr className="mt-2 m-auto w-[85%] border rounded-lg border-gray-400" />
-                        </div>
-                    ))
-            }
+                            ))
+                    }
+                </div>
+            </div>
         </div>
     )
 }
 
-export default Education;
+function formatDate(date: string) {
+    const d = new Date(date);
+    return `${d.getMonth() + 1}/${d.getFullYear()}`;
+}
+
+export default Jobs;
