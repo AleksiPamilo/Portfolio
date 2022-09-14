@@ -3,6 +3,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import { FaTimes } from "react-icons/fa";
 import { IJob } from "../../../interfaces/cv";
 import { useModal } from "../../context/modalContextProvider";
+import { v1 as uuid } from "uuid";
 import Input from "../../Input";
 import FirebaseServices from "../../../firebase/firebaseServices";
 
@@ -16,26 +17,28 @@ type ResumeProps = {
 const ResumeJobs: React.FC<ResumeProps> = ({ job, jobs, setJobs }) => {
     const { closeModal } = useModal();
 
-    const [key, setKey] = React.useState<string | undefined>(job?.key);
+    const [startDate, setStartDate] = React.useState<string | undefined>(job?.startDate);
+    const [endDate, setEndDate] = React.useState<string | undefined>(job?.endDate);
     const [company, setCompany] = React.useState<string | undefined>(job?.company);
     const [desc, setDesc] = React.useState<string | undefined>(job?.desc);
     const [title, setTitle] = React.useState<string | undefined>(job?.title);
-    const [time, setTime] = React.useState<string | undefined>(job?.time);
     const [error, setError] = React.useState<string | null>(null);
     const [success, setSuccess] = React.useState<string | null>(null);
 
     const jobsRef = doc(db, "portfolio", "jobs");
 
     const clearFields = () => {
-        setKey(undefined);
+        setStartDate(undefined);
+        setEndDate(undefined);
         setCompany(undefined);
         setDesc(undefined);
         setTitle(undefined);
-        setTime(undefined);
     }
 
     const handleUpdate = () => {
-        if (!key || !company || !desc || !title || !time) return setError("Please fill in all the fields");
+        if (!startDate || !endDate || !company || !desc || !title) return setError("Please fill in all the fields");
+
+        const key = job?.key ?? uuid();
 
         for (const j in jobs) {
             if (jobs[j].key === key) {
@@ -48,7 +51,8 @@ const ResumeJobs: React.FC<ResumeProps> = ({ job, jobs, setJobs }) => {
             company: company,
             desc: desc,
             title: title,
-            time: time,
+            startDate: startDate,
+            endDate: endDate,
         });
 
         updateDoc(jobsRef, { jobsArr: jobs })
@@ -67,8 +71,10 @@ const ResumeJobs: React.FC<ResumeProps> = ({ job, jobs, setJobs }) => {
     }
 
     const handleDelete = () => {
+        if (!job) return;
+
         for (const j in jobs) {
-            if (jobs[j].key === job?.key) {
+            if (jobs[j].key === job.key) {
                 jobs.splice(parseInt(j), 1);
                 break;
             }
@@ -91,11 +97,11 @@ const ResumeJobs: React.FC<ResumeProps> = ({ job, jobs, setJobs }) => {
                 </div>
 
                 <div>
-                    <div className="mt-12 grid grid-cols-2 gap-1">
-                        <Input type="text" placeholder={job?.key ?? "Key"} value={key ?? ""} onChange={e => setKey(String(e.target.value))} />
+                    <div className="grid grid-cols-2 mt-12 gap-1">
                         <Input type="text" placeholder={job?.company ?? "Company"} value={company ?? ""} onChange={e => setCompany(String(e.target.value))} />
                         <Input type="text" placeholder={job?.title ?? "Title"} value={title ?? ""} onChange={e => setTitle(String(e.target.value))} />
-                        <Input type="text" placeholder={job?.time ?? "Time"} value={time ?? ""} onChange={e => setTime(String(e.target.value))} />
+                        <Input type="text" placeholder={String(job?.startDate ?? "Start Date (mm/dd/yyyy)")} value={startDate ?? ""} onChange={e => setStartDate(String(e.target.value))} />
+                        <Input type="text" placeholder={String(job?.endDate ?? "End Date (mm/dd/yyyy)")} value={endDate ?? ""} onChange={e => setEndDate(String(e.target.value))} />
                     </div>
 
                     <textarea

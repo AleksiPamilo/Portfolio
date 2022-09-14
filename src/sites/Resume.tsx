@@ -29,7 +29,9 @@ const Resume: React.FC = () => {
                 });
 
                 setSkills(obj.skills.skillsArr);
-                setJobs(obj.jobs.jobsArr);
+                setJobs(obj.jobs.jobsArr.sort((a: IJob, b: IJob) => {
+                    return new Date(b.startDate).getTime() - new Date(a.startDate).getTime();
+                }));
                 setSchools(obj.education.schools);
                 setProfileText(obj.profile.text);
             })

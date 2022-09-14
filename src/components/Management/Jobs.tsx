@@ -38,12 +38,12 @@ const Jobs: React.FC<JobsProps> = ({ jobs, setJobs }) => {
                                     <h1 className="text-xl font-bold">{job.company}</h1>
                                 </div>
                                 <div className="float-right">
-                                    <h1 className="text-sm font-bold pt-1">{job.time}</h1>
+                                    <h1 className="text-sm font-bold pt-1">{formatDate(job.startDate)} – {formatDate(job.endDate)}</h1>
                                 </div>
-                                <p className="text-sm mt-10">{job.desc}</p>
-                            </div>
-                            <div className="flex flex-row w-full justify-between">
-                                <p className="text-sm">{job.title}</p>
+                                <div className="flex flex-row w-full justify-between">
+                                    <p className="text-sm">{job.title}</p>
+                                </div>
+                                <p className="text-sm mt-2">{job.desc}</p>
                             </div>
                         </div>
                     ))
@@ -51,6 +51,11 @@ const Jobs: React.FC<JobsProps> = ({ jobs, setJobs }) => {
             </div>
         </div>
     )
+}
+
+function formatDate(date: string) {
+    const d = new Date(date);
+    return `${d.getMonth() + 1}/${d.getFullYear()}`;
 }
 
 export default Jobs;
