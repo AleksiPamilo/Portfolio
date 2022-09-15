@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { IJob, ISchool, ISkill } from "../interfaces/cv";
-import { collection, getDocs } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 
 import Education from '../components/cv/Education';
 
@@ -17,33 +17,26 @@ const Resume: React.FC = () => {
     const [skills, setSkills] = useState<ISkill[]>([]);
     const [jobs, setJobs] = useState<IJob[]>([]);
     const [schools, setSchools] = useState<ISchool[]>([]);
-    const [profileText, setProfileText] = useState<string | null>(null);
 
     useEffect(() => {
-        getDocs(collection(db, "portfolio"))
-            .then((querySnapshot) => {
-                const obj: any = {};
-
-                querySnapshot.forEach((doc) => {
-                    obj[doc.id] = doc.data();
-                });
-
-                setSkills(obj.skills.skillsArr);
-                setJobs(obj.jobs.jobsArr.sort((a: IJob, b: IJob) => {
-                    return new Date(b.startDate).getTime() - new Date(a.startDate).getTime();
-                }));
-                setSchools(obj.education.schools);
-                setProfileText(obj.profile.text);
-            })
+        getDoc(doc(db, "portfolio", "resume"))
+            .then((doc) => {
+                if (doc.exists()) {
+                    setSchools(doc.data()?.education.sort((a: ISchool, b: ISchool) => {
+                        return new Date(b.startDate).getTime() - new Date(a.startDate).getTime();
+                    }));
+                    setJobs(doc.data()?.experience.sort((a: IJob, b: IJob) => {
+                        return new Date(b.startDate).getTime() - new Date(a.startDate).getTime();
+                    }));
+                    setSkills(doc.data()?.skills);
+                }
+            });
     }, []);
 
     return (
         <div className="flex w-full h-full justify-center pt-[2rem] md:pt-[6rem] select-none">
             <div className="max-w-[80%] rounded-l-lg">
-                <div className="font-bold text-xl text-center colors mb-5">
-                    {profileText}
-                </div>
-                <div className="flex flex-col gap-5">
+                <div className="flex flex-col gap-5 border border-cyan-600 rounded-lg">
                     <Education schools={schools} />
                     <Jobs jobs={jobs} />
                     <Skills skills={skills} />

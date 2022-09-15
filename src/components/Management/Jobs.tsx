@@ -3,7 +3,7 @@ import { FaPlus } from "react-icons/fa";
 import { IJob } from "../../interfaces/cv";
 import { useDarkmode } from "../context/darkmodeContextProvider";
 import { useModal } from "../context/modalContextProvider";
-import ResumeJobs from "../modals/Management/ResumeJobs";
+import ResumeJobs from "../modals/Management/Experience";
 
 type JobsProps = {
     jobs: IJob[];

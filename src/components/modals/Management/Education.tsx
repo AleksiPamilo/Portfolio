@@ -1,68 +1,63 @@
-import React from "react";
 import { doc, updateDoc } from "firebase/firestore";
-import { FaTimes } from "react-icons/fa";
-import { IJob } from "../../../interfaces/cv";
+import React from "react";
+import { ISchool } from "../../../interfaces/cv";
 import { useModal } from "../../context/modalContextProvider";
 import { v1 as uuid } from "uuid";
-import Input from "../../Input";
 import FirebaseServices from "../../../firebase/firebaseServices";
+import { FaTimes } from "react-icons/fa";
+import Input from "../../Input";
 
 const db = FirebaseServices.getFirestoreInstance();
 
-type ResumeProps = {
-    job?: IJob,
-    jobs: IJob[],
-    setJobs: React.Dispatch<React.SetStateAction<IJob[]>>,
+type ResumeEducationProps = {
+    school?: ISchool;
+    schools: ISchool[];
+    setSchools: React.Dispatch<React.SetStateAction<ISchool[]>>;
 };
-const ResumeJobs: React.FC<ResumeProps> = ({ job, jobs, setJobs }) => {
+const ResumeEducation: React.FC<ResumeEducationProps> = ({ school, schools, setSchools }) => {
     const { closeModal } = useModal();
 
-    const [startDate, setStartDate] = React.useState<string | undefined>(job?.startDate);
-    const [endDate, setEndDate] = React.useState<string | undefined>(job?.endDate);
-    const [company, setCompany] = React.useState<string | undefined>(job?.company);
-    const [companyWebsite, setCompanyWebsite] = React.useState<string | null>(job?.companyWebsite ?? null);
-    const [desc, setDesc] = React.useState<string | undefined>(job?.desc);
-    const [title, setTitle] = React.useState<string | undefined>(job?.title);
+    const [startDate, setStartDate] = React.useState<string | undefined>(school?.startDate);
+    const [endDate, setEndDate] = React.useState<string | undefined>(school?.endDate);
+    const [name, setName] = React.useState<string | undefined>(school?.name);
+    const [desc, setDesc] = React.useState<string | undefined>(school?.desc);
     const [error, setError] = React.useState<string | null>(null);
     const [success, setSuccess] = React.useState<string | null>(null);
 
-    const jobsRef = doc(db, "portfolio", "jobs");
+    const resumeRef = doc(db, "portfolio", "resume");
 
     const clearFields = () => {
         setStartDate(undefined);
         setEndDate(undefined);
-        setCompany(undefined);
+        setName(undefined);
         setDesc(undefined);
-        setTitle(undefined);
     }
 
     const handleUpdate = () => {
-        if (!startDate || !endDate || !company || !desc || !title) return setError("Please fill in all the fields");
+        if (!startDate || !endDate || !name || !desc) return setError("Please fill in all the fields");
 
-        const key = job?.key ?? uuid();
+        const key = school?.key ?? uuid();
 
-        for (const j in jobs) {
-            if (jobs[j].key === key) {
-                jobs.splice(parseInt(j), 1);
+        for (const s in schools) {
+            if (schools[s].key === key) {
+                schools.splice(parseInt(s), 1);
             }
         }
 
-        jobs.push({
+        schools.push({
             key: key,
-            company: company,
+            name: name,
             desc: desc,
-            title: title,
             startDate: startDate,
             endDate: endDate,
-            companyWebsite: companyWebsite,
         });
 
-        updateDoc(jobsRef, { jobsArr: jobs })
+        updateDoc(resumeRef, { education: schools })
             .then(() => {
                 setError(null);
-                setSuccess("Job updated successfully");
+                setSuccess("School updated successfully");
                 clearFields();
-                setJobs(jobs);
+                setSchools(schools);
                 setTimeout(() => setSuccess(null), 10000);
             })
             .catch(() => {
@@ -73,24 +68,24 @@ const ResumeJobs: React.FC<ResumeProps> = ({ job, jobs, setJobs }) => {
     }
 
     const handleDelete = () => {
-        if (!job) return;
+        if (!school) return;
 
-        for (const j in jobs) {
-            if (jobs[j].key === job.key) {
-                jobs.splice(parseInt(j), 1);
+        for (const s in schools) {
+            if (schools[s].key === school.key) {
+                schools.splice(parseInt(s), 1);
                 break;
             }
         }
 
-        setJobs(jobs);
-        updateDoc(jobsRef, { jobsArr: jobs });
+        setSchools(schools);
+        updateDoc(resumeRef, { education: schools });
     }
 
     return (
         <div className="flex justify-center items-center">
             <div className="w-[25rem] md:w-[40rem] rounded-lg bg-gray-300 p-4 border-2 border-cyan-600" onClick={e => e.stopPropagation()}>
                 <div className="float-left">
-                    <h1 className="text-black font-bold text-xl pl-1 select-none">{job ? "Update Job" : "Add New Job"}</h1>
+                    <h1 className="text-black font-bold text-xl pl-1 select-none">{school ? "Update School" : "Add New School"}</h1>
                 </div>
                 <div className="float-right">
                     <button className="py-2 px-3 rounded-md bg-cyan-600 hover:bg-cyan-700 select-none" onClick={closeModal}>
@@ -100,21 +95,11 @@ const ResumeJobs: React.FC<ResumeProps> = ({ job, jobs, setJobs }) => {
 
                 <div>
                     <div className="grid grid-cols-2 mt-12 gap-1">
-                        <div className="col-span-2">
-                            <Input type="text" placeholder={job?.title ?? "Title"} value={title ?? ""} onChange={e => setTitle(String(e.target.value))} />
-                        </div>
-                        <Input type="text" placeholder={job?.company ?? "Company"} value={company ?? ""} onChange={e => setCompany(String(e.target.value))} />
-                        <Input type="text" placeholder={job?.companyWebsite ?? "Company Website (Optional)"} value={companyWebsite ?? ""} onChange={e => setCompanyWebsite(String(e.target.value))} />
-                        <Input type="text" placeholder={String(job?.startDate ?? "Start Date (mm/dd/yyyy)")} value={startDate ?? ""} onChange={e => setStartDate(String(e.target.value))} />
-                        <Input type="text" placeholder={String(job?.endDate ?? "End Date (mm/dd/yyyy)")} value={endDate ?? ""} onChange={e => setEndDate(String(e.target.value))} />
+                        <Input type="text" placeholder={school?.name ?? "Name"} value={name ?? ""} onChange={e => setName(String(e.target.value))} />
+                        <Input type="text" placeholder={school?.name ?? "Description"} value={desc ?? ""} onChange={e => setDesc(String(e.target.value))} />
+                        <Input type="text" placeholder={String(school?.startDate ?? "Start Date (mm/dd/yyyy)")} value={startDate ?? ""} onChange={e => setStartDate(String(e.target.value))} />
+                        <Input type="text" placeholder={String(school?.endDate ?? "End Date (mm/dd/yyyy)")} value={endDate ?? ""} onChange={e => setEndDate(String(e.target.value))} />
                     </div>
-
-                    <textarea
-                        className="w-full h-[5rem] min-h-[3rem] max-h-[8rem] md:max-h-[30rem] resize-y px-4 pt-2 mt-1 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-cyan-600"
-                        placeholder={job?.desc ?? "Description"}
-                        value={desc ?? ""}
-                        onChange={e => setDesc(e.target.value)}
-                    />
                 </div>
 
                 <div className="py-1">
@@ -130,9 +115,9 @@ const ResumeJobs: React.FC<ResumeProps> = ({ job, jobs, setJobs }) => {
                     </div>
                     <div className="float-right">
                         <button className="w-[8rem] h-10 rounded-md text-white font-bold bg-red-600 hover:bg-red-700"
-                            hidden={!!!job}
+                            hidden={!!!school}
                             onClick={() => {
-                                if (window.confirm("Are you sure you want to delete this job?")) {
+                                if (window.confirm("Are you sure you want to delete this school?")) {
                                     handleDelete();
                                     closeModal();
                                 }
@@ -144,7 +129,7 @@ const ResumeJobs: React.FC<ResumeProps> = ({ job, jobs, setJobs }) => {
                             onClick={handleUpdate}
                         >
                             {
-                                job ? "Update" : "Add"
+                                school ? "Update" : "Add"
                             }
                         </button>
                     </div>
@@ -156,4 +141,4 @@ const ResumeJobs: React.FC<ResumeProps> = ({ job, jobs, setJobs }) => {
     )
 }
 
-export default ResumeJobs;
+export default ResumeEducation;

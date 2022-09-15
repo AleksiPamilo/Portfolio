@@ -17,7 +17,7 @@ export declare interface ISchool {
 };
 
 export declare interface ISkill {
-    index: number,
+    key: string,
     language: string,
     percentage: number,
 };

@@ -11,7 +11,7 @@ const Jobs: React.FC<EducationProps> = ({ schools }) => {
     return (
         <div className="mt-6 colors">
             <h1 className="text-4xl font-bold text-cyan-600 text-center">Education</h1>
-            <div className="border rounded-lg border-cyan-600 mt-5">
+            <div className="border-b border-cyan-600 mt-5">
                 <div className="flex flex-wrap justify-center gap-5 p-4">
                     {
                         !schools
