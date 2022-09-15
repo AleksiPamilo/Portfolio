@@ -35,10 +35,10 @@ const Jobs: React.FC<JobsProps> = ({ jobs, setJobs }) => {
                         >
                             <div className="w-full">
                                 <div className="float-left">
-                                    <h1 className="text-xl font-bold">{job.company}</h1>
+                                    <h1 className="text-base md:text-xl font-bold">{job.company}</h1>
                                 </div>
                                 <div className="float-right">
-                                    <h1 className="text-sm font-bold pt-1">{formatDate(job.startDate)} – {formatDate(job.endDate)}</h1>
+                                    <h1 className="text-xs md:text-sm font-bold pt-1">{formatDate(job.startDate)} – {formatDate(job.endDate)}</h1>
                                 </div>
                                 <div className="flex flex-row w-full justify-between">
                                     <p className="text-sm">{job.title}</p>

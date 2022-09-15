@@ -24,15 +24,15 @@ const Jobs: React.FC<JobsProps> = ({ jobs }) => {
                                         <div className="float-left">
                                             {
                                                 job.companyWebsite
-                                                    ? <a className="text-xl font-bold text-blue-600 hover:text-blue-800 visited:text-purple-600" href={job.companyWebsite} target="_blank" rel="noreferrer">
+                                                    ? <a className="text-base md:text-xl font-bold text-blue-600 hover:text-blue-800 visited:text-purple-600" href={job.companyWebsite} target="_blank" rel="noreferrer">
                                                         {job.company}
                                                         <FaExternalLinkAlt className="w-5 h-5 pl-2 inline colors" />
                                                     </a>
-                                                    : <h1 className="text-xl font-bold">{job.company}</h1>
+                                                    : <h1 className="text-base md:text-xl font-bold">{job.company}</h1>
                                             }
                                         </div>
                                         <div className="float-right">
-                                            <h1 className="text-sm font-bold pt-1">{formatDate(job.startDate)} – {formatDate(job.endDate)}</h1>
+                                            <h1 className="text-xs md:text-sm font-bold pt-1">{formatDate(job.startDate)} – {formatDate(job.endDate)}</h1>
                                         </div>
                                         <div className="flex flex-row w-full justify-between">
                                             <p className="text-sm">{job.title}</p>

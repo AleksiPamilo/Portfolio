@@ -30,18 +30,14 @@ const Education: React.FC<EducationProps> = ({ schools, setSchools }) => {
             <div className="mt-5 justify-center flex flex-wrap gap-5">
                 {
                     schools.map((school) => (
-                        <div key={school.key} className="flex flex-wrap rounded-lg w-[25rem] min-h-[8rem] p-4 border-2 cursor-pointer select-none border-cyan-400 hover:border-cyan-600"
+                        <div key={school.key} className="flex flex-wrap rounded-lg w-[25rem] min-h-[8rem] p-4 border-2 select-none border-cyan-400 hover:border-cyan-600"
                             onClick={() => openSchoolModal(school)}
                         >
-                            <div className="w-full">
-                                <div className="float-left">
-                                    <h1 className="text-xl font-bold">{school.name}</h1>
-                                </div>
-                                <div className="float-right">
-                                    <h1 className="text-sm font-bold pt-1">{formatDate(school.startDate)} – {formatDate(school.endDate)}</h1>
-                                </div>
+                            <h1 className="text-base md:text-xl font-bold">{school.name}</h1>
+                            <div className="flex flex-row w-full justify-between">
                                 <p className="text-sm mt-2">{school.desc}</p>
                             </div>
+                            <h1 className="text-sm font-bold pt-5">{formatDate(school.startDate)} – {formatDate(school.endDate)}</h1>
                         </div>
                     ))
                 }
