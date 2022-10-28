@@ -55,7 +55,7 @@ const Projects: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <div className="mt-5 justify-center flex flex-wrap gap-5 md:max-w-[85rem] md:max-h-[40rem] md:overflow-y-auto">
+            <div className="mt-5 justify-center flex flex-wrap gap-5 md:max-w-[85rem]">
                 {
                     repos.length === 0
                         ? <h1 className="text-2xl font-bold">Loading...</h1>

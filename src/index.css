@@ -13,7 +13,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--bg-color);
+  background-image: linear-gradient(to right, var(--bg-from) 0%, var(--bg-to) 100%);
   transition: ease-in-out 0.3s;
 }
 
@@ -24,6 +24,8 @@ code {
 
 body.light {
   --bg-color: #e2e8f0;
+  --bg-from: #cffafe;
+  --bg-to: #a5f3fc;
   --txt-color: #000;
 
   --nav-bg-color: #f1f1f1;
@@ -31,12 +33,16 @@ body.light {
   --nav-link-color-hover: #d3d3d3;
 
   --card-text-color: #000;
+  --card-link-color: #000;
+  --card-link-hover-color: #696b6e;
   --card-bg-color: #cbd5e1;
   --radio-btn-border-color: #000;
 }
 
 body.dark {
   --bg-color: #0f172a;
+  --bg-from: #155e75;
+  --bg-to: #164e63;
   --txt-color: #fff;
 
   --nav-bg-color: #9f9f9f;
@@ -44,6 +50,8 @@ body.dark {
   --nav-link-color-hover: #c9ccc9;
 
   --card-text-color: #fff;
+  --card-link-color: #fff;
+  --card-link-hover-color: #c9ccc9;
   --card-bg-color: #11161f;
   --radio-btn-border-color:#4b5563;
 }

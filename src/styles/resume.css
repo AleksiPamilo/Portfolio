@@ -1,5 +1,13 @@
 .colors {
-    color: var(--txt-color)
+    color: var(--txt-color);
+}
+
+body.light .box-shadow:hover {
+    box-shadow: 0 0 20px 2px #164e63
+}
+
+body.dark .box-shadow:hover {
+    box-shadow: 0 0 20px 2px #22d3ee
 }
 
 .box {

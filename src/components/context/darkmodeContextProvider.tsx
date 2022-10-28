@@ -22,8 +22,7 @@ const useDarkmodeContext = () => {
 }
 
 const DarkmodeContextProvider: React.FC<Props> = ({ children }) => {
-
-    const [isDarkmode, setIsDarkmode] = useState<boolean>(JSON.parse(localStorage.getItem('useDarkmode') ?? "false"));
+    const [isDarkmode, setIsDarkmode] = useState<boolean>(JSON.parse(localStorage.getItem('useDarkmode') ?? "true"));
 
     useEffect(() => {
         document.body.classList.toggle("dark", isDarkmode);

@@ -10,7 +10,7 @@ type JobsProps = {
 
 const Jobs: React.FC<JobsProps> = ({ jobs }) => {
     return (
-        <div className="colors">
+        <div className="text-white">
             <h1 className="text-4xl font-bold text-cyan-600 text-center">Experience</h1>
             <div className="border-b border-cyan-600 mt-5">
                 <div className="flex flex-wrap justify-center gap-5 p-4">
@@ -18,15 +18,14 @@ const Jobs: React.FC<JobsProps> = ({ jobs }) => {
                         !jobs
                             ? <div />
                             : jobs.map(job => (
-                                <div key={job.key} className="flex flex-wrap rounded-lg w-[25rem] min-h-[8rem] p-4 border-2 select-none border-cyan-400 hover:border-cyan-600"
-                                >
+                                <div key={job.key} className="flex flex-wrap rounded-lg w-[25rem] min-h-[8rem] p-4 border select-none bg-black border-cyan-400 box-shadow">
                                     <div className="w-full">
                                         <div className="float-left">
                                             {
                                                 job.companyWebsite
                                                     ? <a className="text-base md:text-xl font-bold text-blue-600 hover:text-blue-800 visited:text-purple-600" href={job.companyWebsite} target="_blank" rel="noreferrer">
                                                         {job.company}
-                                                        <FaExternalLinkAlt className="w-5 h-5 pl-2 inline colors" />
+                                                        <FaExternalLinkAlt className="w-5 h-5 pl-2 inline text-white" />
                                                     </a>
                                                     : <h1 className="text-base md:text-xl font-bold">{job.company}</h1>
                                             }

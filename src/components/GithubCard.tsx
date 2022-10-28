@@ -1,7 +1,6 @@
 import React from "react";
 import { IRepo } from "../interfaces/githubRepo";
-import { FaLaptopCode, FaFileCode, FaStar } from "react-icons/fa";
-import { BiGitRepoForked } from "react-icons/bi"
+import { FaStar, FaGithub, FaGlobe } from "react-icons/fa";
 
 import "../styles/projects.css";
 
@@ -10,34 +9,22 @@ type GithubCardProps = {
 };
 const GithubCard: React.FC<GithubCardProps> = ({ repo }) => {
     return (
-        <div key={repo.name} className="flex flex-wrap rounded-lg githubCard w-[20rem] min-h-[12rem] p-4 border-2 border-cyan-400 hover:border-cyan-600">
-            <div className="flex flex-col w-full">
+        <div className="w-[27rem] h-[7rem] relative p-2 border border-cyan-400 hover:shadow-[0_0_10px_2px_#06b6d4] colors">
+            <div className="flex flex-row justify-between items-center">
                 <h1 className="text-xl font-bold">{repo.name}</h1>
-                <p className="text-sm">{repo.description}</p>
-            </div>
-            <div className="flex flex-row w-full justify-between">
-                <div className="flex flex-row gap-2">
-                    <FaLaptopCode className="w-5 h-5" />
-                    <p className="text-sm">{repo.language ?? "?"}</p>
-                </div>
-                <div className="flex flex-row gap-2">
-                    <FaFileCode className="w-5 h-5" />
-                    <p className="text-sm">{repo.size} KB</p>
-                </div>
-                <div className="flex flex-row gap-2">
+                <span className="flex flex-row items-center gap-2">
+                    <span>{repo.stargazers_count}</span>
                     <FaStar className="w-5 h-5" />
-                    <p className="text-sm">{repo.stargazers_count}</p>
-                </div>
-                <div className="flex flex-row gap-2">
-                    <BiGitRepoForked className="w-5 h-5" />
-                    <p className="text-sm">{repo.forks_count}</p>
-                </div>
+                </span>
             </div>
-            <a href={repo.html_url} target="_blank" rel="noreferrer" className="flex w-full items-center justify-center py-2 px-3 bg-cyan-600 rounded-lg text-white hover:bg-cyan-700">
-                Open In Github
-            </a>
+            <p className="text-sm break-words max-w-[22rem] max-h-[4rem] overflow-clip">{repo.description}</p>
+            <div className="absolute bottom-0 right-0 p-2">
+                <span className="flex flex-row gap-2">
+                    <a target="_blank" rel="noreferrer" href={repo.homepage} hidden={!!!repo.homepage}><FaGlobe className="w-5 h-5 links" /></a>
+                    <a target="_blank" rel="noreferrer" href={repo.html_url}><FaGithub className="w-5 h-5 links" /></a>
+                </span>
+            </div>
         </div>
-
     )
 }
 

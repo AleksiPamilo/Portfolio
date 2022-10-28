@@ -2,6 +2,14 @@
     color: var(--txt-color)
 }
 
+.links {
+    color: var(--card-link-color);
+}
+
+.links:hover {
+    color: var(--card-link-hover-color);
+}
+
 .githubCard {
     background-color: var(--card-bg-color);
     color: var(--card-text-color)

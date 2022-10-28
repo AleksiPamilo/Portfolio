@@ -6,6 +6,7 @@ import Input from "../Input";
 
 import FirebaseServices from "../../firebase/firebaseServices";
 const firestore = FirebaseServices.getFirestoreInstance();
+const inputStyle = "w-full h-12 px-4 rounded-xl bg-transparent placeholder:text-gray-300 text-white border border-cyan-400 focus:outline-none";
 
 const Contact: React.FC = () => {
     const { closeModal } = useModal();
@@ -57,10 +58,10 @@ const Contact: React.FC = () => {
 
     return (
         <div className="flex justify-center items-center">
-            <div className="w-[25rem] md:w-[40rem] rounded-lg bg-gray-300 p-4 border-2 border-cyan-600">
+            <div className="w-[25rem] md:w-[40rem] rounded-lg bg-gradient-to-l to-cyan-700 from-blue-400 p-4 border-2 border-cyan-400 shadow-[0_0_10px_2px_#22d3ee]">
                 <div className="align-middle">
                     <div className="float-left">
-                        <h1 className="text-black font-bold text-xl pl-1 select-none">Contact Me</h1>
+                        <h1 className="text-white font-bold text-xl pl-1 select-none">Contact Me</h1>
                     </div>
                     <div className="float-right">
                         <button className="py-2 px-3 rounded-md bg-cyan-600 hover:bg-cyan-700 select-none" onClick={() => {
@@ -80,24 +81,24 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                     <div className="grid gap-1 mt-12 mb-1 grid-row-2 md:grid-cols-2">
-                        <Input type="text" placeholder="Your Name" value={name} onChange={e => setName(String(e.target.value))} required={!!error && name === ""} />
-                        <Input type="email" placeholder="Your Email Address" value={email ?? ""} onChange={e => setEmail(String(e.target.value))} />
+                        <Input styles={`${inputStyle} ${!!error && name === "" ? "border-red-500" : "focus:shadow-[0_0_5px_2px_#22d3ee]"}`} type="text" placeholder="Your Name" value={name} onChange={e => setName(String(e.target.value))} />
+                        <Input styles={`${inputStyle} ${!!error && email === "" ? "border-red-500" : "focus:shadow-[0_0_5px_2px_#22d3ee]"}`} type="email" placeholder="Your Email Address" value={email ?? ""} onChange={e => setEmail(String(e.target.value))} />
                     </div>
-                    <Input type="text" placeholder="Title" value={title} onChange={e => setTitle(String(e.target.value))} required={!!error && title === ""} />
+                    <Input styles={`${inputStyle} ${!!error && title === "" ? "border-red-500" : "focus:shadow-[0_0_5px_2px_#22d3ee]"}`} type="text" placeholder="Title" value={title} onChange={e => setTitle(String(e.target.value))} />
                     <textarea
-                        className={`w-full h-[5rem] min-h-[3rem] max-h-[8rem] md:max-h-[30rem] resize-y px-4 pt-2 mt-1 rounded-lg border-2 border-gray-300 focus:outline-none ${!!error && content === "" ? "border-red-500" : "focus:border-cyan-600"}`}
+                        className={`w-full h-[5rem] min-h-[3rem] max-h-[8rem] md:max-h-[30rem] resize-y px-4 pt-2 mt-1 rounded-xl bg-transparent text-white border border-cyan-400 focus:outline-none ${!!error && content === "" ? "border-red-500" : "focus:shadow-[0_0_5px_2px_#22d3ee]"}`}
                         placeholder="Content"
                         value={content}
                         onChange={e => setContent(e.target.value)}
                     />
                     <div className="py-1">
                         <div className="float-left" hidden={!!!error}>
-                            <div className="flex items-center w-full max-w-[29.3rem] h-10 px-4 rounded-lg border-2 text-red-600 bg-white border-red-500">
+                            <div className="flex items-center w-full max-w-[29.3rem] text-red-600">
                                 {error}
                             </div>
                         </div>
                         <div className="float-left" hidden={!!!success}>
-                            <div className="flex items-center w-full h-10 px-4 rounded-lg border-2 text-green-600 bg-white border-green-400" >
+                            <div className="flex items-center w-full max-w-[29.3rem] text-green-600" >
                                 {success}
                             </div>
                         </div>
