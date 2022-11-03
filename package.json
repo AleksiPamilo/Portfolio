@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@ag-grid-community/all-modules": "^27.0.1",
-    "@ag-grid-community/react": "^27.0.1",
+    "@ag-grid-community/react": "^28.2.1",
     "@headlessui/react": "^1.7.0",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.5",
