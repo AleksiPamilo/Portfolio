@@ -53,7 +53,7 @@ body.dark {
   --card-link-color: #fff;
   --card-link-hover-color: #c9ccc9;
   --card-bg-color: #11161f;
-  --radio-btn-border-color:#4b5563;
+  --radio-btn-border-color: #3f4752;
 }
 
 body::-webkit-scrollbar { width: 8px; }

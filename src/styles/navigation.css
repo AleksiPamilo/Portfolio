@@ -11,9 +11,9 @@
 }
 
 .nav-bg {
-    background-color: var(--nav-bg-color);
+    background-image: linear-gradient(to right, var(--bg-from) 0%, var(--bg-to) 100%);
 }
 
 .mobile-nav {
-    background-color: var(--nav-bg-color);
+    background-image: linear-gradient(to right, var(--bg-from) 0%, var(--bg-to) 100%);
 }

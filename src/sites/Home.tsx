@@ -9,7 +9,7 @@ const Home: React.FC = () => {
       <h1 className="text-5xl font-extrabold mt-3 text-gray-500">My name is <span className="text-cyan-600">Aleksi</span> Pamilo</h1>
       <h4 className="mt-5 text-gray-400">I am currently studying information and communication technologies.<br />I have experience in JS, TS, C#, HTML, CSS, React and Vue.</h4>
       <div className="mt-10">
-        <a href="/projects" className="text-white bg-cyan-600 font-semibold py-2 px-14 rounded-sm hover:bg-cyan-700 hover:shadow-[0_0_10px_2px_#06b6d4]">My Projects</a>
+        <a href="/projects" className="text-white bg-cyan-600 font-semibold py-2 px-14 rounded-sm hover:text-cyan-300 hover:bg-cyan-900 hover:shadow-[0_0_15px_3px_#06b6d4] transition ease-in-out duration-300">My Projects</a>
       </div>
     </div>
   )

@@ -1,5 +1,5 @@
 import React from "react";
-import { BsSun, BsMoon } from "react-icons/bs";
+import { FiSun, FiMoon } from "react-icons/fi";
 import { useDarkmode } from "../hooks";
 
 const Darkmode: React.FC = () => {
@@ -15,8 +15,8 @@ const Darkmode: React.FC = () => {
         >
             {
                 isDarkmode
-                    ? <BsSun className={`w-6 h-6 hover:text-cyan-600 ${isDarkmode ? "text-white" : "text-black"}`} />
-                    : <BsMoon className={`w-6 h-6 hover:text-cyan-600 ${isDarkmode ? "text-white" : "text-black"}`} />
+                    ? <FiSun className="text-3xl text-cyan-600 hover:text-cyan-400" />
+                    : <FiMoon className="text-3xl text-cyan-600 hover:text-cyan-400" />
             }
         </button>
     )
