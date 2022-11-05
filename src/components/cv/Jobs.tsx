@@ -18,7 +18,7 @@ const Jobs: React.FC<JobsProps> = ({ jobs }) => {
                         !jobs
                             ? <div />
                             : jobs.map(job => (
-                                <div key={job.key} className="flex flex-wrap rounded-lg w-[25rem] min-h-[8rem] p-4 border select-none bg-black border-cyan-400 box-shadow">
+                                <div key={job.key} className="flex flex-wrap rounded-lg w-[25rem] min-h-[8rem] p-4 border select-none border-cyan-400 box-shadow">
                                     <div className="w-full">
                                         <div className="float-left">
                                             {
