@@ -23,7 +23,10 @@ const Projects: React.FC = () => {
 
     useEffect(() => {
         fetchRepos()
-            .then(setRepos)
+            .then((data: IRepo[]) => {
+                const sortedData = data.slice().sort((a, b) => new Date(b.pushed_at).valueOf() - new Date(a.pushed_at).valueOf());
+                setRepos(sortedData);
+            })
     }, []);
 
     document.title = "Portfolio – Projects";
@@ -33,25 +36,25 @@ const Projects: React.FC = () => {
             <h1 className="flex text-4xl font-bold text-cyan-600">My Projects</h1>
             <div className="flex flex-col items-center justify-center w-full mt-4">
                 <div className="flex flex-row gap-5 items-center justify-center w-full">
-                    <div className="w-[8rem] h-[2.5rem] rounded-lg border radioBtn">
-                        <input type="radio" name="sort" id="recent"
+                    <div className="w-[8rem] h-[2.5rem] rounded-lg  radioBtn">
+                        <input type="radio" defaultChecked name="sort" id="recent"
                             className="hidden peer"
                             onClick={() => sortRepos(repoSort.recent)} />
-                        <label htmlFor="recent" className="colors w-full h-full rounded-md flex justify-center items-center text-black font-bold text-lg cursor-pointer peer-checked:bg-cyan-600 hover:bg-cyan-600 ease-in-out duration-300">Recent</label>
+                        <label htmlFor="recent" className=" colors w-full h-full rounded-md flex justify-center items-center text-black font-bold text-lg cursor-pointer peer-checked:bg-cyan-600 hover:bg-cyan-600 ease-in-out duration-300 hover:shadow-[0_0_15px_8px_#0e7490] border">Recent</label>
                     </div>
 
                     <div className="w-[8rem] h-[2.5rem] rounded-lg border radioBtn">
                         <input type="radio" name="sort" id="star"
                             className="hidden peer"
                             onClick={() => sortRepos(repoSort.star)} />
-                        <label htmlFor="star" className="colors w-full h-full rounded-md flex justify-center items-center text-black font-bold text-lg cursor-pointer peer-checked:bg-cyan-600 hover:bg-cyan-600 ease-in-out duration-300">Star</label>
+                        <label htmlFor="star" className="colors w-full h-full rounded-md flex justify-center items-center text-black font-bold text-lg cursor-pointer peer-checked:bg-cyan-600 hover:bg-cyan-600 ease-in-out duration-300 hover:shadow-[0_0_15px_8px_#0e7490] border">Star</label>
                     </div>
 
                     <div className="w-[8rem] h-[2.5rem] rounded-lg border radioBtn">
                         <input type="radio" name="sort" id="name"
                             className="hidden peer"
                             onClick={() => sortRepos(repoSort.name)} />
-                        <label htmlFor="name" className="colors w-full h-full rounded-md flex justify-center items-center text-black font-bold text-lg cursor-pointer peer-checked:bg-cyan-600 hover:bg-cyan-600 ease-in-out duration-300">Name</label>
+                        <label htmlFor="name" className="colors w-full h-full rounded-md flex justify-center items-center text-black font-bold text-lg cursor-pointer peer-checked:bg-cyan-600 hover:bg-cyan-600 ease-in-out duration-300 hover:shadow-[0_0_15px_8px_#0e7490] border">Name</label>
                     </div>
                 </div>
             </div>

@@ -4,6 +4,7 @@ import { ISchool } from "../../interfaces/cv";
 import { useDarkmode } from "../context/darkmodeContextProvider";
 import { useModal } from "../context/modalContextProvider";
 import ResumeEducation from "../modals/Management/Education";
+import formatDate from "../formatDate";
 
 type EducationProps = {
     schools: ISchool[];
@@ -44,11 +45,6 @@ const Education: React.FC<EducationProps> = ({ schools, setSchools }) => {
             </div>
         </div>
     )
-}
-
-function formatDate(date: string) {
-    const d = new Date(date);
-    return `${d.getMonth() + 1}/${d.getFullYear()}`;
 }
 
 export default Education;

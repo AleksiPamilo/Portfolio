@@ -103,10 +103,10 @@ const ResumeJobs: React.FC<ResumeProps> = ({ job, jobs, setJobs }) => {
                         <div className="col-span-2">
                             <Input type="text" placeholder={job?.title ?? "Title"} value={title ?? ""} onChange={e => setTitle(String(e.target.value))} />
                         </div>
-                        <Input type="text" placeholder={job?.company ?? "Company"} value={company ?? ""} onChange={e => setCompany(String(e.target.value))} />
-                        <Input type="text" placeholder={job?.companyWebsite ?? "Company Website (Optional)"} value={companyWebsite ?? ""} onChange={e => setCompanyWebsite(String(e.target.value))} />
-                        <Input type="text" placeholder={String(job?.startDate ?? "Start Date (mm/dd/yyyy)")} value={startDate ?? ""} onChange={e => setStartDate(String(e.target.value))} />
-                        <Input type="text" placeholder={String(job?.endDate ?? "End Date (mm/dd/yyyy)")} value={endDate ?? ""} onChange={e => setEndDate(String(e.target.value))} />
+                        <Input type="text" placeholder="Company" value={company ?? ""} onChange={e => setCompany(String(e.target.value))} />
+                        <Input type="text" placeholder="Company Website (Optional)" value={companyWebsite ?? ""} onChange={e => setCompanyWebsite(String(e.target.value))} />
+                        <Input type="text" placeholder="Start Date (mm/dd/yyyy)" value={startDate ?? ""} onChange={e => setStartDate(String(e.target.value))} />
+                        <Input type="text" placeholder="End Date (mm/dd/yyyy)" value={endDate ?? ""} onChange={e => setEndDate(String(e.target.value))} />
                     </div>
 
                     <textarea

@@ -4,6 +4,7 @@ import { IJob } from "../../interfaces/cv";
 import { useDarkmode } from "../context/darkmodeContextProvider";
 import { useModal } from "../context/modalContextProvider";
 import ResumeJobs from "../modals/Management/Experience";
+import formatDate from "../formatDate";
 
 type JobsProps = {
     jobs: IJob[];
@@ -51,11 +52,6 @@ const Jobs: React.FC<JobsProps> = ({ jobs, setJobs }) => {
             </div>
         </div>
     )
-}
-
-function formatDate(date: string) {
-    const d = new Date(date);
-    return `${d.getMonth() + 1}/${d.getFullYear()}`;
 }
 
 export default Jobs;

@@ -58,7 +58,7 @@ const Contact: React.FC = () => {
 
     return (
         <div className="flex justify-center items-center">
-            <div className="w-[25rem] md:w-[40rem] rounded-lg bg-gradient-to-l to-cyan-700 from-blue-400 p-4 border-2 border-cyan-400 shadow-[0_0_10px_2px_#22d3ee]">
+            <div className="w-[25rem] md:w-[40rem] rounded-lg backdrop-blur-3xl p-4 border-2 border-cyan-400 shadow-[0_0_10px_2px_#22d3ee]">
                 <div className="align-middle">
                     <div className="float-left">
                         <h1 className="text-white font-bold text-xl pl-1 select-none">Contact Me</h1>

@@ -89,8 +89,8 @@ const ResumeSkills: React.FC<ResumeProps> = ({ skill, skills, setSkills }) => {
 
                 <div>
                     <div className="grid grid-cols-2 mt-12 gap-1">
-                        <Input type="text" placeholder={skill?.language ?? "Language"} value={language ?? ""} onChange={e => setLanguage(String(e.target.value))} />
-                        <Input type="text" placeholder={String(skill?.percentage ?? "Percentage")} value={String(percentage ?? "")} onChange={e => setPercentage(e.target.value)} />
+                        <Input type="text" placeholder="Language" value={language ?? ""} onChange={e => setLanguage(String(e.target.value))} />
+                        <Input type="text" placeholder="Percentage" value={String(percentage ?? "")} onChange={e => setPercentage(e.target.value)} />
                     </div>
                 </div>
 

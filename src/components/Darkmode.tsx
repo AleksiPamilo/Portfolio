@@ -15,8 +15,8 @@ const Darkmode: React.FC = () => {
         >
             {
                 isDarkmode
-                    ? <FiSun className="text-3xl text-cyan-600 hover:text-cyan-400" />
-                    : <FiMoon className="text-3xl text-cyan-600 hover:text-cyan-400" />
+                    ? <FiMoon className="text-3xl text-cyan-600 hover:text-cyan-400" />
+                    : <FiSun className="text-3xl text-cyan-600 hover:text-cyan-400" />
             }
         </button>
     )

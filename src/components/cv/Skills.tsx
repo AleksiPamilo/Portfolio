@@ -11,7 +11,7 @@ const Skills: React.FC<SkillsProps> = ({ skills }) => {
     return (
         <div className="text-white">
             <h1 className="text-4xl font-bold text-cyan-600 text-center">Professional Skills</h1>
-            <div className="mt-5 p-4 flex flex-wrap justify-center gap-5">
+            <div className="p-4 flex flex-wrap justify-center gap-5">
                 {
                     !skills
                         ? <div className="colors">Loading...</div>

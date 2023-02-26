@@ -43,21 +43,25 @@ const Navigation: React.FC = () => {
                         </a>)
                     }
                 </div>
-                <div className="flex gap-4 absolute right-0 pr-[5%]">
-                    <a href="https://www.instagram.com/aleksi.pamilo/" target="_blank" rel="noopener noreferrer" >
-                        <FiInstagram className="text-3xl text-gray-700 hover:text-cyan-600" />
-                    </a>
-                    <a href="https://www.linkedin.com/in/aleksi-pamilo-62aaa5229/" target="_blank" rel="noopener noreferrer">
-                        <FiLinkedin className="text-3xl text-gray-700 hover:text-cyan-600" />
-                    </a>
-                    <a href="https://github.com/AleksiPamilo" target="_blank" rel="noopener noreferrer">
-                        <FiGithub className="text-3xl text-gray-700 hover:text-cyan-600" />
-                    </a>
-                    <button onClick={openModal}>
-                        <FiMessageSquare className="text-3xl text-gray-700 hover:text-cyan-600" />
-                    </button>
-                    <Darkmode />
-                </div>
+                {
+                    !window.location.pathname.includes("/management") && (
+                        <div className="flex gap-4 absolute right-0 pr-[5%]">
+                            <a href="https://www.instagram.com/aleksi.pamilo/" target="_blank" rel="noopener noreferrer" >
+                                <FiInstagram className="text-3xl text-gray-700 hover:text-cyan-600" />
+                            </a>
+                            <a href="https://www.linkedin.com/in/aleksi-pamilo-62aaa5229/" target="_blank" rel="noopener noreferrer">
+                                <FiLinkedin className="text-3xl text-gray-700 hover:text-cyan-600" />
+                            </a>
+                            <a href="https://github.com/AleksiPamilo" target="_blank" rel="noopener noreferrer">
+                                <FiGithub className="text-3xl text-gray-700 hover:text-cyan-600" />
+                            </a>
+                            <button onClick={openModal}>
+                                <FiMessageSquare className="text-3xl text-gray-700 hover:text-cyan-600" />
+                            </button>
+                            <Darkmode />
+                        </div>
+                    )
+                }
             </div>
 
             {/* Navigation Button */}

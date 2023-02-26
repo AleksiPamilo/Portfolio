@@ -95,8 +95,8 @@ const ResumeEducation: React.FC<ResumeEducationProps> = ({ school, schools, setS
 
                 <div>
                     <div className="grid grid-cols-2 mt-12 gap-1">
-                        <Input type="text" placeholder={school?.name ?? "Name"} value={name ?? ""} onChange={e => setName(String(e.target.value))} />
-                        <Input type="text" placeholder={school?.name ?? "Description"} value={desc ?? ""} onChange={e => setDesc(String(e.target.value))} />
+                        <Input type="text" placeholder="Name" value={name ?? ""} onChange={e => setName(String(e.target.value))} />
+                        <Input type="text" placeholder="Description" value={desc ?? ""} onChange={e => setDesc(String(e.target.value))} />
                         <Input type="text" placeholder={String(school?.startDate ?? "Start Date (mm/dd/yyyy)")} value={startDate ?? ""} onChange={e => setStartDate(String(e.target.value))} />
                         <Input type="text" placeholder={String(school?.endDate ?? "End Date (mm/dd/yyyy)")} value={endDate ?? ""} onChange={e => setEndDate(String(e.target.value))} />
                     </div>
