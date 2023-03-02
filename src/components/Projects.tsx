@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { fetchRepos } from "../api/github";
 import { IRepo, repoSort } from "../interfaces/githubRepo";
-import { FaStar, FaGlobe, FaGithub } from "react-icons/fa";
+import { FaStar, FaGlobe } from "react-icons/fa";
 
 const Projects: React.FC = () => {
     const [repos, setRepos] = useState<IRepo[]>([]);
@@ -51,7 +51,7 @@ const Projects: React.FC = () => {
                     !repos.length
                         ? <div>Loading...</div>
                         : repos.map((repo) => (
-                            <div className="flex flex-col w-[20rem] h-[7rem] p-4 gap-2 rounded-md border hover:shadow-glow-5 relative group">
+                            <a href={repo.html_url} target="_blank" rel="noreferrer" className="flex flex-col w-[20rem] h-[7rem] p-4 gap-2 rounded-md border hover:shadow-glow-5 relative group">
                                 <div className="flex flex-row justify-between items-center">
                                     <p>{repo.name}</p>
                                     <div className="flex items-center gap-2">
@@ -61,12 +61,11 @@ const Projects: React.FC = () => {
                                 </div>
                                 <p>{repo.description}</p>
                                 <div className="flex flex-row absolute bottom-2 right-3">
-                                    <a href={repo.html_url} target="_blank" rel="noreferrer"><FaGithub className="w-5 h-5 text-gray-400 hover:text-white" /></a>
                                     {
                                         repo.homepage && <a href={repo.homepage} target="_blank" rel="noreferrer"><FaGlobe className="w-5 h-5 ml-2 text-gray-400 hover:text-white" /></a>
                                     }
                                 </div>
-                            </div>
+                            </a>
                         ))
                 }
             </div>
