@@ -3,7 +3,7 @@ import scrollTo from "../utils/scrollTo";
 
 const Home: React.FC = () => {
     return (
-        <div className="md:pl-60 md:pt-[20rem] px-10 pt-[15rem]">
+        <div className="md:pl-60 md:pt-[20rem] px-10 pt-[13rem]">
             <p className="font-bold text-gray-400">Hello</p>
             <h1 className="text-4xl md:text-5xl font-extrabold mt-3 text-gray-500">My name is <span className="text-white">Aleksi</span> Pamilo</h1>
             <div className="mt-5 text-gray-400">
