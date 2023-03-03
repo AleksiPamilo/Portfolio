@@ -8,7 +8,7 @@ const Home: React.FC = () => {
             <h1 className="text-4xl md:text-5xl font-extrabold mt-3 text-gray-500">My name is <span className="text-white">Aleksi</span> Pamilo</h1>
             <div className="mt-5 text-gray-400">
                 <p>I am currently studying information and communication technologies.</p>
-                <p>I have experience including but not limited to JS, TS, C#, HTML, CSS and Vue.</p>
+                <p>I have experience including but not limited to JS, TS, C#, HTML, CSS, React and Vue.</p>
                 <p>Currently i code mainly with React or NextJS and TypeScript!</p>
             </div>
             <div className="mt-10">
