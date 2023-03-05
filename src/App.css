@@ -2,3 +2,9 @@ section {
     position: relative;
     height: 100vh;
 }
+
+@media (max-width: 640px) {
+    section {
+        margin-bottom: 5rem;
+    }
+}

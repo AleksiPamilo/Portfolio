@@ -19,8 +19,17 @@ const Resume: React.FC = () => {
         getDoc(docRef).then((doc) => {
             if (doc.exists()) {
                 const data = doc.data();
-                setEducation(data.education);
-                setExperience(data.experience);
+                const sortByDate = (data: ISchool[] | IJob[]) => {
+                    return data.slice().sort((a, b) => {
+                        if (a.endDate.toLowerCase() === "present") return -1;
+                        if (b.endDate.toLowerCase() === "present") return -1;
+
+                        return new Date(b.endDate).valueOf() - new Date(a.endDate).valueOf();
+                    });
+                }
+
+                setEducation(sortByDate(data.education) as ISchool[]);
+                setExperience(sortByDate(data.experience) as IJob[]);
                 setSkills(data.skills);
             } else {
                 console.log("No such document!");
@@ -29,7 +38,7 @@ const Resume: React.FC = () => {
     }, []);
 
     return (
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-14 md:gap-10">
             <div className="flex flex-col items-center">
                 <h1 className="flex flex-wrap items-center justify-center text-3xl font-bold mb-4">Education</h1>
                 {education.map((school) => (

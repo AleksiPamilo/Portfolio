@@ -19,7 +19,11 @@ const JobCard: React.FC<JobCardProps> = ({ job }) => {
                         </a>
                         : <p>{job.company}</p>
                 }
-                <p>{formatDate(job.startDate)} - {formatDate(job.endDate)}</p>
+                <p>{formatDate(job.startDate)} - {
+                    job.endDate.toLowerCase() === "present"
+                        ? job.endDate
+                        : formatDate(job.endDate)}
+                </p>
             </div>
             <p>{job.desc}</p>
 
