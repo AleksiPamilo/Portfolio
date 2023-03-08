@@ -13,7 +13,12 @@ const App: React.FC = () => {
   document.title = "Portfolio";
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={
+      <div className="w-screen h-screen flex flex-col gap-4 items-center justify-center fixed bg-black z-50">
+        <h1 className="text-2xl font-bold animate-pulse">Loading...</h1>
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-white" />
+      </div>
+    }>
       <ModalContextProvider>
         <Navigation />
 

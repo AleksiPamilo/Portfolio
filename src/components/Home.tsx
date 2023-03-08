@@ -9,7 +9,7 @@ const Home: React.FC = () => {
             <div className="mt-5 text-gray-400">
                 <p>I am currently studying information and communication technologies.</p>
                 <p>I have experience including but not limited to JS, TS, C#, HTML, CSS, React and Vue.</p>
-                <p>Currently i code mainly with React or NextJS and TypeScript!</p>
+                <p>Currently i mostly use React or NextJS and TypeScript!</p>
             </div>
             <div className="mt-10">
                 <button onClick={() => scrollTo("projects")} className="text-white border font-semibold py-2 px-14 rounded-sm hover:shadow-glow-5 transition ease-in-out duration-300">My Projects</button>
