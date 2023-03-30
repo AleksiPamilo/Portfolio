@@ -14,7 +14,7 @@ const App: React.FC = () => {
 
   return (
     <Suspense fallback={
-      <div className="w-screen h-screen flex flex-col gap-4 items-center justify-center fixed bg-black z-50">
+      <div className="w-screen h-screen flex flex-col gap-4 items-center justify-center fixed bg-[#111111] z-50">
         <h1 className="text-2xl font-bold animate-pulse">Loading...</h1>
         <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-white" />
       </div>
@@ -26,7 +26,7 @@ const App: React.FC = () => {
           <Home />
 
           <div className="w-full absolute bottom-4 text-center">
-            <button onClick={() => scrollTo("projects")} className="bg-black animate-bounce p-4 rounded-full border border-transparent hover:shadow-glow-5">
+            <button onClick={() => scrollTo("projects")} className="bg-[#111111] animate-bounce p-4 rounded-full border border-transparent hover:shadow-glow-5">
               <FaArrowDown className="w-5 h-5 text-white" />
             </button>
           </div>

@@ -19,7 +19,6 @@ export const navItems: INavItems[] = [
 ];
 
 export const links = {
-    Instagram: "https://www.instagram.com/aleksi.pamilo/",
     LinkedIn: "https://www.linkedin.com/in/aleksipamilo",
     GitHub: "https://github.com/AleksiPamilo",
 };

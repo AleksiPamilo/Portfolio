@@ -9,7 +9,7 @@ type JobCardProps = {
 
 const JobCard: React.FC<JobCardProps> = ({ job }) => {
     return (
-        <div className="flex flex-col max-w-[25rem] min-h-[7rem] p-4 gap-6 rounded-md border hover:shadow-glow-5">
+        <div className="flex flex-col max-w-[25rem] min-h-[7rem] p-4 gap-6 rounded-md border">
             <div className="flex flex-row justify-between items-center">
                 {
                     job.companyWebsite

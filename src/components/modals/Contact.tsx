@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
-import { addDoc, collection } from "firebase/firestore";
 import { useModal } from "../context/ModalContextProvider";
 import Input from "../Input";
 
-import FirebaseServices from "../../firebase/firebaseServices";
-const firestore = FirebaseServices.getFirestoreInstance();
 const inputStyle = "w-full h-12 px-4 rounded-xl bg-transparent placeholder:text-gray-300 text-white border focus:outline-none";
 
 enum ContactFormErrors {
     FIELDS = "Please fill in all the required fields",
-    EMAIL_INVALID = "Please enter a valid email"
+    EMAIL_INVALID = "Please enter a valid email",
+    UNEXPECTED = "Something went wrong. Please try again later.",
 }
 
 const Contact: React.FC = () => {
@@ -24,6 +22,9 @@ const Contact: React.FC = () => {
     const [success, setSuccess] = useState<string | null>(null);
 
     const handleSubmit = () => {
+        setSuccess(null);
+        setError(null);
+
         if (name === "" || title === "" || content === "") {
             setSuccess(null);
             setError(ContactFormErrors.FIELDS);
@@ -36,20 +37,30 @@ const Contact: React.FC = () => {
             return;
         };
 
-        return addDoc(collection(firestore, "contact"), {
-            name,
-            email,
-            title,
-            content,
-            date: new Date().toISOString()
-        }).then(() => {
-            setError(null);
-            clearFields();
-            setSuccess("Message sent successfully");
-        }).catch(() => {
-            setSuccess(null);
-            setError("Something went wrong");
-        });
+        fetch("https://api.aleksipamilo.dev/contact", {
+            method: "POST",
+            mode: "no-cors",
+            body: JSON.stringify({
+                name,
+                email,
+                title,
+                content
+            })
+        })
+            .then(async (res) => {
+                if (res.status === 200) {
+                    setError(null);
+                    setSuccess("Message sent successfully!");
+                    clearFields();
+                } else {
+                    setSuccess(null);
+                    setError(ContactFormErrors.UNEXPECTED);
+                }
+            })
+            .catch(() => {
+                setSuccess(null);
+                setError(ContactFormErrors.UNEXPECTED);
+            });
     }
 
     const clearFields = () => {
@@ -57,13 +68,16 @@ const Contact: React.FC = () => {
         setEmail("");
         setTitle("");
         setContent("");
+    }
+
+    const clearStatus = () => {
         setError(null);
         setSuccess(null);
     }
 
     return (
-        <div className="flex justify-center items-center bg-black">
-            <div className="w-[25rem] md:w-[40rem] rounded-lg backdrop-blur-3xl p-4 border-2 shadow-glow-5">
+        <div className="flex justify-center items-center bg-[#101010]">
+            <div className="w-[25rem] md:w-[40rem] rounded-lg backdrop-blur-3xl p-4 border shadow-glow-2">
                 <div className="align-middle">
                     <div className="float-left">
                         <h1 className="text-white font-bold text-xl pl-1 select-none">Contact Me</h1>
@@ -74,9 +88,11 @@ const Contact: React.FC = () => {
                                 if (window.confirm("Are you sure you want to close this modal? This will clear all the fields.")) {
                                     clearFields();
                                     closeModal();
+                                    clearStatus();
                                 }
                             } else {
                                 clearFields();
+                                clearStatus();
                                 closeModal();
                             }
                         }}>
@@ -97,13 +113,11 @@ const Contact: React.FC = () => {
                         onChange={e => setContent(e.target.value)}
                     />
                     <div className="py-1">
-                        <div className="float-left" hidden={!!!error}>
-                            <div className="flex items-center w-full max-w-[29.3rem] text-red-600">
+                        <div className="float-left">
+                            <span hidden={!!!error} className="flex items-center w-full max-w-[29.3rem] text-red-600">
                                 {error}
-                            </div>
-                        </div>
-                        <div className="float-left" hidden={!!!success}>
-                            <div className="flex items-center w-full max-w-[29.3rem] text-green-600" >
+                            </span>
+                            <div hidden={!!!success} className="flex items-center w-full max-w-[29.3rem] text-green-600" >
                                 {success}
                             </div>
                         </div>
