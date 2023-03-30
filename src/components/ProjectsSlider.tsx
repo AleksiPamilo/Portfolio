@@ -12,52 +12,23 @@ const ProjectsSlider: React.FC<ProjectsSliderProps> = ({ projects }) => {
     const currentProject = projects[current];
 
     return (
-        <div className="h-full relative">
-            <div className="w-[50rem]">
-                <div className="flex w-full items-center justify-between absolute top-3/4 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                    <button
-                        onClick={() => setCurrent(current === 0 ? projects.length - 1 : current - 1)}
-                        className="p-3 bg-zinc-900 rounded-md hover:bg-zinc-800"
-                    >
-                        <span className="flex items-center gap-2">
-                            <FaAngleLeft className="w-6 h-6 text-white" />
-                            <p>Previous Project</p>
-                        </span>
-                    </button>
-                    <div className="flex gap-2 items-center justify-center">
-                        {projects.map((_, index) => (
-                            <div
-                                key={index}
-                                className={`w-4 h-4 rounded-full bg-zinc-500 mt-3 cursor-pointer ${index === current ? "bg-opacity-100" : "bg-opacity-50"}`}
-                                onClick={() => setCurrent(index)}
-                            />
-                        ))}
-                    </div>
-                    <button
-                        onClick={() => setCurrent(current === 0 ? projects.length - 1 : current - 1)}
-                        className="p-3 bg-zinc-900 rounded-md hover:bg-zinc-800"
-                    >
-                        <span className="flex items-center justify-center gap-2">
-                            <p>Next Project</p>
-                            <FaAngleRight className="w-6 h-6 text-white" />
-                        </span>
-                    </button>
-                </div>
-            </div>
+        <div className="relative">
             <div className="flex items-center justify-center">
                 <div key={currentProject.name} className="flex flex-col items-center mt-8 w-full h-full gap-4">
                     <h2 className="text-3xl font-bold">{currentProject.name}</h2>
-                    <div className="flex items-center gap-12">
+                    <div className="flex flex-col md:flex-row items-center gap-12">
                         <div className="max-w-[25rem] text-center">
-                            <p>{currentProject.description}</p>
-                            <h4 className="my-2">Technologies used:</h4>
-                            <ul>
-                                {
-                                    currentProject.technologies.map((tech, index) => (
-                                        <li key={index}>{tech}</li>
-                                    ))
-                                }
-                            </ul>
+                            <div>
+                                <p>{currentProject.description}</p>
+                                <h4 className="my-2">Technologies used:</h4>
+                                <ul>
+                                    {
+                                        currentProject.technologies.map((tech, index) => (
+                                            <li key={index}>{tech}</li>
+                                        ))
+                                    }
+                                </ul>
+                            </div>
 
                             {currentProject.link && (
                                 <div className="mt-3">
@@ -69,11 +40,40 @@ const ProjectsSlider: React.FC<ProjectsSliderProps> = ({ projects }) => {
                         </div>
                         {
                             currentProject.images && (
-                                <div className="w-[500px] h-[280px]">
+                                <div className="w-[300px] h-[180px] md:w-[500px] md:h-[280px]">
                                     <ImageSlider images={currentProject.images} link={currentProject.link} />
                                 </div>
                             )
                         }
+                    </div>
+                    <div className="flex w-full items-center justify-between mt-8">
+                        <button
+                            onClick={() => setCurrent(current === 0 ? projects.length - 1 : current - 1)}
+                            className="p-3 bg-zinc-900 rounded-md hover:bg-zinc-800"
+                        >
+                            <span className="flex items-center gap-2">
+                                <FaAngleLeft className="w-6 h-6 text-white" />
+                                <p>Previous Project</p>
+                            </span>
+                        </button>
+                        <div className="hidden md:flex gap-2 items-center justify-center">
+                            {projects.map((_, index) => (
+                                <div
+                                    key={index}
+                                    className={`w-4 h-4 rounded-full bg-zinc-500 mt-3 cursor-pointer ${index === current ? "bg-opacity-100" : "bg-opacity-50"}`}
+                                    onClick={() => setCurrent(index)}
+                                />
+                            ))}
+                        </div>
+                        <button
+                            onClick={() => setCurrent(current === 0 ? projects.length - 1 : current - 1)}
+                            className="p-3 bg-zinc-900 rounded-md hover:bg-zinc-800"
+                        >
+                            <span className="flex items-center justify-center gap-2">
+                                <p>Next Project</p>
+                                <FaAngleRight className="w-6 h-6 text-white" />
+                            </span>
+                        </button>
                     </div>
                 </div>
             </div>
