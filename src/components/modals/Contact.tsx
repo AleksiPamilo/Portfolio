@@ -47,15 +47,10 @@ const Contact: React.FC = () => {
                 content
             })
         })
-            .then(async (res) => {
-                if (res.status === 200) {
-                    setError(null);
-                    setSuccess("Message sent successfully!");
-                    clearFields();
-                } else {
-                    setSuccess(null);
-                    setError(ContactFormErrors.UNEXPECTED);
-                }
+            .then(() => {
+                setError(null);
+                setSuccess("Message sent successfully!");
+                clearFields();
             })
             .catch(() => {
                 setSuccess(null);
