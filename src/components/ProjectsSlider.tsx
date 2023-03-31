@@ -17,7 +17,7 @@ const ProjectsSlider: React.FC<ProjectsSliderProps> = ({ projects }) => {
                 <div key={currentProject.name} className="flex flex-col items-center mt-8 w-full h-full gap-4">
                     <h2 className="text-3xl font-bold">{currentProject.name}</h2>
                     <div className="flex flex-col md:flex-row items-center gap-12">
-                        <div className="max-w-[25rem] text-center">
+                        <div className={`${currentProject?.images ? "max-w-[25rem]" : "max-w-[40rem]"} text-center`}>
                             <div>
                                 <p>{currentProject.description}</p>
                                 <h4 className="my-2">Technologies used:</h4>
@@ -51,16 +51,16 @@ const ProjectsSlider: React.FC<ProjectsSliderProps> = ({ projects }) => {
                             onClick={() => setCurrent(current === 0 ? projects.length - 1 : current - 1)}
                             className="p-3 bg-zinc-900 rounded-md hover:bg-zinc-800"
                         >
-                            <span className="flex items-center gap-2">
+                            <span className="flex items-center justify-center gap-2">
                                 <FaAngleLeft className="w-6 h-6 text-white" />
                                 <p>Previous Project</p>
                             </span>
                         </button>
-                        <div className="hidden md:flex gap-2 items-center justify-center">
+                        <div className="hidden md:flex gap-2">
                             {projects.map((_, index) => (
                                 <div
                                     key={index}
-                                    className={`w-4 h-4 rounded-full bg-zinc-500 mt-3 cursor-pointer ${index === current ? "bg-opacity-100" : "bg-opacity-50"}`}
+                                    className={`w-4 h-4 rounded-full bg-zinc-500 cursor-pointer ${index === current ? "bg-opacity-100" : "bg-opacity-50"}`}
                                     onClick={() => setCurrent(index)}
                                 />
                             ))}
