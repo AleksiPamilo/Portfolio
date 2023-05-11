@@ -1,12 +1,10 @@
 import { Suspense, lazy } from "react";
-import { FaArrowDown } from "react-icons/fa";
-import scrollTo from "./utils/scrollTo";
-import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ModalContextProvider } from "./components/context/ModalContextProvider";
 
-const Home = lazy(() => import("./components/Home"));
-const Projects = lazy(() => import("./components/Projects"));
-const Resume = lazy(() => import("./components/Resume"));
+const Home = lazy(() => import("./sites/Home"));
+const Projects = lazy(() => import("./sites/Projects"));
+const Skills = lazy(() => import("./sites/Skills"));
 const Navigation = lazy(() => import("./components/Navigation"));
 
 const App: React.FC = () => {
@@ -19,28 +17,16 @@ const App: React.FC = () => {
         <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-white" />
       </div>
     }>
-      <ModalContextProvider>
-        <Navigation />
-
-        <section id="home">
-          <Home />
-
-          <div className="w-full absolute bottom-4 text-center">
-            <button onClick={() => scrollTo("projects")} className="bg-[#111111] animate-bounce p-4 rounded-full border border-transparent hover:shadow-glow-5">
-              <FaArrowDown className="w-5 h-5 text-white" />
-            </button>
-          </div>
-        </section>
-
-        <section id="projects">
-          <Projects />
-        </section>
-
-        <section id="cv">
-          <Resume />
-        </section>
-
-      </ModalContextProvider>
+      <Router>
+        <ModalContextProvider>
+          <Navigation />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/skills" element={<Skills />} />
+          </Routes>
+        </ModalContextProvider>
+      </Router>
     </Suspense>
   );
 }

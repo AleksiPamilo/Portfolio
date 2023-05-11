@@ -6,19 +6,19 @@ interface INavItems {
 export const navItems: INavItems[] = [
     {
         title: "Home",
-        path: "home"
+        path: "/"
     },
     {
         title: "Projects",
-        path: "projects"
+        path: "/projects"
     },
     {
-        title: "CV",
-        path: "cv"
+        title: "Skills",
+        path: "/skills"
     }
 ];
 
-export const links = {
+export const social = {
     LinkedIn: "https://www.linkedin.com/in/aleksipamilo",
     GitHub: "https://github.com/AleksiPamilo",
 };

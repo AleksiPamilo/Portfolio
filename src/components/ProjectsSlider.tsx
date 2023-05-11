@@ -1,6 +1,6 @@
 import React from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
-import { Project } from "../common/Projects";
+import { Project } from "../data/Projects";
 import ImageSlider from "./ImageSlider";
 
 type ProjectsSliderProps = {
