@@ -30,10 +30,10 @@ const Navigation: React.FC = () => {
                 <div className="flex gap-5">
                     {
                         navItems.map((item) => (
-                            <Link to={item.path} className="py-2 px-3 rounded-sm uppercase hover:shadow-glow-5">{item.title}</Link>
+                            <Link to={item.path} className="py-2 px-3 rounded-sm uppercase hover:opacity-60">{item.title}</Link>
                         ))
                     }
-                    <button className="py-2 px-3 rounded-sm uppercase hover:shadow-glow-5" onClick={openModal}>
+                    <button className="py-2 px-3 rounded-sm uppercase hover:opacity-60" onClick={openModal}>
                         Contact
                     </button>
                 </div>
@@ -51,13 +51,13 @@ const Navigation: React.FC = () => {
                 <div className="flex flex-col gap-5 items-center justify-center">
                     {
                         navItems.map((item) => (
-                            <button className="w-full py-2 px-3 rounded-sm uppercase hover:shadow-glow-5" onClick={() => {
+                            <button className="w-full py-2 px-3 rounded-sm uppercase hover:opacity-60" onClick={() => {
                                 setIsMenuOpen(!isMenuOpen);
                                 navigate(item.path)
                             }}>{item.title}</button>
                         ))
                     }
-                    <button className="w-full py-2 px-3 rounded-sm uppercase hover:shadow-glow-5" onClick={openModal}>
+                    <button className="w-full py-2 px-3 rounded-sm uppercase hover:opacity-60" onClick={openModal}>
                         Contact
                     </button>
                 </div>
