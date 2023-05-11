@@ -1,9 +1,9 @@
 import React from "react";
-import scrollTo from "../utils/scrollTo";
+import { Link } from "react-router-dom";
 
 const Home: React.FC = () => {
     return (
-        <div className="md:pl-60 md:pt-[20rem] px-10 pt-[13rem]">
+        <main className="md:pl-60 md:pt-[20rem] px-10 pt-[13rem]">
             <p className="font-bold text-gray-400">Hello</p>
             <h1 className="text-4xl md:text-5xl font-extrabold mt-3 text-gray-500">My name is <span className="text-white">Aleksi</span> Pamilo</h1>
             <div className="mt-5 text-gray-400">
@@ -11,10 +11,11 @@ const Home: React.FC = () => {
                 <p>I have experience including but not limited to JS, TS, C#, HTML, CSS, React and Vue.</p>
                 <p>Currently i mostly use React or NextJS and TypeScript!</p>
             </div>
+
             <div className="mt-10">
-                <button onClick={() => scrollTo("projects")} className="text-white border font-semibold py-2 px-14 rounded-sm hover:shadow-glow-5 transition ease-in-out duration-300">My Projects</button>
+                <Link to="/projects" className="text-white border font-semibold py-2 px-14 rounded-sm hover:shadow-glow-5 transition ease-in-out duration-300">My Projects</Link>
             </div>
-        </div>
+        </main>
     )
 }
 
