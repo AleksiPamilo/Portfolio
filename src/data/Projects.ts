@@ -44,7 +44,7 @@ const projects: Project[] = [
     },
     {
         name: "Portfolio",
-        description: "This is my portfolio website. It is a full-stack application that uses React for the frontend, Firebase for the backend and TailwindCSS for styling.",
+        description: "This is my portfolio website. It uses react and TailwindCSS for styling. Firebase for hosting.",
         images: null,
         technologies: ["React", "Firebase", "TypeScript", "TailwindCSS"],
         link: "https://aleksipamilo.dev/"
