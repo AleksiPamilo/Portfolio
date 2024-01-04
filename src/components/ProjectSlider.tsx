@@ -6,7 +6,6 @@ import ProjectButton from "./project/ProjectButton";
 import { useParams, useNavigate } from 'react-router-dom';
 import NotFound from "./NotFound";
 
-
 type ProjectsSliderProps = {
     projects: IProject[];
     currentProject: IProject | null;
@@ -42,18 +41,8 @@ const ProjectsSlider: React.FC<ProjectsSliderProps> = ({ projects, currentProjec
             <div>
                 <div className="flex flex-col sm:flex-row items-stretch gap-x-4 gap-y-8">
                     <div className="max-w-[50rem]">
-                        {
-                            currentProject.images ? (
-                                currentProject.images.length === 1 ? (
-                                    <img
-                                        className="w-full object-contain rounded-lg"
-                                        src={currentProject.images[0].url}
-                                        alt={currentProject.images[0].alt}
-                                    />
-                                ) : (
-                                    <ImageSlider images={currentProject.images} />
-                                )
-                            ) : null
+                        {currentProject.images &&
+                            <ImageSlider images={currentProject.images} />
                         }
                     </div>
                     <div className="w-full md:w-[20rem] h-full md:ml-4 flex flex-col gap-y-4 p-4">

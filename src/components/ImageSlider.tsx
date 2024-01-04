@@ -33,24 +33,26 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images }) => {
                 </button>
             </div>
 
-            <div>
-                <button className="absolute left-1 top-1/2 tranform -translate-y-1/2 text-4xl text-white hover:text-zinc-500 bg-black bg-opacity-50 rounded-full p-1" onClick={() => setCurrent((current - 1 + images.length) % images.length)}>
-                    <FaAngleLeft />
-                </button>
+            <div hidden={images.length === 1}>
+                <div>
+                    <button className="absolute left-1 top-1/2 tranform -translate-y-1/2 text-4xl text-white hover:text-zinc-500 bg-black bg-opacity-50 rounded-full p-1" onClick={() => setCurrent((current - 1 + images.length) % images.length)}>
+                        <FaAngleLeft />
+                    </button>
 
-                <button className="absolute right-1 top-1/2 tranform -translate-y-1/2 text-4xl text-white hover:text-zinc-500 bg-black bg-opacity-50 rounded-full p-1" onClick={() => setCurrent((current + 1) % images.length)}>
-                    <FaAngleRight />
-                </button>
-            </div>
+                    <button className="absolute right-1 top-1/2 tranform -translate-y-1/2 text-4xl text-white hover:text-zinc-500 bg-black bg-opacity-50 rounded-full p-1" onClick={() => setCurrent((current + 1) % images.length)}>
+                        <FaAngleRight />
+                    </button>
+                </div>
 
-            <div className="flex gap-2 items-center justify-center">
-                {images.map((_, index) => (
-                    <div
-                        key={index}
-                        className={`w-6 h-2 rounded-full bg-zinc-500 mt-3 cursor-pointer ${index === current ? "bg-opacity-100" : "bg-opacity-50"}`}
-                        onClick={() => setCurrent(index)}
-                    />
-                ))}
+                <div className="flex gap-2 items-center justify-center">
+                    {images.map((_, index) => (
+                        <div
+                            key={index}
+                            className={`w-6 h-2 rounded-full bg-zinc-500 mt-3 cursor-pointer ${index === current ? "bg-opacity-100" : "bg-opacity-50"}`}
+                            onClick={() => setCurrent(index)}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     )

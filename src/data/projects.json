@@ -75,5 +75,22 @@
             "TailwindCSS"
         ],
         "time": "2023"
+    },
+    {
+        "name": "Todo App",
+        "slug": "todo-app",
+        "description": "Simple todo app created with React and TailwindCSS. It uses local storage to store the todos.",
+        "link": "https://todo.aleksipamilo.dev/",
+        "images": [
+            {
+                "url": "/assets/todo-app.png",
+                "alt": "Todo App"
+            }
+        ],
+        "technologies": [
+            "React",
+            "TailwindCSS"
+        ],
+        "time": "2023"
     }
 ]
