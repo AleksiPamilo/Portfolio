@@ -1,0 +1,65 @@
+[
+    {
+        "name": "ForumX",
+        "description": "ForumX is a forum application that I created for fun as a free time project. It is a full-stack application that uses React for the frontend, Firebase for the backend and TailwindCSS for styling.",
+        "link": "https://forum.aleksipamilo.dev/",
+        "images": [
+            {
+                "url": "/assets/ForumX.png",
+                "alt": "ForumX"
+            },
+            {
+                "url": "/assets/ForumX-light.png",
+                "alt": "ForumX-light"
+            },
+            {
+                "url": "/assets/ForumX_admin.png",
+                "alt": "ForumX-admin"
+            },
+            {
+                "url": "/assets/ForumX_admin-light.png",
+                "alt": "ForumX-admin-light"
+            }
+        ],
+        "technologies": [
+            "React",
+            "Firebase",
+            "TypeScript",
+            "TailwindCSS"
+        ],
+        "time": "2023"
+    },
+    {
+        "name": "Carshop",
+        "description": "Carshop is a full-stack application that I created for fun as a free time project. It is a full-stack application that uses NextJS for the frontend, NextAuth for authentication, Prisma for database management and MySQL for the database.",
+        "link": "https://beta.carshop.aleksipamilo.dev/",
+        "images": [
+            {
+                "url": "/assets/coming-soon.png",
+                "alt": "Coming Soon"
+            }
+        ],
+        "technologies": [
+            "NextJS",
+            "TypeScript",
+            "NextAuth",
+            "Prisma",
+            "MySQL",
+            "TailwindCSS"
+        ],
+        "time": "2023-2024"
+    },
+    {
+        "name": "Portfolio",
+        "description": "This is my portfolio website. It uses react and TailwindCSS for styling. Firebase for hosting.",
+        "link": "https://aleksipamilo.dev/",
+        "images": null,
+        "technologies": [
+            "React",
+            "Firebase",
+            "TypeScript",
+            "TailwindCSS"
+        ],
+        "time": "2023"
+    }
+]

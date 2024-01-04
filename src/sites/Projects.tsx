@@ -1,6 +1,6 @@
 import React from "react";
 import { social } from "../data/navItems";
-import projects from "../data/Projects";
+import projects from "../data/projects.json";
 import ProjectsSlider from "../components/ProjectsSlider";
 
 const Projects: React.FC = () => {
