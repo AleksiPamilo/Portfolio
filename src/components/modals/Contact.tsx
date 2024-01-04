@@ -37,7 +37,9 @@ const Contact: React.FC = () => {
         try {
             fetch("https://api.aleksipamilo.dev/email", {
                 method: "POST",
-                mode: "no-cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
                 body: JSON.stringify({
                     name,
                     email,
