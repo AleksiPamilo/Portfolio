@@ -19,7 +19,6 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images }) => {
         <div className="w-full relative">
             <div className="flex items-center justify-center">
                 <button className="cursor-zoom-in" onClick={() => {
-                    console.log("terve")
                     setModalContent(
                         <button className="cursor-zoom-out" onClick={closeModal}>
                             <img className="w-full h-full object-contain" src={images[current].url} alt={images[current].alt} />

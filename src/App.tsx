@@ -4,7 +4,9 @@ import { ModalContextProvider } from "./components/context/ModalContextProvider"
 
 const Home = lazy(() => import("./sites/Home"));
 const Projects = lazy(() => import("./sites/Projects"));
+const Project = lazy(() => import("./sites/Project"));
 const Skills = lazy(() => import("./sites/Skills"));
+const NotFound = lazy(() => import("./components/NotFound"));
 const Navigation = lazy(() => import("./components/Navigation"));
 
 const App: React.FC = () => {
@@ -23,7 +25,9 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/:slug" element={<Project />} />
             <Route path="/skills" element={<Skills />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </ModalContextProvider>
       </Router>
