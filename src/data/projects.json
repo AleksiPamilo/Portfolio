@@ -33,7 +33,7 @@
     {
         "name": "Carshop",
         "slug": "carshop",
-        "description": "Carshop is a full-stack application that I created for fun as a free time project. It is a full-stack application that uses NextJS for the frontend, NextAuth for authentication, Prisma for database management and MySQL for the database.",
+        "description": "Carshop is a full-stack application that I created for fun as a free time project. It is a full-stack application that uses NextJS for the front and backend, NextAuth for authentication, Prisma for database management and MySQL for the database.",
         "link": "https://beta.carshop.aleksipamilo.dev/",
         "images": [
             {
@@ -60,7 +60,7 @@
     {
         "name": "Portfolio",
         "slug": "portfolio",
-        "description": "This is my portfolio website. It uses react and TailwindCSS for styling. Firebase for hosting.",
+        "description": "This is my portfolio website. It uses React for the frontend and TailwindCSS for styling. Firebase for hosting.",
         "link": "https://aleksipamilo.dev/",
         "images": [
             {
