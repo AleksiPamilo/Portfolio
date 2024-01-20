@@ -10,7 +10,7 @@ const Home: React.FC = () => {
                 <p>Recent graduate in Information and Communication Technologies with exposure to various programming languages including JS, TS, and introductory knowledge in C#. Proficient in web development, specializing in React, Next.js, and TypeScript. Eager to continue learning and expanding my skills in the dynamic field of software development.</p>
             </div>
 
-            <div>
+            <div className="mt-6">
                 <Link to="/projects" className="text-white border font-semibold py-2 px-14 rounded-sm hover:shadow-glow-5 transition ease-in-out duration-300">My Projects</Link>
             </div>
         </main>
