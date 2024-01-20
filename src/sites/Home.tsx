@@ -6,7 +6,7 @@ const Home: React.FC = () => {
         <main className="md:pl-60 md:pt-[20rem] px-10 pt-[13rem]">
             <p className="font-bold text-gray-400">Hello</p>
             <h1 className="text-4xl md:text-5xl font-extrabold mt-3 text-gray-500">My name is <span className="text-white">Aleksi</span> Pamilo</h1>
-            <div className="mt-5 text-gray-400">
+            <div className="max-w-[58rem] mt-5 text-gray-400">
                 <p>Recent graduate in Information and Communication Technologies with exposure to various programming languages including JS, TS, and introductory knowledge in C#. Proficient in web development, specializing in React, Next.js, and TypeScript. Eager to continue learning and expanding my skills in the dynamic field of software development.</p>
             </div>
 
