@@ -17,7 +17,7 @@ const Projects: React.FC = () => {
         <main className="flex flex-col justify-center items-center w-full h-screen">
             <ProjectSlider projects={projects} currentProject={project.current} />
 
-            <p className="text-center mt-4 mb-16 flex">You can find more projects on my
+            <p className="text-center mt-4 pb-8 flex">You can find more projects on my
                 <a className="text-blue-500 hover:text-blue-600 ml-1" href={social.GitHub}>GitHub</a>!
             </p>
         </main>

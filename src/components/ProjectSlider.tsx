@@ -71,13 +71,12 @@ const ProjectsSlider: React.FC<ProjectsSliderProps> = ({ projects, currentProjec
                 </div>
 
                 <div className="w-full flex flex-col sm:flex-row items-center justify-between mt-6">
-                    <div className="flex sm:hidden">{`Project ${currentIndex + 1} of ${projects.length}`}</div>
                     <div className="flex items-center justify-between w-full">
                         <ProjectButton onClick={handlePreviousProject}>
                             <FaAngleLeft className="text-2xl" />
                         </ProjectButton>
 
-                        <div className="hidden sm:flex">{`Project ${currentIndex + 1} of ${projects.length}`}</div>
+                        <div>{`Project ${currentIndex + 1} of ${projects.length}`}</div>
 
                         <ProjectButton onClick={handleNextProject}>
                             <FaAngleRight className="text-2xl" />

@@ -39,7 +39,7 @@ const Navigation: React.FC = () => {
                 </div>
             </div>
 
-            <button className="md:hidden fixed z-50 top-4 right-4 text-white" onClick={() => { setIsMenuOpen(!isMenuOpen) }}>
+            <button className="md:hidden fixed z-50 top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-2" onClick={() => { setIsMenuOpen(!isMenuOpen) }}>
                 {
                     isMenuOpen
                         ? <FaTimes className="text-3xl" />
