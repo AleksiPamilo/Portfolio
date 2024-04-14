@@ -92,5 +92,22 @@
             "TailwindCSS"
         ],
         "time": "2023"
+    },
+    {
+        "name": "Blog",
+        "slug": "blog",
+        "description": "Full-stack blog application created with NextJS and Strapi. It is a freetime project, and it is nowhere near ready :D",
+        "link": "https://blog.aleksipamilo.dev/",
+        "images": [
+            {
+                "url": "/assets/blog-beta.png",
+                "alt": "Blog"
+            }
+        ],
+        "technologies": [
+            "NextJS",
+            "Strapi CMS"
+        ],
+        "time": "2024"
     }
 ]
