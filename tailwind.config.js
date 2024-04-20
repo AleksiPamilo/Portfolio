@@ -13,6 +13,9 @@ module.exports = {
         "glow-5": "0 0 5px 5px #ffffff",
       }
     },
+    fontFamily: {
+      yellowtail: ['Yellowtail']
+    }
   },
   plugins: [],
 }

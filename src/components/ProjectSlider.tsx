@@ -39,10 +39,18 @@ const ProjectsSlider: React.FC<ProjectsSliderProps> = ({ projects, currentProjec
     return (
         <div className="flex flex-col items-center justify-center mt-12 px-4">
             <div>
-                <div className="flex flex-col sm:flex-row items-stretch gap-x-4 gap-y-8">
+                <div className="flex flex-col lg:flex-row items-stretch gap-x-4 gap-y-8">
                     <div className="max-w-[50rem]">
-                        {currentProject.images &&
-                            <ImageSlider images={currentProject.images} />
+                        {currentProject.images
+                            ? <ImageSlider images={currentProject.images} />
+                            : <div className={`md:w-[50rem] h-full flex items-center justify-center rounded-md bg-gradient-to-br transition-all ease-in-out duration-300 ${[
+                                "from-fuchsia-500 to-emerald-500", "from-fuchsia-700 to-indigo-600", "from-rose-200 to-emerald-500",
+                                "from-yellow-300 to-indigo-600", "from-green-500 to-pink-200", "from-purple-500 to-blue-200",
+                                "from-blue-300 to-yellow-300", "from-indigo-500 to-pink-200", "from-green-400 to-orange-500",
+                                "from-lime-400 to-indigo-600"
+                            ][Math.floor(Math.random() * 10)]}`}>
+                                <h1 className="font-yellowtail text-5xl max-lg:py-12">Images coming soon..</h1>
+                            </div>
                         }
                     </div>
                     <div className="w-full md:w-[20rem] h-full md:ml-4 flex flex-col gap-y-4 p-4">

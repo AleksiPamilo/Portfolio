@@ -9,6 +9,9 @@ export interface IProject {
     description: string;
     images: ProjectImage[] | null;
     technologies: string[];
+    startDate: string;
+    finishDate: string | null;
+    gradient: string;
     tags?: string[];
     link?: string;
 }

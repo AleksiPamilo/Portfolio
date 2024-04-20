@@ -3,31 +3,31 @@
 @tailwind utilities;
 
 body {
-    background-color: #111111;
-    color: white;
+  background-color: #111111;
+  color: white;
 }
 
 [data-title]:hover:after {
-    opacity: 1;
-    transition: ease-in-out 1s;
-    visibility: visible;
+  opacity: 1;
+  transition: ease-in-out 1s;
+  visibility: visible;
 }
 
 [data-title]:after {
-    content: attr(data-title);
-    background-color: #000000;
-    color: #ffffff;
-    position: absolute;
-    padding: 0.2rem 0.5rem;
-    white-space: nowrap;
-    box-shadow: 0px 0px 5px 5px #ffffff;
-    opacity: 0;
-    border: 1px solid #ffffff;
-    visibility: hidden;
+  content: attr(data-title);
+  background-color: #000000;
+  color: #ffffff;
+  position: absolute;
+  padding: 0.2rem 0.5rem;
+  white-space: nowrap;
+  box-shadow: 0px 0px 5px 5px #ffffff;
+  opacity: 0;
+  border: 1px solid #ffffff;
+  visibility: hidden;
 }
 
 [data-title] {
-    position: relative;
+  position: relative;
 }
 
 ::-webkit-scrollbar {

@@ -14,7 +14,7 @@ const Projects: React.FC = () => {
     }, [slug]);
 
     return (
-        <main className="flex flex-col justify-center items-center w-full h-screen">
+        <main className="flex flex-col justify-center items-center w-full h-screen max-md:my-14">
             <ProjectSlider projects={projects} currentProject={project.current} />
 
             <p className="text-center mt-4 pb-8 flex">You can find more projects on my
