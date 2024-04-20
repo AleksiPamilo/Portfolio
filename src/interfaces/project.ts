@@ -11,7 +11,6 @@ export interface IProject {
     technologies: string[];
     startDate: string;
     finishDate: string | null;
-    gradient: string;
     tags?: string[];
     link?: string;
 }

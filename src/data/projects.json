@@ -29,8 +29,7 @@
             "TailwindCSS"
         ],
         "startDate": "2022-09-14T21:00:00.000Z",
-        "finishDate": "2023-03-26T21:00:00.000Z",
-        "gradient": "from-rose-700 to-purple-300"
+        "finishDate": "2023-03-26T21:00:00.000Z"
     },
     {
         "name": "Carshop",
@@ -53,8 +52,7 @@
             "MySQL"
         ],
         "startDate": "2023-12-19T22:00:00.000Z",
-        "finishDate": null,
-        "gradient": "from-green-400 to-orange-500"
+        "finishDate": null
     },
     {
         "name": "Portfolio",
@@ -74,8 +72,7 @@
             "TailwindCSS"
         ],
         "startDate": "2023-03-01T22:00:00.000Z",
-        "finishDate": "2024-04-13T21:00:00.000Z",
-        "gradient": "from-blue-400 to-yellow-300"
+        "finishDate": "2024-04-13T21:00:00.000Z"
     },
     {
         "name": "Todo App",
@@ -93,8 +90,7 @@
             "TailwindCSS"
         ],
         "startDate": "2023-03-01T22:00:00.000Z",
-        "finishDate": "2023-03-30T21:00:00.000Z",
-        "gradient": "from-fuchsia-700 to-indigo-600"
+        "finishDate": "2023-03-30T21:00:00.000Z"
     },
     {
         "name": "Blog",
@@ -112,7 +108,6 @@
             "Strapi CMS"
         ],
         "startDate": "2024-02-29T22:00:00.000Z",
-        "finishDate": null,
-        "gradient": "from-purple-600 to-yellow-400"
+        "finishDate": null
     }
 ]
