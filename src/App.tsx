@@ -15,7 +15,7 @@ const App: React.FC = () => {
 
   return (
     <Suspense fallback={
-      <div className="w-screen h-screen flex flex-col gap-4 items-center justify-center fixed bg-[#111111] z-50">
+      <div className="w-screen h-screen flex flex-col gap-4 items-center justify-center fixed bg-emerald-500 bg-opacity-60 z-50">
         <h1 className="text-2xl font-bold animate-pulse">Loading...</h1>
         <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-white" />
       </div>
