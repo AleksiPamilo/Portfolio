@@ -14,11 +14,11 @@ const Projects: React.FC = () => {
     }, [slug]);
 
     return (
-        <main className="flex flex-col justify-center items-center w-full h-screen max-md:my-14">
-            <ProjectSlider projects={projects} currentProject={project.current} />
+        <main className="flex flex-col justify-center items-center w-full h-screen max-md:mt-28 max-lg:mt-10">
+            <ProjectSlider projects={projects.slice().reverse()} currentProject={project.current} />
 
             <p className="text-center mt-4 pb-8 flex">You can find more projects on my
-                <a className="text-blue-500 hover:text-blue-600 ml-1" href={social.GitHub}>GitHub</a>!
+                <a className="text-blue-800 hover:text-blue-700 ml-1" href={social.GitHub}>GitHub</a>!
             </p>
         </main>
     )

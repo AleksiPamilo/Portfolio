@@ -7,19 +7,19 @@ type SkillCardProps = {
 
 const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
     return (
-        <div className="flex flex-col max-w-[25rem] p-4 gap-6 rounded-md select-none border border-gray-600">
+        <div className="flex flex-col max-w-[25rem] p-4 gap-6 rounded-md select-none shadow-xl">
             <span className="flex items-center gap-2">
                 {skill?.icon}
-                <h1 className="uppercase font-semibold">{skill.name}</h1>
+                <h1 className="uppercase font-yellowtail">{skill.name}</h1>
             </span>
 
             <p>{skill?.desc}</p>
 
             {
                 skill.tags && (
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-4 p-2">
                         {skill.tags.map((tag, index) => (
-                            <span key={index} className="bg-zinc-800 rounded-md p-2 text-sm capitalize">{tag}</span>
+                            <span key={index} className="text-sm capitalize">{tag}</span>
                         ))}
                     </div>
                 )

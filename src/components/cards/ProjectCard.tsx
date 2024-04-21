@@ -7,10 +7,10 @@ type ProjectCardProps = {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     const center = "absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center px-8";
-    const animation = "transition-all ease-in-out duration-500";
+    const animation = "transition-all ease-in-out duration-1000";
 
     return (
-        <a key={project.name} href={"/projects/" + project.slug} className={`relative flex items-center justify-center w-[25rem] h-[10rem] rounded-md group bg-gradient-to-tr ${[
+        <a key={project.name} href={"/projects/" + project.slug} className={`relative flex items-center justify-center w-[20rem] h-[10rem] rounded-md shadow-md hover:scale-105 transition-all ease-in-out duration-500 group bg-gradient-to-tr ${[
             "from-fuchsia-500 to-emerald-500",
             "from-fuchsia-700 to-indigo-600",
             "from-rose-200 to-emerald-500",

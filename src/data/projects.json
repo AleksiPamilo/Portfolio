@@ -1,5 +1,43 @@
 [
     {
+        "name": "Todo App",
+        "slug": "todo-app",
+        "description": "Simple todo app created with React and TailwindCSS. It uses local storage to store the todos.",
+        "link": "https://todo.aleksipamilo.dev/",
+        "images": [
+            {
+                "url": "/assets/todo-app.png",
+                "alt": "Todo App"
+            }
+        ],
+        "technologies": [
+            "React",
+            "TailwindCSS"
+        ],
+        "startDate": "2023-03-01T22:00:00.000Z",
+        "finishDate": "2023-03-30T21:00:00.000Z"
+    },
+    {
+        "name": "Portfolio",
+        "slug": "portfolio",
+        "description": "This is my portfolio website. It uses React for the frontend and TailwindCSS for styling. Firebase for hosting.",
+        "link": "https://aleksipamilo.dev/",
+        "images": [
+            {
+                "url": "/assets/portfolio.png",
+                "alt": "Portfolio/Projects Page"
+            }
+        ],
+        "technologies": [
+            "React",
+            "Firebase",
+            "TypeScript",
+            "TailwindCSS"
+        ],
+        "startDate": "2023-03-01T22:00:00.000Z",
+        "finishDate": "2024-04-13T21:00:00.000Z"
+    },
+    {
         "name": "ForumX",
         "slug": "forumx",
         "description": "ForumX is a forum application that I created for fun as a free time project. It is a full-stack application that uses React for the frontend, Firebase for the backend and TailwindCSS for styling.",
@@ -53,44 +91,6 @@
         ],
         "startDate": "2023-12-19T22:00:00.000Z",
         "finishDate": null
-    },
-    {
-        "name": "Portfolio",
-        "slug": "portfolio",
-        "description": "This is my portfolio website. It uses React for the frontend and TailwindCSS for styling. Firebase for hosting.",
-        "link": "https://aleksipamilo.dev/",
-        "images": [
-            {
-                "url": "/assets/portfolio.png",
-                "alt": "Portfolio/Projects Page"
-            }
-        ],
-        "technologies": [
-            "React",
-            "Firebase",
-            "TypeScript",
-            "TailwindCSS"
-        ],
-        "startDate": "2023-03-01T22:00:00.000Z",
-        "finishDate": "2024-04-13T21:00:00.000Z"
-    },
-    {
-        "name": "Todo App",
-        "slug": "todo-app",
-        "description": "Simple todo app created with React and TailwindCSS. It uses local storage to store the todos.",
-        "link": "https://todo.aleksipamilo.dev/",
-        "images": [
-            {
-                "url": "/assets/todo-app.png",
-                "alt": "Todo App"
-            }
-        ],
-        "technologies": [
-            "React",
-            "TailwindCSS"
-        ],
-        "startDate": "2023-03-01T22:00:00.000Z",
-        "finishDate": "2023-03-30T21:00:00.000Z"
     },
     {
         "name": "Blog",

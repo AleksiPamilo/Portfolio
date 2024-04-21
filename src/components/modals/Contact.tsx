@@ -4,7 +4,7 @@ import { useModal } from "../context/ModalContextProvider";
 import { toast } from "sonner";
 import Input from "../Input";
 
-const inputStyle = "w-full h-12 px-4 rounded-xl bg-transparent placeholder:text-gray-300 text-white border focus:outline-none";
+const inputStyle = "w-full h-12 px-4 rounded-xl bg-transparent placeholder:text-gray-500 placeholder:text-opacity-70 bg-emerald-400 bg-opacity-25 text-white shadow-md focus:outline-none";
 
 enum ContactFormErrors {
     FIELDS = "Please fill in all the required fields",
@@ -56,8 +56,8 @@ const Contact: React.FC = () => {
     }
 
     return (
-        <div className="flex justify-center items-center bg-[#101010]">
-            <div className="w-[25rem] md:w-[40rem] rounded-lg backdrop-blur-3xl p-4 border shadow-glow-2">
+        <div className="flex justify-center items-center">
+            <div className="w-[25rem] md:w-[40rem] rounded-lg shadow-lg bg-gradient-to-bl from-emerald-400 to-cyan-500 backdrop-blur-3xl p-4">
                 <div className="align-middle">
                     <div className="float-left">
                         <h1 className="text-white font-bold text-xl pl-1 select-none">Contact Me</h1>
@@ -78,12 +78,12 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                     <div className="grid gap-2 mt-12 mb-2 grid-row-2 md:grid-cols-2">
-                        <Input styles={`${inputStyle} ${!!error && name === "" ? "border-red-500" : "focus:shadow-glow-1"}`} type="text" placeholder="Your Name" value={name} onChange={e => setName(String(e.target.value))} />
-                        <Input styles={`${inputStyle} ${error && email !== "" ? "border-red-500" : "focus:shadow-glow-1"}`} type="email" placeholder="Your Email Address" value={email ?? ""} onChange={e => setEmail(String(e.target.value))} />
+                        <Input styles={`${inputStyle} ${!!error && name === "" ? "border-red-500" : "focus:border focus:border-emerald-300"}`} type="text" placeholder="Your Name" value={name} onChange={e => setName(String(e.target.value))} />
+                        <Input styles={`${inputStyle} ${error && email !== "" ? "border-red-500" : "focus:border focus:border-emerald-300"}`} type="email" placeholder="Your Email Address" value={email ?? ""} onChange={e => setEmail(String(e.target.value))} />
                     </div>
-                    <Input styles={`${inputStyle} ${!!error && title === "" ? "border-red-500" : "focus:shadow-glow-1"}`} type="text" placeholder="Title" value={title} onChange={e => setTitle(String(e.target.value))} />
+                    <Input styles={`${inputStyle} ${!!error && title === "" ? "border-red-500" : "focus:border focus:border-emerald-300"}`} type="text" placeholder="Title" value={title} onChange={e => setTitle(String(e.target.value))} />
                     <textarea
-                        className={`w-full h-[5rem] min-h-[3rem] max-h-[8rem] md:max-h-[30rem] resize-y px-4 pt-2 mt-2 rounded-xl bg-transparent text-white border focus:outline-none ${!!error && content === "" ? "border-red-500" : "focus:shadow-glow-1"}`}
+                        className={`w-full h-[5rem] min-h-[3rem] max-h-[8rem] md:max-h-[30rem] resize-y px-4 pt-2 mt-2 rounded-xl shadow-md bg-emerald-400 bg-opacity-25 placeholder:text-gray-500 placeholder:text-opacity-70 text-white focus:outline-none ${!!error && content === "" ? "border border-red-500" : "focus:border focus:border-emerald-300"}`}
                         placeholder="Content"
                         value={content}
                         onChange={e => setContent(e.target.value)}

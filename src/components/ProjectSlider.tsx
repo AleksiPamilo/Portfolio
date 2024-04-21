@@ -5,6 +5,7 @@ import ImageSlider from "./ImageSlider";
 import ProjectButton from "./project/ProjectButton";
 import { useParams, useNavigate } from 'react-router-dom';
 import NotFound from "./NotFound";
+import formatDate from "../utils/formatDate";
 
 type ProjectsSliderProps = {
     projects: IProject[];
@@ -54,22 +55,30 @@ const ProjectsSlider: React.FC<ProjectsSliderProps> = ({ projects, currentProjec
                         }
                     </div>
                     <div className="w-full md:w-[20rem] h-full md:ml-4 flex flex-col gap-y-4 p-4">
-                        <h1 className="text-5xl font-bold">{currentProject.name}</h1>
-                        <h4 className="text-sm text-zinc-500">{currentProject.description}</h4>
+                        <h1 className="text-5xl font-bold font-yellowtail">{currentProject.name}</h1>
+                        <h4 className="text-sm text-gray-300">{currentProject.description}</h4>
 
                         <div className="flex flex-col gap-2 mt-4">
                             Technologies used:
 
                             {
                                 currentProject.technologies.map((technology, index) => (
-                                    <span key={index} className="text-zinc-500">{technology}</span>
+                                    <span key={index} className="text-gray-300">{technology}</span>
                                 ))
                             }
                         </div>
+
+                        <div>
+                            {!currentProject.finishDate
+                                ? <span>Duration: Since {formatDate(currentProject.startDate)} (Ongoing)</span>
+                                : <span>Duration: {formatDate(currentProject.startDate)} — {formatDate(currentProject.finishDate)}</span>
+                            }
+                        </div>
+
                         <div>
                             {
                                 currentProject.link && (
-                                    <a className="text-blue-500 hover:text-blue-600" href={currentProject.link} rel="noreferrer" target="_blank">
+                                    <a className="text-blue-800 hover:text-blue-700" href={currentProject.link} rel="noreferrer" target="_blank">
                                         {currentProject.link}
                                     </a>
                                 )
