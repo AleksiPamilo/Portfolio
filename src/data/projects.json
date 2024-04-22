@@ -100,7 +100,23 @@
         "images": [
             {
                 "url": "/assets/blog-beta.png",
-                "alt": "Blog"
+                "alt": "Frontpage"
+            },
+            {
+                "url": "/assets/blog-beta-1.png",
+                "alt": "Blog Post"
+            },
+            {
+                "url": "/assets/blog-beta-2.png",
+                "alt": "Blog Post - 2"
+            },
+            {
+                "url": "/assets/blog-beta-3.png",
+                "alt": "Blog Post Comments"
+            },
+            {
+                "url": "/assets/blog-beta-4.png",
+                "alt": "Blog User Profile"
             }
         ],
         "technologies": [
