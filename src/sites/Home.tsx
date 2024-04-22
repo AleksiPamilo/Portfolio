@@ -14,7 +14,7 @@ const Home: React.FC = () => {
             <div className="mt-6 ">
                 <Link
                     to="/projects"
-                    className="text-white font-semibold py-2 px-8 shadow-md rounded-md hover:bg-emerald-400 transition-all ease-in-out duration-700">
+                    className="text-white font-semibold py-2 px-8 shadow-md rounded-sm border border-emerald-400 hover:bg-emerald-400 transition-all ease-in-out duration-700">
                     My Projects
                 </Link>
             </div>

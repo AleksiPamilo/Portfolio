@@ -30,10 +30,10 @@ const Navigation: React.FC = () => {
                 <div className="flex">
                     {
                         navItems.map((item) => (
-                            <Link to={item.path} className="flex items-center justify-center w-28 h-9 rounded uppercase hover:opacity-85">{item.title}</Link>
+                            <Link to={item.path} className="flex items-center justify-center w-28 h-9 rounded uppercase hover:text-emerald-400">{item.title}</Link>
                         ))
                     }
-                    <button className="w-28 h-9 rounded uppercase hover:opacity-85" onClick={openModal}>
+                    <button className="w-28 h-9 rounded uppercase hover:text-emerald-400" onClick={openModal}>
                         Contact
                     </button>
                 </div>
@@ -51,13 +51,13 @@ const Navigation: React.FC = () => {
                 <div className="flex flex-col gap-5 items-center justify-center">
                     {
                         navItems.map((item) => (
-                            <button className="w-full py-2 px-3 rounded uppercase hover:opacity-85" onClick={() => {
+                            <button className="w-full py-2 px-3 rounded uppercase hover:text-emerald-400" onClick={() => {
                                 setIsMenuOpen(!isMenuOpen);
                                 navigate(item.path)
                             }}>{item.title}</button>
                         ))
                     }
-                    <button className="w-full py-2 px-3 rounded uppercase hover:opacity-85" onClick={openModal}>
+                    <button className="w-full py-2 px-3 rounded uppercase hover:text-emerald-400" onClick={openModal}>
                         Contact
                     </button>
                 </div>
