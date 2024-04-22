@@ -4,7 +4,7 @@ import { useModal } from "../context/ModalContextProvider";
 import { toast } from "sonner";
 import Input from "../Input";
 
-const inputStyle = "w-full h-12 px-4 rounded-xl bg-transparent placeholder:text-gray-500 placeholder:text-opacity-70 bg-emerald-400 bg-opacity-25 text-white shadow-md focus:outline-none";
+const inputStyle = "w-full h-12 px-4 rounded-xl bg-transparent border border-zinc-800 focus:border-zinc-700 placeholder:text-gray-500 placeholder:text-opacity-70 bg-opacity-25 text-white shadow-md focus:outline-none";
 
 enum ContactFormErrors {
     FIELDS = "Please fill in all the required fields",
@@ -57,7 +57,7 @@ const Contact: React.FC = () => {
 
     return (
         <div className="flex justify-center items-center">
-            <div className="w-[25rem] md:w-[40rem] rounded-lg shadow-lg bg-gradient-to-bl from-emerald-400 to-cyan-500 backdrop-blur-3xl p-4">
+            <div className="w-[25rem] md:w-[40rem] rounded-lg shadow-lg bg-zinc-900 border border-zinc-800 backdrop-blur-3xl p-4">
                 <div className="align-middle">
                     <div className="float-left">
                         <h1 className="text-white font-bold text-xl pl-1 select-none">Contact Me</h1>
@@ -83,14 +83,14 @@ const Contact: React.FC = () => {
                     </div>
                     <Input styles={`${inputStyle} ${!!error && title === "" ? "border-red-500" : "focus:border focus:border-emerald-300"}`} type="text" placeholder="Title" value={title} onChange={e => setTitle(String(e.target.value))} />
                     <textarea
-                        className={`w-full h-[5rem] min-h-[3rem] max-h-[8rem] md:max-h-[30rem] resize-y px-4 pt-2 mt-2 rounded-xl shadow-md bg-emerald-400 bg-opacity-25 placeholder:text-gray-500 placeholder:text-opacity-70 text-white focus:outline-none ${!!error && content === "" ? "border border-red-500" : "focus:border focus:border-emerald-300"}`}
+                        className={`w-full h-[5rem] min-h-[3rem] max-h-[8rem] md:max-h-[30rem] resize-y px-4 pt-2 mt-2 rounded-xl shadow-md bg-transparent placeholder:text-gray-500 placeholder:text-opacity-70 text-white border border-zinc-800 focus:outline-none ${!!error && content === "" ? "border border-red-500" : "focus:border focus:border-zinc-700"}`}
                         placeholder="Content"
                         value={content}
                         onChange={e => setContent(e.target.value)}
                     />
                     <div className="py-1">
                         <div className="float-right">
-                            <button className="w-[8rem] h-10 rounded-md text-black font-bold bg-white hover:shadow-glow-2"
+                            <button className="w-[8rem] h-10 rounded-md text-black font-bold bg-emerald-400 hover:bg-emerald-500"
                                 onClick={handleSubmit}
                             >
                                 Send
