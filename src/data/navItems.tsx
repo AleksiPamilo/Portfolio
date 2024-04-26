@@ -1,20 +1,28 @@
+import { FaFolderOpen, FaHome, FaTrophy } from "react-icons/fa";
+
 interface INavItems {
     title: string;
     path: string;
+    icon: JSX.Element;
 }
+
+const iconStyle = "w-4 h-4";
 
 export const navItems: INavItems[] = [
     {
         title: "Home",
-        path: "/"
+        path: "/",
+        icon: <FaHome className={iconStyle} />
     },
     {
         title: "Projects",
-        path: "/projects"
+        path: "/projects",
+        icon: <FaFolderOpen className={iconStyle} />
     },
     {
         title: "Skills",
-        path: "/skills"
+        path: "/skills",
+        icon: <FaTrophy className={iconStyle} />
     }
 ];
 

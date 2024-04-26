@@ -7,7 +7,7 @@ const Projects: React.FC = () => {
     const reversedProjects = projects.slice().reverse();
 
     return (
-        <main className="flex items-center justify-center min-h-screen">
+        <main className="flex items-center justify-center min-h-screen max-md:py-16">
             <div className="flex flex-col items-center md:gap-10 gap-14 max-w-[1024px]">
                 <div className="flex flex-wrap items-center justify-center gap-4">
                     {reversedProjects.map((project, index) => (

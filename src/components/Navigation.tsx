@@ -1,15 +1,13 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaEnvelope } from "react-icons/fa";
 import { FiLinkedin, FiGithub } from "react-icons/fi";
 import { navItems, social } from "../data/navItems";
 import { useModal } from "./context/ModalContextProvider";
 import Contact from "./modals/Contact";
 
 const Navigation: React.FC = () => {
-    const navigate = useNavigate();
     const { setIsModalOpen, setModalContent } = useModal();
-    const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
 
     const openModal = () => {
         setModalContent(<Contact />);
@@ -39,38 +37,20 @@ const Navigation: React.FC = () => {
                 </div>
             </div>
 
-            <button className="md:hidden fixed z-50 top-4 right-4 text-white bg-opacity-50 rounded-full p-2" onClick={() => { setIsMenuOpen(!isMenuOpen) }}>
-                {
-                    isMenuOpen
-                        ? <FaTimes className="text-3xl" />
-                        : <FaBars className="text-3xl" />
-                }
-            </button>
-
-            <div className={`md:hidden max-md:w-screen h-screen fixed flex items-center pt-4 justify-center z-10 text-white backdrop-blur-sm transition-all duration-700 ${isMenuOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}>
-                <div className="flex flex-col gap-5 items-center justify-center">
+            <div className="flex md:hidden bottom-0 z-50 left-0 fixed w-full p-4 items-center bg-zinc-900">
+                <div className="flex items-center justify-center w-full gap-5 text-sm">
                     {
                         navItems.map((item) => (
-                            <button className="w-full py-2 px-3 rounded uppercase hover:text-emerald-400" onClick={() => {
-                                setIsMenuOpen(!isMenuOpen);
-                                navigate(item.path)
-                            }}>{item.title}</button>
+                            <Link to={item.path} className="flex flex-col gap-1 items-center uppercase hover:text-emerald-400">
+                                {item.icon}
+                                <span>{item.title}</span>
+                            </Link>
                         ))
                     }
-                    <button className="w-full py-2 px-3 rounded uppercase hover:text-emerald-400" onClick={openModal}>
-                        Contact
+                    <button className="flex flex-col gap-1 items-center uppercase hover:text-emerald-400" onClick={openModal}>
+                        <FaEnvelope className="w-4 h-4" />
+                        <span>Contact</span>
                     </button>
-                </div>
-                <div className="flex flex-col gap-5 bottom-9 absolute">
-                    <div className="flex gap-8 text-4xl text-gray-600">
-                        <a href={social.LinkedIn} target="_blank" rel="noopener noreferrer">
-                            <FiLinkedin className="hover:text-emerald-400" />
-                        </a>
-
-                        <a href={social.GitHub} target="_blank" rel="noopener noreferrer">
-                            <FiGithub className="hover:text-emerald-400" />
-                        </a>
-                    </div>
                 </div>
             </div>
         </nav>

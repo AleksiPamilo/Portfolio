@@ -1,7 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useModal } from "../components/context/ModalContextProvider";
+import Contact from "../components/modals/Contact";
 
 const Home: React.FC = () => {
+    const { setIsModalOpen, setModalContent } = useModal();
+
+    const openModal = () => {
+        setModalContent(<Contact />);
+        setIsModalOpen(true);
+    }
+
     return (
         <main className="md:pl-60 md:pt-[20rem] px-10 pt-[13rem]">
             <h1 className="text-4xl md:text-5xl font-extrabold mt-3 text-gray-400">
@@ -12,11 +21,11 @@ const Home: React.FC = () => {
             </div>
 
             <div className="mt-6 ">
-                <Link
-                    to="/projects"
-                    className="text-white font-semibold py-2 px-8 shadow-md rounded-sm border border-emerald-400 hover:bg-emerald-400 transition-all ease-in-out duration-700">
-                    My Projects
-                </Link>
+                <button
+                    onClick={openModal}
+                    className="text-white font-semibold py-2 px-8 shadow-md rounded-sm border border-emerald-300 hover:bg-emerald-400 transition-all ease-in-out duration-700">
+                    Contact Me!
+                </button>
             </div>
         </main>
     )
