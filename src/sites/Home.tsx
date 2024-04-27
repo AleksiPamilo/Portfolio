@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useModal } from "../components/context/ModalContextProvider";
 import Contact from "../components/modals/Contact";
 

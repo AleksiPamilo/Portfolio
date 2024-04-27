@@ -37,8 +37,8 @@ const Navigation: React.FC = () => {
                 </div>
             </div>
 
-            <div className="flex md:hidden bottom-0 z-50 left-0 fixed w-full p-4 items-center bg-zinc-900">
-                <div className="flex items-center justify-center w-full gap-5 text-sm">
+            <div className="flex md:hidden bottom-0 z-50 left-0 fixed w-full p-4 items-center bg-zinc-900 border-t border-zinc-800">
+                <div className="flex items-center justify-around w-full text-sm">
                     {
                         navItems.map((item) => (
                             <Link to={item.path} className="flex flex-col gap-1 items-center uppercase hover:text-emerald-400">
