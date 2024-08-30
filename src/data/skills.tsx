@@ -1,5 +1,5 @@
 import { FaReact, FaHtml5, FaGithub } from "react-icons/fa";
-import { SiMongodb, SiTypescript, SiCsharp, SiMysql } from "react-icons/si"
+import { SiMongodb, SiTypescript, SiCsharp, SiMysql } from "react-icons/si";
 import { ISkill } from "../interfaces/skills";
 
 export const skills: ISkill[] = [
