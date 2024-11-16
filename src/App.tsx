@@ -7,6 +7,7 @@ const Home = lazy(() => import("./sites/Home"));
 const Projects = lazy(() => import("./sites/Projects"));
 const Project = lazy(() => import("./sites/Project"));
 const Skills = lazy(() => import("./sites/Skills"));
+const Spotify = lazy(() => import("./sites/Spotify"));
 const NotFound = lazy(() => import("./components/NotFound"));
 const Navigation = lazy(() => import("./components/Navigation"));
 
@@ -29,6 +30,7 @@ const App: React.FC = () => {
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:slug" element={<Project />} />
             <Route path="/skills" element={<Skills />} />
+            <Route path="/spotify" element={<Spotify />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </ModalContextProvider>

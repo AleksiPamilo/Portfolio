@@ -5,7 +5,7 @@ import ImageSlider from "./ImageSlider";
 import ProjectButton from "./project/ProjectButton";
 import { useParams, useNavigate } from 'react-router-dom';
 import NotFound from "./NotFound";
-import formatDate from "../utils/formatDate";
+import { formatDate } from "../utils/format";
 
 type ProjectsSliderProps = {
     projects: IProject[];
