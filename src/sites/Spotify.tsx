@@ -98,13 +98,13 @@ const Spotify: React.FC = () => {
     const { name, artists, duration, url, isPlaying, thumbnail } = nowPlaying;
 
     return (
-        <main className="absolute flex gap-4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <main className="absolute flex flex-col md:flex-row gap-4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <div className="w-full">
                 <img className="w-full h-full rounded-md object-cover" src={thumbnail.url} alt="thumbnail" />
             </div>
             <div className="w-full h-full self-end">
                 <div className="w-full flex flex-col gap-4">
-                    <a href={url} target="_blank" rel="noopener noreferrer" className="text-5xl text-blue-500 hover:underline font-yellowtail">
+                    <a href={url} target="_blank" rel="noopener noreferrer" className="text-xl md:text-5xl text-blue-500 hover:underline font-yellowtail">
                         {name}
                     </a>
                     <span>{artists}</span>
