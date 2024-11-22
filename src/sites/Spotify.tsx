@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProgressBar from "../components/ProgressBar";
 import { formatTime } from "../utils/format";
+import MetaTags from "../components/MetaTags";
 
 const debounce = (fn: Function, delay: number) => {
     let timeout: NodeJS.Timeout;
@@ -95,25 +96,28 @@ const Spotify: React.FC = () => {
         );
     }
 
-    const { name, artists, duration, url, isPlaying, thumbnail } = nowPlaying;
-
     return (
         <main className="absolute flex flex-col md:flex-row gap-4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <MetaTags
+                title={nowPlaying.name}
+                description={nowPlaying.artists}
+                image={nowPlaying.thumbnail.url}
+            />
             <div className="w-full">
-                <img className="w-full h-full rounded-md object-cover" src={thumbnail.url} alt="thumbnail" />
+                <img className="w-full h-full rounded-md object-cover" src={nowPlaying.thumbnail.url} alt="thumbnail" />
             </div>
             <div className="w-full h-full self-end">
                 <div className="w-full flex flex-col gap-4">
-                    <a href={url} target="_blank" rel="noopener noreferrer" className="text-xl md:text-5xl text-blue-500 hover:underline font-yellowtail">
-                        {name}
+                    <a href={nowPlaying.url} target="_blank" rel="noopener noreferrer" className="text-xl md:text-5xl text-blue-500 hover:underline font-yellowtail">
+                        {nowPlaying.name}
                     </a>
-                    <span>{artists}</span>
-                    <ProgressBar progress={Math.round((progress / duration) * 100)} />
+                    <span>{nowPlaying.artists}</span>
+                    <ProgressBar progress={Math.round((progress / nowPlaying.duration) * 100)} />
                 </div>
                 <div className="flex justify-between w-full text-xl text-gray-600">
                     <span>{formatTime(progress)}</span>
-                    {!isPlaying && "Paused"}
-                    <span>{formatTime(duration)}</span>
+                    {!nowPlaying.isPlaying && "Paused"}
+                    <span>{formatTime(nowPlaying.duration)}</span>
                 </div>
             </div>
         </main>
