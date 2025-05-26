@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/prisma/generated"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id          String    @id @default(cuid())
+  title       String
+  slug        String    @unique
+  description String
+  images      Json      @default("[]")
+  url         String?
+  repo        String?
+  startDate   DateTime
+  endDate     DateTime?
+  tech        Json      @default("[]")
+  createdAt   DateTime  @default(now())
+}
+
+model Skill {
+  id          String   @id @default(cuid())
+  title       String   @unique
+  description String
+  icon        String
+  createdAt   DateTime @default(now())
+  tags        Json     @default("[]")
+}
