@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma"
 
 export async function GET() {
     const skills = await prisma.skill.findMany({
-        orderBy: { title: "asc" },
+        orderBy: { order: "asc" },
     })
     return NextResponse.json(skills)
 }

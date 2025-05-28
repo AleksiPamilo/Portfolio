@@ -6,3 +6,10 @@ export interface Skill {
     tags: string[]
     createdAt: Date
 }
+
+export type SkillPayload = {
+  title: string
+  description: string
+  tags: string[]
+  icon: string
+}

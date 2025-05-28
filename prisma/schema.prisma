@@ -29,4 +29,5 @@ model Skill {
   icon        String
   createdAt   DateTime @default(now())
   tags        Json     @default("[]")
+  order       Int      @default(0)
 }
