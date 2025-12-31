@@ -1,6 +1,6 @@
 ---
 title: "Go Image Hosting API"
-description: "A high-performance, security-first microservice for secure image management."
+description: "High-performance secure image hosting API in Go. Features EXIF/metadata stripping, dimension validation (image-bomb protection), and multi-stage Docker builds."
 image: ""
 repoUrl: "https://github.com/AleksiPamilo/go-image-api"
 techStack: ["Go", "Docker", "Nginx"]
