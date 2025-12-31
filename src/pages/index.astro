@@ -1,5 +1,13 @@
 ---
+import { getCollection } from 'astro:content';
 
+// Fetch all projects from the 'projects' collection
+const allProjects = await getCollection('projects');
+
+// Sort by date (newest first)
+const projects = allProjects.sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
 ---
 
 <html lang="en">
@@ -8,9 +16,19 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Portfolio</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<h1>My Projects</h1>
+		<ul>
+			{projects.map(project => (
+				<li>
+					<h2>{project.data.title}</h2>
+					<p>{project.data.description}</p>
+					<img src={project.data.image} alt={project.data.title} width="400" />
+					<p>Tech: {project.data.techStack.join(', ')}</p>
+				</li>
+			))}
+		</ul>
 	</body>
 </html>
