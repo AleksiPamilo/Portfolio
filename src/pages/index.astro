@@ -8,7 +8,6 @@ const projects = allProjects.sort(
   (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
 );
 
-// Flat list of skills for a compact layout
 const skills = [
   "TypeScript", "JavaScript", "C#", "Go", "Node.js", 
   "PostgreSQL", "MySQL", "MongoDB", "SQLite",
@@ -45,8 +44,9 @@ const skills = [
 
 		<section>
 			<h2 class="text-xs uppercase tracking-widest text-zinc-600 font-bold mb-10">Projects</h2>
-			<div class="space-y-16"> {projects.map(project => (
-				<ProjectCard project={project} />
+			<div class="flex flex-col space-y-12">
+				{projects.map(project => (
+					<ProjectCard project={project} />
 				))}
 			</div>
 		</section>

@@ -9,7 +9,7 @@ const { project } = Astro.props;
 const { title, description, image, techStack, repoUrl } = project.data;
 ---
 
-<article class="group py-12 first:pt-0 border-b border-zinc-900/50 last:border-0">
+<article class="group pb-12 first:pt-0 border-b border-zinc-900/50 last:border-0">
   <div class:list={[
     "grid items-start gap-8",
     image ? "grid-cols-1 lg:grid-cols-5" : "grid-cols-1"
@@ -57,9 +57,9 @@ const { title, description, image, techStack, repoUrl } = project.data;
         {description}
       </p>
 
-      <div class="flex flex-wrap gap-x-3 gap-y-2 mt-auto">
+      <div class="flex flex-wrap gap-2 mt-auto">
         {techStack.map(tech => (
-          <span class="text-[11px] font-mono text-zinc-600 uppercase tracking-wider">
+          <span class="px-2 py-0.5 text-[11px] font-mono bg-zinc-900/40 border border-zinc-800/50 text-zinc-500 rounded group-hover:border-zinc-700/50 group-hover:text-zinc-300 transition-all duration-300 cursor-default">
             {tech}
           </span>
         ))}
