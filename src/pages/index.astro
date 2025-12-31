@@ -1,34 +1,55 @@
 ---
 import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 
-// Fetch all projects from the 'projects' collection
 const allProjects = await getCollection('projects');
-
-// Sort by date (newest first)
 const projects = allProjects.sort(
   (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
 );
+
+// Flat list of skills for a compact layout
+const skills = [
+  "TypeScript", "JavaScript", "C#", "Go", "Node.js", 
+  "PostgreSQL", "MySQL", "MongoDB", "SQLite",
+  "React", "Next.js", "Astro", "Tailwind", 
+  "Docker", "Nginx", "Linux", "Git"
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Portfolio</title>
-	</head>
-	<body>
-		<h1>My Projects</h1>
-		<ul>
-			{projects.map(project => (
-				<li>
-					<h2>{project.data.title}</h2>
-					<p>{project.data.description}</p>
-					<img src={project.data.image} alt={project.data.title} width="400" />
-					<p>Tech: {project.data.techStack.join(', ')}</p>
-				</li>
-			))}
-		</ul>
-	</body>
-</html>
+<BaseLayout>
+  	<main class="max-w-2xl mx-auto px-6 py-24">
+		<section class="mb-16">
+			<h1 class="mb-6 text-xl font-medium text-zinc-100">Aleksi Pamilo</h1>
+			<div class="space-y-5 text-zinc-400 leading-relaxed text-[14px]">
+				<p>
+					Software Engineer based in Finland. I currently work as a Junior Developer with .NET and Vue,
+					focusing on maintaining and evolving systems to meet client needs.
+					Alongside my work, I am pursuing a BBA in Information Technology.
+				</p>
+				<p>
+					I value clean code, security, and minimalist design.
+					My goal is to build systems that are performant and reliable without unnecessary complexity.
+				</p>
+			</div>
+
+			<div class="mt-6 flex flex-wrap gap-2">
+				{skills.map(skill => (
+				<span class="px-2 py-0.5 text-[11px] font-mono bg-zinc-900/50 border border-zinc-800/60 text-zinc-500 rounded hover:text-zinc-300 transition-colors cursor-default">
+					{skill}
+				</span>
+				))}
+			</div>
+		</section>
+
+
+		<section>
+			<h2 class="text-xs uppercase tracking-widest text-zinc-600 font-bold mb-10">Projects</h2>
+			<div class="space-y-16"> {projects.map(project => (
+				<ProjectCard project={project} />
+				))}
+			</div>
+		</section>
+
+	</main>
+</BaseLayout>
