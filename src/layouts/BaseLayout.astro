@@ -3,9 +3,21 @@ import '../styles/global.css';
 
 interface Props {
     title?: string;
+    description?: string;
+    image?: string;
+    noindex?: boolean;
 }
 
-const { title = "Portfolio" } = Astro.props;
+const {
+    title = 'Aleksi Pamilo Portfolio',
+    description = 'Portfolio of Aleksi Pamilo, a software engineer in Finland focused on .NET, Vue, TypeScript.',
+    image = '/logo.png',
+    noindex = false,
+} = Astro.props;
+
+const siteOrigin = Astro.site ? new URL(Astro.site) : new URL(Astro.url.origin);
+const canonicalUrl = new URL(Astro.url.pathname, siteOrigin).toString();
+const ogImageUrl = image.startsWith('http') ? image : new URL(image, siteOrigin).toString();
 ---
 
 <html lang="en">
@@ -14,7 +26,22 @@ const { title = "Portfolio" } = Astro.props;
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
+        <meta name="description" content={description} />
+        <meta name="author" content="Aleksi Pamilo" />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="Aleksi Pamilo Portfolio" />
+        <meta property="og:image" content={ogImageUrl} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImageUrl} />
+        {noindex && <meta name="robots" content="noindex, nofollow" />}
         <title>{title}</title>
+        <slot name="head" />
         <script is:inline>
             (() => {
                 const key = 'portfolio-theme';

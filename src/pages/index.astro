@@ -26,14 +26,41 @@ const skillGroups = [
         tags: ["SSH Hardening", "Fail2ban", "UFW", "TLS/HTTPS", "Observability", "Integration Testing"]
     }
 ];
+
+const personStructuredData = JSON.stringify({
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'Person',
+			name: 'Aleksi Pamilo',
+			url: 'https://pmlo.dev/',
+			jobTitle: 'Software Engineer',
+			description: 'Software engineer based in Finland focused on .NET, Vue, TypeScript.',
+			sameAs: [
+				'https://github.com/AleksiPamilo',
+				'https://linkedin.com/in/aleksipamilo'
+			]
+		},
+		{
+			'@type': 'WebSite',
+			name: 'Aleksi Pamilo Portfolio',
+			url: 'https://pmlo.dev/'
+		}
+	]
+});
 ---
 
-<BaseLayout>
+<BaseLayout
+	title="Aleksi Pamilo | Portfolio"
+	description="Aleksi Pamilo portfolio: software engineer in Finland."
+	image="/logo.png"
+>
+	<script slot="head" type="application/ld+json" set:html={personStructuredData}></script>
 	<main class="relative z-1 mx-auto max-w-4xl px-6 pb-32 pt-28 md:pb-36 md:pt-32">
 		<section class="reveal mb-24 md:mb-32">
 			<div class="mb-[1.1rem] flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
 				<div>
-					<h1 class="m-0 text-[clamp(1.65rem,3.4vw,2.4rem)] leading-[1.12] tracking-[-0.02em]">Aleksi Pamilo</h1>
+					<h1 class="m-0 text-[clamp(1.65rem,3.4vw,2.4rem)] leading-[1.12] tracking-[-0.02em]">Aleksi Pamilo Portfolio</h1>
 				</div>
 				<div class="flex gap-3 font-mono text-[0.72rem] tracking-[0.02em]">
 					<a href="https://github.com/AleksiPamilo" target="_blank" rel="noreferrer" class="border px-2 py-1 text-(--muted) no-underline transition-colors duration-200 hover:bg-[color-mix(in_oklab,var(--accent-soft),transparent_60%)] hover:text-var(--text) border-color:var(--border) hover:border-color:color-mix(in_oklab,var(--accent),var(--border)_40%)">GitHub</a>
