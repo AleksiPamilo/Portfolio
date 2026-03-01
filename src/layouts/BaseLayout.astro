@@ -18,6 +18,42 @@ const {
 const siteOrigin = Astro.site ? new URL(Astro.site) : new URL(Astro.url.origin);
 const canonicalUrl = new URL(Astro.url.pathname, siteOrigin).toString();
 const ogImageUrl = image.startsWith('http') ? image : new URL(image, siteOrigin).toString();
+const robotsContent = noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large';
+
+const baseStructuredData = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': [
+        {
+            '@type': 'WebSite',
+            name: 'Aleksi Pamilo Portfolio',
+            url: siteOrigin.toString(),
+            inLanguage: 'en'
+        },
+        {
+            '@type': 'WebPage',
+            name: title,
+            description,
+            url: canonicalUrl,
+            isPartOf: {
+                '@type': 'WebSite',
+                name: 'Aleksi Pamilo Portfolio',
+                url: siteOrigin.toString()
+            },
+            primaryImageOfPage: {
+                '@type': 'ImageObject',
+                url: ogImageUrl
+            }
+        },
+        {
+            '@type': 'Person',
+            name: 'Aleksi Pamilo',
+            url: siteOrigin.toString(),
+            jobTitle: 'Software Engineer',
+            description: 'Software engineer based in Finland focused on .NET, Vue, TypeScript.',
+            sameAs: ['https://github.com/AleksiPamilo', 'https://linkedin.com/in/aleksipamilo']
+        }
+    ]
+});
 ---
 
 <html lang="en">
@@ -28,18 +64,23 @@ const ogImageUrl = image.startsWith('http') ? image : new URL(image, siteOrigin)
         <meta name="generator" content={Astro.generator} />
         <meta name="description" content={description} />
         <meta name="author" content="Aleksi Pamilo" />
+        <meta name="robots" content={robotsContent} />
+        <meta name="googlebot" content={robotsContent} />
         <link rel="canonical" href={canonicalUrl} />
         <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_US" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:site_name" content="Aleksi Pamilo Portfolio" />
         <meta property="og:image" content={ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@AleksiPamilo" />
+        <meta name="twitter:creator" content="@AleksiPamilo" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={ogImageUrl} />
-        {noindex && <meta name="robots" content="noindex, nofollow" />}
+        <script type="application/ld+json" set:html={baseStructuredData}></script>
         <title>{title}</title>
         <slot name="head" />
         <script is:inline>
